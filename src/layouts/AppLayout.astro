@@ -1,0 +1,13 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AppSidebar from '../components/AppSidebar.astro';
+
+const { pageTitle } = Astro.props;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <AppSidebar />
+  <main>
+    <slot />
+  </main>
+</BaseLayout>

@@ -1,6 +1,107 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from "../layouts/SiteLayout.astro";
+import "../styles/home.css";
 ---
 
-<SiteLayout pageTitle="Home">
+<SiteLayout pageTitle="From Reading to Remembering">
+  <section class="hero">
+    <h1>
+      <em class="highlight-gold">From Reading to </em><em class="highlight-red"
+        >Remembering</em
+      >
+    </h1>
+    <p>
+      OffScript turns scripts and study material into quick practice sessions so
+      lines stick, scenes feel natural, and recall comes when you need it.
+    </p>
+    <a href="/app/" class="button">Get Started</a>
+  </section>
+
+  <section
+    class="content-section"
+    id="features"
+  >
+    <div class="section-heading">
+      <p class="eyebrow">Features</p>
+      <h2 id="features-heading">Practice that actually sticks</h2>
+      <p>
+        Built for people who need to know their material cold—not just read it
+        once.
+      </p>
+    </div>
+
+    <ul class="cards">
+      <li>
+        <h3>Line-by-line practice</h3>
+        <p>Hide lines, test yourself, and build memory for every phrase.</p>
+      </li>
+      <li>
+        <h3>Your scripts, organized</h3>
+        <p>
+          Keep plays, auditions, and study notes together without losing your
+          place.
+        </p>
+      </li>
+      <li>
+        <h3>Track your progress</h3>
+        <p>See which scenes are mastered and which need another pass.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section
+    class="content-section"
+    id="how-it-works"
+  >
+    <div class="section-heading">
+      <p class="eyebrow">How it works</p>
+      <h2 id="steps-heading">Three steps to off-book</h2>
+    </div>
+
+    <ol class="steps">
+      <li>
+        <h3>Add your script</h3>
+        <p>
+          Import or paste your material and choose the characters and scenes to
+          practice.
+        </p>
+      </li>
+      <li>
+        <h3>Practice actively</h3>
+        <p>Use drills that force recall instead of passive re-reading.</p>
+      </li>
+      <li>
+        <h3>Perform with confidence</h3>
+        <p>Walk into the room knowing the words are inside you.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Who it's for</p>
+      <h2 id="audience-heading">Made for anyone who performs from memory</h2>
+    </div>
+
+    <ul class="cards">
+      <li>
+        <h3>Actors</h3>
+        <p>Get off-book faster for auditions, rehearsals, and opening night.</p>
+      </li>
+      <li>
+        <h3>Students</h3>
+        <p>Prepare speeches, presentations, and exams with real recall.</p>
+      </li>
+      <li>
+        <h3>Readers</h3>
+        <p>Retain what you read long after you close the book.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="home-cta" class="content-section cta">
+    <h2>Ready to go off script?</h2>
+    <p>Start practicing for free: no account required.</p>
+    <a href="/app/" class="button">Get Started</a>
+  </section>
 </SiteLayout>

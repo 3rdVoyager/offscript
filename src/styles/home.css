@@ -1,0 +1,132 @@
+.hero {
+  padding: 5rem;
+  background: var(--navy);
+  color: var(--text-on-dark);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.eyebrow {
+  color: var(--text-on-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-bottom: 1.25rem;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+}
+
+.hero p:not(.eyebrow) {
+  color: var(--muted-on-dark);
+  font-size: 1rem;
+}
+
+.content-section {
+  padding: 5rem;
+}
+
+.content-section + .content-section {
+  border-top: 3px solid var(--line);
+}
+
+.section-heading {
+  margin-bottom: 2rem;
+}
+
+.section-heading h2 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.section-heading p {
+  color: var(--muted);
+}
+
+.cards,
+.steps {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cards li,
+.steps li {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  background: var(--surface);
+}
+
+.cards h3 {
+  margin-bottom: 0.5rem;
+}
+
+.cards p,
+.steps p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.steps {
+  counter-reset: step;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.steps li {
+  counter-increment: step;
+}
+
+.steps li::before {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--red);
+  content: counter(step, decimal-leading-zero);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.content-section.cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--navy);
+  color: var(--text-on-dark);
+  text-align: center;
+  min-height: 100vh;
+  border-top: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
+}
+
+.cta h2 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.cta p {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 5rem 0;
+  }
+
+  .cards,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}

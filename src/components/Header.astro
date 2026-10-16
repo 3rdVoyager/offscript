@@ -1,19 +1,19 @@
-<header class="site-header">
-  <div class="site-header-inner">
-    <a href="/" class="site-brand" aria-label="OffScript home">
-      <img
-        src="/assets/brand/offscript-logo.png"
-        alt=""
-        width="44"
-        height="44"
-      />
-      <span>OffScript</span>
-    </a>
+---
+import '../styles/header.css';
+---
 
-    <nav aria-label="Site navigation">
-      <a href="/#features">Features</a>
-      <a href="/#how-it-works">How it works</a>
-      <a href="/app/" class="button-primary">Get Started</a>
-    </nav>
-  </div>
+<header class="site-header">
+  <a href="/" class="site-brand">
+    <img src="/assets/brand/offscript-logo.png" width="44" height="44"/>
+    <span>OffScript</span>
+  </a>
+
+  <nav class="header-nav">
+    <a href="/#features">Features</a>
+    <a href="/#how-it-works">How it works</a>
+  </nav>
+
+  <nav class="header-ctas">
+    <a href="/app/">Get Started</a>
+  </nav>
 </header>

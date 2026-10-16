@@ -1,0 +1,55 @@
+:root {
+  /* Brand colors */
+  --navy: #222d44;
+  --navy-light: #34415f;
+  --navy-dark: #182136;
+  --gold: #e9b955;
+  --gold-light: #f3cf78;
+  --gold-dark: #d6a43c;
+  --red: #bd3b50;
+  --red-light: #d96a7a;
+  --red-dark: #9f2f42;
+
+  /* Surfaces and text */
+  --cream: #fffaf0;
+  --surface: #ffffff;
+  --surface-muted: #f4eee3;
+  --text: #293246;
+  --muted: #657083;
+  --text-on-dark: #ffffff;
+  --muted-on-dark: #e3e6ed;
+  --line: #e6dfd2;
+  --line-strong: #d3c9b8;
+  --focus-ring: #f3cf78;
+
+  /* Feedback */
+  --success: #3b8060;
+  --warning: #c77c2b;
+  --error: var(--red);
+  --info: #4b6fae;
+
+  /* Layout */
+  --content-width: 1100px;
+  --page-gutter: 1rem;
+
+  /* Spacing */
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 4rem;
+  --space-7: 5rem;
+
+  /* Typography */
+  --font-body: Arial, sans-serif;
+  --line-height-body: 1.6;
+
+  /* Shape and effects */
+  --radius-small: 0.4rem;
+  --radius-card: 0.6rem;
+  --shadow-card: 0 1px 3px rgb(34 45 68 / 8%);
+
+  /* Responsive breakpoint */
+  --breakpoint-small: 700px;
+}

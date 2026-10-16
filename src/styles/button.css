@@ -1,0 +1,15 @@
+.button {
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-small);
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover,
+.button:focus-visible {
+    background: var(--gold-dark);
+}

@@ -1,13 +1,16 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import AppSidebar from '../components/AppSidebar.astro';
+import '../styles/app.css';
 
 const { pageTitle } = Astro.props;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <AppSidebar />
-  <main>
-    <slot />
-  </main>
+<BaseLayout pageTitle={pageTitle} useMaterialIcons>
+  <div class="app-shell">
+    <AppSidebar />
+    <main class="app-main">
+      <slot />
+    </main>
+  </div>
 </BaseLayout>

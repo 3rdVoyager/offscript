@@ -28,6 +28,15 @@
   --error: var(--red);
   --info: #4b6fae;
 
+  /* App workspace */
+  --app-background: #101522;
+  --app-surface: #192131;
+  --app-surface-raised: #222c40;
+  --app-border: #2a3548;
+  --app-text: #f4efe5;
+  --app-muted: #a9a8a4;
+  --app-sidebar-width: 18.75rem;
+
   /* Layout */
   --content-width: 1100px;
   --page-gutter: 1rem;

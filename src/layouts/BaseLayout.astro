@@ -2,7 +2,10 @@
 import '../styles/variables.css';
 import '../styles/base.css';
 import '../styles/button.css';
-const { pageTitle = 'From Reading to Remembering' } = Astro.props;
+const {
+  pageTitle = 'OffScript',
+  useMaterialIcons = false,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -11,6 +14,16 @@ const { pageTitle = 'From Reading to Remembering' } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle} | OffScript</title>
+    {useMaterialIcons && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+      </>
+    )}
     <link
       rel="icon"
       type="image/png"

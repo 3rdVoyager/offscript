@@ -1,0 +1,29 @@
+---
+import AppLayout from "../../layouts/AppLayout.astro";
+
+const hasScripts = false;
+---
+
+<AppLayout pageTitle="Dashboard">
+  <section class="app-page-header">
+    <h1>Dashboard</h1>
+    <p>Your home base for scripts, practice, and progress.</p>
+  </section>
+
+  {
+    hasScripts ? null : (
+      <section class="new-user-welcome app-section">
+        <h2>Welcome to OffScript</h2>
+        <p>Add a script to start practicing lines, tracking progress, and building confidence.</p>
+        <a href="/app/scripts" class="button">Add your first script</a>
+      </section>
+    )
+  }
+
+  <section class="app-section">
+    <h2>Practice tools</h2>
+    <p>
+      Coming soon!
+    </p>
+  </section>
+</AppLayout>

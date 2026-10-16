@@ -1,16 +1,34 @@
+---
+import '../styles/app-sidebar.css';
+import '../styles/icons.css';
+---
+
 <aside class="app-sidebar">
   <a href="/app/" class="app-sidebar-brand">
-    <img
-      src="/assets/brand/offscript-logo.png"
-    />
+    <img src="/assets/brand/offscript-logo.png" alt="" width="40" height="40" />
     <span>OffScript</span>
   </a>
 
   <nav class="app-sidebar-nav">
     <ul>
-      <li><a href="/app/">Home</a></li>
-      <li><a href="/app/scripts">Scripts</a></li>
-      <li><a href="/app/settings">Settings</a></li>
+      <li>
+        <a href="/app/" aria-current="page">
+          <span class="material-icons nav-link-icon" aria-hidden="true">home</span>
+          <span class="nav-link-label">Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="/app/scripts">
+          <span class="material-icons nav-link-icon" aria-hidden="true">library_books</span>
+          <span class="nav-link-label">Scripts</span>
+        </a>
+      </li>
+      <li>
+        <a href="/app/settings">
+          <span class="material-icons nav-link-icon" aria-hidden="true">settings</span>
+          <span class="nav-link-label">Settings</span>
+        </a>
+      </li>
     </ul>
   </nav>
 </aside>

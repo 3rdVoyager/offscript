@@ -1,19 +1,20 @@
 ---
 import '../styles/header.css';
+import { appVersion } from '../app-version';
 ---
 
 <header class="site-header">
-  <a href="/" class="site-brand">
-    <img src="/assets/brand/offscript-logo.png" width="44" height="44"/>
-    <span>OffScript</span>
-  </a>
+  <div class="site-header-inner">
+    <a href="/" class="site-brand">
+      <img src="/assets/brand/offscript-logo.png" alt="" width="44" height="44" />
+      <span class="site-brand-lockup">
+        <span class="site-brand-name">OffScript!</span>
+        <span class="site-version" title={`Version ${appVersion}`}>v{appVersion}</span>
+      </span>
+    </a>
 
-  <nav class="header-nav">
-    <a href="/#features">Features</a>
-    <a href="/#how-it-works">How it works</a>
-  </nav>
-
-  <nav class="header-ctas">
-    <a href="/app/">Get Started</a>
-  </nav>
+    <nav aria-label="Site">
+      <a href="/app/" class="button-primary site-header-cta">Get Started</a>
+    </nav>
+  </div>
 </header>

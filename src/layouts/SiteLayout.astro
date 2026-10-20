@@ -6,9 +6,9 @@ import Footer from '../components/Footer.astro';
 const { pageTitle } = Astro.props;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} useMaterialIcons>
   <Header />
-  <main>
+  <main class="site-main">
     <slot />
   </main>
   <Footer />

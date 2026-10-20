@@ -1,11 +1,14 @@
 ---
 import '../styles/footer.css';
+import { appVersion } from '../app-version';
 ---
 
 <footer class="site-footer">
-  <a href="/" class="site-brand">
-    <img src="/assets/brand/offscript-logo.png" width="44" height="44"/>
-    <span>OffScript</span>
-  </a>
-  <p class="site-footer-copy">&copy; 2026 Joshua C.</p>
+  <div class="site-footer-inner">
+    <p class="site-footer-brand">OffScript!</p>
+    <p class="site-footer-tagline">From reading to remembering.</p>
+    <p class="site-footer-copy">
+      &copy; 2026 Joshua C. · v{appVersion}
+    </p>
+  </div>
 </footer>

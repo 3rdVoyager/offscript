@@ -4,104 +4,121 @@ import "../styles/home.css";
 ---
 
 <SiteLayout pageTitle="From Reading to Remembering">
-  <section class="hero">
-    <h1>
-      <em class="highlight-gold">From Reading to </em><em class="highlight-red"
-        >Remembering</em
-      >
-    </h1>
-    <p>
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">For actors, students &amp; readers</p>
+      <h1 id="hero-heading">From Reading to <em>Remembering</em></h1>
+      <p class="hero-lead">
       OffScript turns scripts and study material into quick practice sessions so
       lines stick, scenes feel natural, and recall comes when you need it.
-    </p>
-    <a href="/app/" class="button">Get Started</a>
+      </p>
+      <div class="hero-actions">
+        <a href="/app/" class="button-primary">Get Started</a>
+        <a href="#how-it-works" class="button-ghost">See how it works</a>
+      </div>
+    </div>
   </section>
 
-  <section
-    class="content-section"
-    id="features"
-  >
-    <div class="section-heading">
-      <p class="eyebrow">Features</p>
-      <h2 id="features-heading">Practice that actually sticks</h2>
-      <p>
+  <section id="features" class="section features" aria-labelledby="features-heading">
+    <div class="section-inner">
+      <header class="section-header">
+        <p class="section-eyebrow">Features</p>
+        <h2 id="features-heading">Practice that actually sticks</h2>
+        <p class="section-lead">
         Built for people who need to know their material cold—not just read it
         once.
-      </p>
-    </div>
+        </p>
+      </header>
 
-    <ul class="cards">
-      <li>
+    <ul class="feature-grid">
+      <li class="feature-card">
+        <span class="material-icons feature-icon" aria-hidden="true">mic</span>
         <h3>Line-by-line practice</h3>
         <p>Hide lines, test yourself, and build memory for every phrase.</p>
       </li>
-      <li>
+      <li class="feature-card">
+        <span class="material-icons feature-icon" aria-hidden="true">library_books</span>
         <h3>Your scripts, organized</h3>
         <p>
           Keep plays, auditions, and study notes together without losing your
           place.
         </p>
       </li>
-      <li>
+      <li class="feature-card">
+        <span class="material-icons feature-icon" aria-hidden="true">trending_up</span>
         <h3>Track your progress</h3>
         <p>See which scenes are mastered and which need another pass.</p>
       </li>
     </ul>
+    </div>
   </section>
 
-  <section
-    class="content-section"
-    id="how-it-works"
-  >
-    <div class="section-heading">
-      <p class="eyebrow">How it works</p>
-      <h2 id="steps-heading">Three steps to off-book</h2>
-    </div>
+  <section id="how-it-works" class="section steps" aria-labelledby="steps-heading">
+    <div class="section-inner">
+      <header class="section-header">
+        <p class="section-eyebrow">How it works</p>
+        <h2 id="steps-heading">Three steps to off-book</h2>
+      </header>
 
-    <ol class="steps">
-      <li>
-        <h3>Add your script</h3>
-        <p>
-          Import or paste your material and choose the characters and scenes to
-          practice.
-        </p>
-      </li>
-      <li>
-        <h3>Practice actively</h3>
-        <p>Use drills that force recall instead of passive re-reading.</p>
-      </li>
-      <li>
-        <h3>Perform with confidence</h3>
-        <p>Walk into the room knowing the words are inside you.</p>
-      </li>
-    </ol>
+      <ol class="steps-list">
+        <li class="step-card">
+          <span class="step-number" aria-hidden="true">1</span>
+          <div class="step-content">
+            <h3>Add your script</h3>
+            <p>
+              Import or paste your material and choose the characters and scenes to
+              practice.
+            </p>
+          </div>
+        </li>
+        <li class="step-card">
+          <span class="step-number" aria-hidden="true">2</span>
+          <div class="step-content">
+            <h3>Practice actively</h3>
+            <p>Use drills that force recall instead of passive re-reading.</p>
+          </div>
+        </li>
+        <li class="step-card">
+          <span class="step-number" aria-hidden="true">3</span>
+          <div class="step-content">
+            <h3>Perform with confidence</h3>
+            <p>Walk into the room knowing the words are inside you.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
   </section>
 
-  <section class="content-section">
-    <div class="section-heading">
-      <p class="eyebrow">Who it's for</p>
-      <h2 id="audience-heading">Made for anyone who performs from memory</h2>
-    </div>
+  <section class="section audience" aria-labelledby="audience-heading">
+    <div class="section-inner audience-inner">
+      <header class="section-header">
+        <p class="section-eyebrow">Who it's for</p>
+        <h2 id="audience-heading">Made for anyone who performs from memory</h2>
+      </header>
 
-    <ul class="cards">
-      <li>
+    <ul class="audience-grid">
+      <li class="audience-card">
         <h3>Actors</h3>
         <p>Get off-book faster for auditions, rehearsals, and opening night.</p>
       </li>
-      <li>
+      <li class="audience-card">
         <h3>Students</h3>
         <p>Prepare speeches, presentations, and exams with real recall.</p>
       </li>
-      <li>
+      <li class="audience-card">
         <h3>Readers</h3>
         <p>Retain what you read long after you close the book.</p>
       </li>
     </ul>
+    </div>
   </section>
 
-  <section id="home-cta" class="content-section cta">
-    <h2>Ready to go off script?</h2>
+  <section id="home-cta" class="cta-banner" aria-labelledby="cta-heading">
+    <div class="cta-banner-inner">
+    <h2 id="cta-heading">Ready to go off script?</h2>
     <p>Start practicing for free: no account required.</p>
-    <a href="/app/" class="button">Get Started</a>
+    <a href="/app/" class="button-primary">Get Started</a>
+    </div>
   </section>
 </SiteLayout>

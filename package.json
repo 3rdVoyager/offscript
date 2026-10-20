@@ -9,10 +9,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "screenshots": "node scripts/capture-marketing-screenshots.mjs"
   },
   "dependencies": {
     "astro": "^7.3.6"
+  },
+  "devDependencies": {
+    "playwright": "^1.52.0"
   },
   "allowScripts": {
     "esbuild": true

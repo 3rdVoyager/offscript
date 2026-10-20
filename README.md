@@ -46,6 +46,7 @@ Run these commands from the project root:
 | `npm run build`     | Build the production site into `dist/` |
 | `npm run preview`   | Preview the production build locally   |
 | `npm run astro ...` | Run an Astro CLI command               |
+| `npm run screenshots` | Regenerate marketing images (main panel only) |
 
 ## Commits and releases
 

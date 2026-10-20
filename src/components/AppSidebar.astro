@@ -3,13 +3,18 @@ import '../styles/app-sidebar.css';
 import '../styles/icons.css';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isCurrent = (path) => currentPath === path;
+const isCurrent = (path: string) => currentPath === path;
 ---
 
 <aside class="app-sidebar">
   <a href="/app/" class="app-sidebar-brand">
-    <img src="/assets/brand/offscript-logo.png" alt="" width="40" height="40" />
-    <span>OffScript</span>
+    <img
+      src="/assets/brand/favicon/web-app-manifest-512x512.png"
+      alt=""
+      width="40"
+      height="40"
+    />
+    <span>OffScript!</span>
   </a>
 
   <nav class="app-sidebar-nav">
@@ -17,17 +22,75 @@ const isCurrent = (path) => currentPath === path;
       <li>
         <a href="/app/" aria-current={isCurrent('/app') ? 'page' : undefined}>
           <span class="material-icons nav-link-icon" aria-hidden="true">home</span>
-          <span class="nav-link-label">Home</span>
+          <span class="nav-link-label">Dashboard</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="app-sidebar-section-label">Script</p>
+
+    <ul>
+      <li>
+        <a href="/app/script/overview/" aria-current={isCurrent('/app/script/overview') ? 'page' : undefined}>
+          <span class="material-icons nav-link-icon" aria-hidden="true">book</span>
+          <span class="nav-link-label">Overview</span>
         </a>
       </li>
       <li>
-        <a href="/app/scripts/" aria-current={isCurrent('/app/scripts') ? 'page' : undefined}>
+        <a href="/app/script/progress/" aria-current={isCurrent('/app/script/progress') ? 'page' : undefined}>
+          <span class="material-icons nav-link-icon" aria-hidden="true">trending_up</span>
+          <span class="nav-link-label">Progress</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <nav class="app-sidebar-nav" aria-label="Practice">
+    <p class="app-sidebar-section-label">Practice</p>
+
+    <ul>
+      <li>
+        <a
+          href="/app/practice/reveal/"
+          aria-current={isCurrent('/app/practice/reveal') ? 'page' : undefined}
+        >
+          <span class="material-icons nav-link-icon" aria-hidden="true">visibility</span>
+          <span class="nav-link-label">Reveal</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/app/practice/first-letter/"
+          aria-current={isCurrent('/app/practice/first-letter') ? 'page' : undefined}
+        >
+          <span class="material-icons nav-link-icon" aria-hidden="true">format_size</span>
+          <span class="nav-link-label">First Letter</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/app/practice/type/"
+          aria-current={isCurrent('/app/practice/type') ? 'page' : undefined}
+        >
+          <span class="material-icons nav-link-icon" aria-hidden="true">keyboard</span>
+          <span class="nav-link-label">Type</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <nav class="app-sidebar-nav app-sidebar-bottom" aria-label="Manage">
+    <p class="app-sidebar-section-label">Manage</p>
+
+    <ul>
+      <li>
+        <a href="/app/manage/scripts/" aria-current={isCurrent('/app/manage/scripts') ? 'page' : undefined}>
           <span class="material-icons nav-link-icon" aria-hidden="true">library_books</span>
           <span class="nav-link-label">Scripts</span>
         </a>
       </li>
       <li>
-        <a href="/app/settings/" aria-current={isCurrent('/app/settings') ? 'page' : undefined}>
+        <a href="/app/manage/settings/" aria-current={isCurrent('/app/manage/settings') ? 'page' : undefined}>
           <span class="material-icons nav-link-icon" aria-hidden="true">settings</span>
           <span class="nav-link-label">Settings</span>
         </a>

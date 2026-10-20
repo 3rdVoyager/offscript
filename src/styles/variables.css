@@ -51,7 +51,8 @@
   --space-7: 5rem;
 
   /* Typography */
-  --font-body: Arial, sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Cormorant Garamond', serif;
   --line-height-body: 1.6;
 
   /* Shape and effects */

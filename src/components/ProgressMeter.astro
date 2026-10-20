@@ -1,0 +1,26 @@
+---
+import '../styles/progress-meter.css';
+
+interface Props {
+  value?: number;
+  class?: string;
+  size?: 'default' | 'large';
+  ariaLabel?: string;
+}
+
+const {
+  value = 0,
+  class: className,
+  size = 'default',
+  ariaLabel,
+} = Astro.props;
+const progress = Math.min(100, Math.max(0, value));
+---
+
+<div
+  class:list={['progress-meter', `progress-meter-${size}`, className]}
+  aria-label={ariaLabel}
+  aria-hidden={ariaLabel ? undefined : 'true'}
+>
+  <span data-progress-meter-bar style={`width: ${progress}%`}></span>
+</div>

@@ -3,6 +3,7 @@ import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
 import AppPageHeader from '../../../components/AppPageHeader.astro';
 import EmptyState from '../../../components/EmptyState.astro';
+import ProgressMeter from '../../../components/ProgressMeter.astro';
 import '../../../styles/progress.css';
 ---
 
@@ -30,9 +31,7 @@ import '../../../styles/progress.css';
         <strong class="progress-value" data-progress-value>0%</strong>
         <p data-progress-detail></p>
       </div>
-      <div class="progress-meter progress-meter-large" aria-hidden="true">
-        <span data-progress-bar></span>
-      </div>
+      <ProgressMeter class="progress-meter-large" ariaLabel="Overall progress" />
     </AppSection>
 
     <AppSection variant="card" ariaLabel="Progress by act">
@@ -72,7 +71,7 @@ import '../../../styles/progress.css';
       `${summary.completed} of ${summary.lines} lines completed`,
     );
 
-    const progressBar = document.querySelector('[data-progress-bar]');
+    const progressBar = document.querySelector('[data-progress-meter-bar]');
     if (progressBar instanceof HTMLElement) {
       progressBar.style.width = `${summary.progress}%`;
     }
@@ -93,8 +92,8 @@ import '../../../styles/progress.css';
     row.innerHTML = '<th scope="row"></th><td></td><td></td><td></td>';
     row.cells[0].textContent = act.title;
     row.cells[1].innerHTML =
-      '<div class="progress-table-cell"><div class="progress-meter"><span></span></div><strong></strong></div>';
-    const bar = row.cells[1].querySelector('.progress-meter span');
+      '<div class="progress-table-cell"><div class="progress-meter"><span class="progress-meter-bar"></span></div><strong></strong></div>';
+    const bar = row.cells[1].querySelector('.progress-meter-bar');
     if (bar instanceof HTMLElement) {
       bar.style.width = `${act.progress}%`;
     }

@@ -3,6 +3,7 @@ import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
 import AppPageHeader from '../../../components/AppPageHeader.astro';
 import EmptyState from '../../../components/EmptyState.astro';
+import ProgressMeter from '../../../components/ProgressMeter.astro';
 ---
 
 <AppLayout pageTitle="Type">
@@ -29,9 +30,7 @@ import EmptyState from '../../../components/EmptyState.astro';
           <p class="type-label">Type practice</p>
           <strong data-type-position></strong>
         </div>
-        <div class="type-progress" aria-label="Line progress">
-          <span data-type-progress-bar></span>
-        </div>
+        <ProgressMeter class="type-progress" ariaLabel="Line progress" />
       </div>
 
       <div class="type-prompt">
@@ -127,9 +126,7 @@ import EmptyState from '../../../components/EmptyState.astro';
       practiceLine.line.characters?.join(' / ') || 'Unknown character',
     );
     setText('[data-type-answer]', practiceLine.line.text || '');
-    setText('[data-type-progress-bar]', '');
-
-    const progressBar = document.querySelector('[data-type-progress-bar]');
+    const progressBar = document.querySelector('[data-progress-meter-bar]');
     if (progressBar instanceof HTMLElement) {
       progressBar.style.width = `${getLineProgress(practiceLine.line.progress)}%`;
     }
@@ -378,18 +375,6 @@ import EmptyState from '../../../components/EmptyState.astro';
   .type-progress {
     width: min(14rem, 40%);
     height: 0.45rem;
-    overflow: hidden;
-    border-radius: 999px;
-    background: var(--app-border);
-  }
-
-  .type-progress span {
-    display: block;
-    width: 0;
-    height: 100%;
-    border-radius: inherit;
-    background: var(--gold);
-    transition: width 200ms ease;
   }
 
   .type-prompt {

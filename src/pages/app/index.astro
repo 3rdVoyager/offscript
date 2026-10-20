@@ -3,6 +3,7 @@ import AppLayout from "../../layouts/AppLayout.astro";
 import AppSection from "../../components/AppSection.astro";
 import EmptyState from "../../components/EmptyState.astro";
 import AppPageHeader from "../../components/AppPageHeader.astro";
+import ProgressMeter from "../../components/ProgressMeter.astro";
 import "../../styles/dashboard.css";
 ---
 
@@ -31,9 +32,7 @@ import "../../styles/dashboard.css";
       <div class="dashboard-progress">
         <strong data-dashboard-progress>0%</strong>
         <span>practice progress</span>
-        <div class="dashboard-progress-meter" aria-hidden="true">
-          <span data-dashboard-progress-bar></span>
-        </div>
+        <ProgressMeter class="dashboard-progress-meter" />
       </div>
     </AppSection>
 
@@ -61,7 +60,7 @@ import "../../styles/dashboard.css";
     setText('[data-dashboard-notes]', script.notes || 'No notes added for this script.');
     setText('[data-dashboard-progress]', `${summary.progress}%`);
 
-    const progressBar = document.querySelector('[data-dashboard-progress-bar]');
+    const progressBar = document.querySelector('[data-progress-meter-bar]');
     if (progressBar instanceof HTMLElement) {
       progressBar.style.width = `${summary.progress}%`;
     }

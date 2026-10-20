@@ -2,20 +2,118 @@
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
 import EmptyState from '../../../components/EmptyState.astro';
+import '../../../styles/progress.css';
 ---
 
 <AppLayout pageTitle="Progress">
   <AppSection class="app-page-header">
     <h1>Progress</h1>
-    <p>Track the lines and scenes you have mastered.</p>
+    <p>Track how much of your active script you have mastered.</p>
   </AppSection>
 
-  <AppSection>
+  <AppSection class="progress-empty-section" ariaLabel="Progress empty state">
     <AppSection variant="card">
       <EmptyState
-        title="Progress coming soon"
-        description="Your practice history and mastery breakdown will appear here."
+        title="No script selected"
+        description="Select a script to see your line progress."
+        actionLabel="Choose a script"
+        actionHref="/app/manage/scripts/"
       />
     </AppSection>
   </AppSection>
+
+  <div class="progress-content" data-progress-content hidden>
+    <AppSection variant="card" class="progress-summary" ariaLabel="Overall progress">
+      <div>
+        <p class="progress-label">Overall progress</p>
+        <strong class="progress-value" data-progress-value>0%</strong>
+        <p data-progress-detail></p>
+      </div>
+      <div class="progress-meter progress-meter-large" aria-hidden="true">
+        <span data-progress-bar></span>
+      </div>
+    </AppSection>
+
+    <AppSection variant="card" ariaLabel="Progress by act">
+      <h2>Progress by act</h2>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Act</th>
+              <th scope="col">Progress</th>
+              <th scope="col">Completed</th>
+              <th scope="col">Lines</th>
+            </tr>
+          </thead>
+          <tbody data-progress-acts></tbody>
+        </table>
+      </div>
+    </AppSection>
+  </div>
 </AppLayout>
+
+<script>
+  import { getActiveScript } from '../../../scripts/script-store';
+  import { getProgressSummary } from '../../../scripts/progress';
+
+  const emptySection = document.querySelector('.progress-empty-section');
+  const progressContent = document.querySelector('[data-progress-content]');
+  const script = getActiveScript();
+
+  if (script && emptySection instanceof HTMLElement && progressContent instanceof HTMLElement) {
+    emptySection.hidden = true;
+    progressContent.hidden = false;
+    renderProgress(script);
+  }
+
+  function renderProgress(script: Parameters<typeof getProgressSummary>[0]): void {
+    const summary = getProgressSummary(script);
+    setText('[data-progress-value]', `${summary.progress}%`);
+    setText(
+      '[data-progress-detail]',
+      `${summary.completed} of ${summary.lines} lines completed`,
+    );
+
+    const progressBar = document.querySelector('[data-progress-bar]');
+    if (progressBar instanceof HTMLElement) {
+      progressBar.style.width = `${summary.progress}%`;
+    }
+
+    const acts = document.querySelector('[data-progress-acts]');
+    if (acts) {
+      acts.replaceChildren(...summary.acts.map(createActRow));
+    }
+  }
+
+  function createActRow(act: {
+    title: string;
+    progress: number;
+    completed: number;
+    lines: number;
+  }): HTMLTableRowElement {
+    const row = document.createElement('tr');
+    row.innerHTML = '<th scope="row"></th><td></td><td></td><td></td>';
+    row.cells[0].textContent = act.title;
+    row.cells[1].innerHTML =
+      '<div class="progress-table-cell"><div class="progress-meter"><span></span></div><strong></strong></div>';
+    const bar = row.cells[1].querySelector('.progress-meter span');
+    if (bar instanceof HTMLElement) {
+      bar.style.width = `${act.progress}%`;
+    }
+    const value = row.cells[1].querySelector('strong');
+    if (value) {
+      value.textContent = `${act.progress}%`;
+    }
+    row.cells[2].textContent = `${act.completed}`;
+    row.cells[3].textContent = `${act.lines}`;
+    return row;
+  }
+
+  function setText(selector: string, value: string): void {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.textContent = value;
+    }
+  }
+</script>

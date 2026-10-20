@@ -10,13 +10,21 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "screenshots": "node scripts/capture-marketing-screenshots.mjs"
+    "screenshots": "node scripts/capture-marketing-screenshots.mjs",
+    "pages:dev": "wrangler pages dev ./dist --ai AI",
+    "types": "wrangler types",
+    "test": "vitest run"
   },
   "dependencies": {
     "astro": "^7.3.6"
   },
   "devDependencies": {
-    "playwright": "^1.52.0"
+    "@cloudflare/workers-types": "^5.20261019.1",
+    "@types/node": "^26.6.5",
+    "playwright": "^1.52.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.151.3"
   },
   "allowScripts": {
     "esbuild": true

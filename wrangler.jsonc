@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "offscript",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-10-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "ai": {
+    "binding": "AI"
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
+}

@@ -70,8 +70,9 @@ export function showToast(
   close.textContent = '×';
   close.addEventListener('click', () => removeToast());
 
-  toast.append(text, close);
-  container.append(toast);
+  toast.appendChild(text);
+  toast.appendChild(close);
+  container.appendChild(toast);
 
   const timeout = window.setTimeout(removeToast, duration);
 

@@ -6,31 +6,42 @@ import Form from './Form.astro';
   <div class="script-import-options">
     <label class="script-import-box">
       <span class="material-icons script-import-icon" aria-hidden="true">upload_file</span>
-      <strong class="script-import-box-title">Upload a JSON file</strong>
-      <span class="script-import-file-name" data-file-name>Click to upload a JSON file.</span>
-      <input type="file" name="script-file" accept=".json,application/json" />
+      <strong class="script-import-box-title">Upload a script file</strong>
+      <span class="script-import-file-name" data-file-name>
+        Choose a JSON, TXT, or Markdown file.
+      </span>
+      <input
+        type="file"
+        name="script-file"
+        accept=".json,.txt,.md,application/json,text/plain,text/markdown"
+      />
     </label>
 
     <label class="script-import-box">
       <span class="material-icons script-import-icon" aria-hidden="true">edit_note</span>
-      <strong class="script-import-box-title">Paste script JSON</strong>
-      <span>Copy and paste your converted script data below.</span>
+      <strong class="script-import-box-title">Paste script text or JSON</strong>
+      <span>JSON imports locally. Plain text and Markdown are converted with Workers AI.</span>
       <textarea
         name="script-json"
-        placeholder="Paste the JSON for your script here."
+        placeholder="Paste script text, Markdown, or OffScript JSON here."
       ></textarea>
     </label>
   </div>
 
   <div class="app-actions">
     <button type="submit" class="button">Add script</button>
+    <p class="script-import-status" data-import-status role="status" aria-live="polite"></p>
   </div>
 
 </Form>
 
 <script>
   import { addScript } from '../scripts/script-store';
-  import { getScriptValidationError, isValidScript } from '../scripts/script-schema';
+  import {
+    getScriptValidationError,
+    isValidScript,
+    type Script,
+  } from '../scripts/script-schema';
   import { setPendingToast, showToast, type ToastVariant } from '../scripts/toasts';
 
   const form = document.querySelector('#add-script-form');
@@ -39,12 +50,14 @@ import Form from './Form.astro';
     const fileInput = form.elements.namedItem('script-file');
     const jsonInput = form.elements.namedItem('script-json');
     const fileName = form.querySelector('[data-file-name]');
+    const status = form.querySelector('[data-import-status]');
+    const submitButton = form.querySelector('button[type="submit"]');
 
     if (fileInput instanceof HTMLInputElement) {
       fileInput.addEventListener('change', () => {
         if (fileName) {
           fileName.textContent = fileInput.files?.[0]?.name ||
-            'Click to upload a JSON file.';
+            'Choose a JSON, TXT, or Markdown file.';
         }
       });
     }
@@ -91,33 +104,93 @@ import Form from './Form.astro';
       const pastedJson = jsonInput.value.trim();
 
       try {
+        setSubmitting(true);
         const source = file ? await file.text() : pastedJson;
-        const script = JSON.parse(source);
-        const validationError = getScriptValidationError(script);
-
-        if (validationError) {
-          setStatus(validationError, 'error');
-          return;
-        }
-
-        if (!isValidScript(script)) {
-          return;
-        }
+        const script = await getScriptFromSource(source, file?.name);
 
         addScript(script);
         form.reset();
         if (fileName) {
-          fileName.textContent = 'Click to upload a JSON file.';
+          fileName.textContent = 'Choose a JSON, TXT, or Markdown file.';
         }
+        setStatus('');
         setPendingToast(`"${script.title?.trim() || 'Untitled script'}" was added.`);
         window.location.assign('/app/manage/scripts/');
-      } catch {
-        setStatus('Choose a valid JSON file or paste valid script JSON.', 'error');
+      } catch (error) {
+        setStatus(
+          error instanceof Error
+            ? error.message
+            : 'Choose a valid script file or paste script text.',
+          'error',
+        );
+      } finally {
+        setSubmitting(false);
       }
     });
 
-    function setStatus(message: string, variant: ToastVariant = 'success'): void {
-      showToast(message, variant);
+    async function getScriptFromSource(source: string, fileName?: string): Promise<Script> {
+      if (!source.trim()) {
+        throw new Error('Choose a file or paste script text first.');
+      }
+
+      const shouldUseJson = fileName?.toLowerCase().endsWith('.json') ||
+        source.trimStart().startsWith('{');
+
+      if (shouldUseJson) {
+        let script: unknown;
+        try {
+          script = JSON.parse(source);
+        } catch {
+          throw new Error('Choose a valid JSON file or paste valid JSON.');
+        }
+
+        const validationError = getScriptValidationError(script);
+        if (validationError || !isValidScript(script)) {
+          throw new Error(validationError || 'The script is not valid OffScript JSON.');
+        }
+
+        return script;
+      }
+
+      setStatus('Converting script text…');
+      const response = await fetch('/api/parse-script', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ text: source }),
+      });
+      const result = await response.json() as {
+        script?: unknown;
+        error?: string;
+      };
+
+      if (!response.ok || !result.script) {
+        throw new Error(result.error || 'The script could not be parsed.');
+      }
+
+      const validationError = getScriptValidationError(result.script);
+      if (validationError || !isValidScript(result.script)) {
+        throw new Error(validationError || 'The parser returned an invalid script.');
+      }
+
+      return result.script;
+    }
+
+    function setStatus(message: string, variant?: ToastVariant): void {
+      if (status) {
+        status.textContent = message;
+        status.classList.toggle('is-error', variant === 'error');
+      }
+
+      if (message && variant) {
+        showToast(message, variant);
+      }
+    }
+
+    function setSubmitting(isSubmitting: boolean): void {
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = isSubmitting;
+        submitButton.textContent = isSubmitting ? 'Parsing script…' : 'Add script';
+      }
     }
 
   }

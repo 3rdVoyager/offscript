@@ -1,0 +1,32 @@
+---
+import '../styles/app-section.css';
+
+interface Props {
+  variant?: 'default' | 'card';
+  class?: string;
+  id?: string;
+  ariaLabelledby?: string;
+  ariaLabel?: string;
+}
+
+const {
+  variant = 'default',
+  class: className,
+  id,
+  ariaLabelledby,
+  ariaLabel,
+} = Astro.props;
+
+const classes = ['app-section', `app-section--${variant}`, className]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<section
+  class={classes}
+  id={id}
+  aria-labelledby={ariaLabelledby}
+  aria-label={ariaLabel}
+>
+  <slot />
+</section>

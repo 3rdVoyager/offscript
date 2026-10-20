@@ -1,19 +1,20 @@
 ---
 import AppLayout from '../../../layouts/AppLayout.astro';
+import AppSection from '../../../components/AppSection.astro';
 ---
 
 <AppLayout pageTitle="Scripts">
-  <header class="app-page-header">
+  <AppSection class="app-page-header">
     <h1>Scripts</h1>
     <p>Keep your scripts in one place and choose what you want to practice.</p>
-  </header>
+  </AppSection>
 
-  <section class="app-section" aria-labelledby="scripts-heading">
+  <AppSection ariaLabelledby="scripts-heading">
     <h2 id="scripts-heading">Your scripts</h2>
-    <div class="app-panel scripts-empty">
+    <AppSection variant="card" class="scripts-empty">
       <h3>No scripts yet</h3>
       <p>Add your first script in Settings to begin practicing.</p>
       <a href="/app/manage/settings/" class="button">Add a script</a>
-    </div>
-  </section>
+    </AppSection>
+  </AppSection>
 </AppLayout>

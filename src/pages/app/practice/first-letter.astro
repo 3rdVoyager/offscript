@@ -1,17 +1,18 @@
 ---
 import AppLayout from '../../../layouts/AppLayout.astro';
+import AppSection from '../../../components/AppSection.astro';
 ---
 
 <AppLayout pageTitle="First Letter">
-  <header class="app-page-header">
+  <AppSection class="app-page-header">
     <h1>First Letter</h1>
     <p>Use the first letter of each word as a prompt for recall.</p>
-  </header>
+  </AppSection>
 
-  <section class="app-section">
-    <div class="app-panel">
+  <AppSection>
+    <AppSection variant="card">
       <h2>First Letter practice coming soon</h2>
       <p>Add a script and choose your practice settings to begin.</p>
-    </div>
-  </section>
+    </AppSection>
+  </AppSection>
 </AppLayout>

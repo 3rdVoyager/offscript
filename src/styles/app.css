@@ -12,7 +12,8 @@
   margin: 0 auto;
 }
 
-.app-page-header {
+.app-main > .app-page-header {
+  margin-top: 0;
   margin-bottom: var(--space-6);
 }
 
@@ -25,30 +26,6 @@
   max-width: 38rem;
   margin-bottom: 0;
   color: var(--app-muted);
-}
-
-.app-section {
-  margin: var(--space-6) 0;
-}
-
-.app-section h2 {
-  margin-bottom: var(--space-2);
-  font-size: 1.4rem;
-}
-
-.app-section p {
-  color: var(--app-muted);
-}
-
-.app-panel {
-  padding: 1.25rem;
-  border: 1px solid var(--app-border);
-  border-radius: 0.5rem;
-  background: var(--app-surface);
-}
-
-.app-panel p:last-child {
-  margin-bottom: 0;
 }
 
 .app-form {

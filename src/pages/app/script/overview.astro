@@ -1,17 +1,18 @@
 ---
 import AppLayout from '../../../layouts/AppLayout.astro';
+import AppSection from '../../../components/AppSection.astro';
 ---
 
 <AppLayout pageTitle="Overview">
-  <header class="app-page-header">
+  <AppSection class="app-page-header">
     <h1>Overview</h1>
     <p>See the characters, scenes, and structure of your active script.</p>
-  </header>
+  </AppSection>
 
-  <section class="app-section">
-    <div class="app-panel">
+  <AppSection>
+    <AppSection variant="card">
       <h2>Overview coming soon</h2>
       <p>This page will show the structure of your selected script.</p>
-    </div>
-  </section>
+    </AppSection>
+  </AppSection>
 </AppLayout>

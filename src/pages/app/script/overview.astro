@@ -59,6 +59,8 @@ import '../../../styles/overview.css';
 </AppLayout>
 
 <script>
+  import { getActiveScript } from '../../../scripts/script-store';
+
   interface ScriptLine {
     type?: string;
     text?: string;
@@ -85,31 +87,12 @@ import '../../../styles/overview.css';
   const overviewContent = document.querySelector('[data-overview-content]');
 
   if (emptySection instanceof HTMLElement && overviewContent instanceof HTMLElement) {
-    const script = readActiveScript();
+    const script = getActiveScript();
 
     if (script) {
       emptySection.hidden = true;
       overviewContent.hidden = false;
       renderOverview(script);
-    }
-  }
-
-  function readActiveScript(): Script | null {
-    try {
-      const stored = JSON.parse(
-        localStorage.getItem('offscript-scripts') || '{"activeScriptId":null,"scripts":[]}',
-      );
-
-      if (!Array.isArray(stored.scripts) || stored.scripts.length === 0) {
-        return null;
-      }
-
-      return (
-        stored.scripts.find((script: Script & { id?: string }) => script.id === stored.activeScriptId) ||
-        stored.scripts[0]
-      );
-    } catch {
-      return null;
     }
   }
 

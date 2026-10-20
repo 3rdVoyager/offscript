@@ -1,0 +1,113 @@
+export interface ScriptLine {
+  type?: string;
+  text?: string;
+  characters?: string[];
+}
+
+export interface ScriptScene {
+  title?: string;
+  lines?: ScriptLine[];
+}
+
+export interface ScriptAct {
+  title?: string;
+  scenes?: ScriptScene[];
+}
+
+export interface Script {
+  id?: string;
+  schemaVersion?: number;
+  type?: string;
+  title?: string;
+  notes?: string;
+  acts?: ScriptAct[];
+}
+
+export interface StoredScript extends Script {
+  id: string;
+}
+
+export interface ScriptStore {
+  activeScriptId: string | null;
+  scripts: StoredScript[];
+}
+
+const STORAGE_KEY = 'offscript-scripts';
+const EMPTY_STORE: ScriptStore = {
+  activeScriptId: null,
+  scripts: [],
+};
+
+export function getScriptStore(): ScriptStore {
+  if (typeof localStorage === 'undefined') {
+    return { ...EMPTY_STORE, scripts: [] };
+  }
+
+  try {
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '');
+    if (!stored || !Array.isArray(stored.scripts)) {
+      return { ...EMPTY_STORE, scripts: [] };
+    }
+
+    return {
+      activeScriptId:
+        typeof stored.activeScriptId === 'string' ? stored.activeScriptId : null,
+      scripts: stored.scripts.filter(
+        (script: Script): script is StoredScript =>
+          script &&
+          typeof script === 'object' &&
+          typeof script.id === 'string',
+      ),
+    };
+  } catch {
+    return { ...EMPTY_STORE, scripts: [] };
+  }
+}
+
+export function getScripts(): StoredScript[] {
+  return getScriptStore().scripts;
+}
+
+export function getActiveScript(): StoredScript | null {
+  const store = getScriptStore();
+  return (
+    store.scripts.find((script) => script.id === store.activeScriptId) ||
+    store.scripts[0] ||
+    null
+  );
+}
+
+export function getActiveScriptId(): string | null {
+  return getScriptStore().activeScriptId;
+}
+
+export function addScript(script: Script): StoredScript {
+  const store = getScriptStore();
+  const { id: _oldId, ...scriptWithoutId } = script;
+  const storedScript: StoredScript = {
+    ...scriptWithoutId,
+    id: crypto.randomUUID(),
+    title: script.title?.trim() || 'Untitled script',
+  };
+
+  store.scripts.push(storedScript);
+  store.activeScriptId = storedScript.id;
+  saveStore(store);
+  return storedScript;
+}
+
+export function setActiveScript(scriptId: string): boolean {
+  const store = getScriptStore();
+  if (!store.scripts.some((script) => script.id === scriptId)) {
+    return false;
+  }
+
+  store.activeScriptId = scriptId;
+  saveStore(store);
+  return true;
+}
+
+function saveStore(store: ScriptStore): void {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+  window.dispatchEvent(new CustomEvent('offscript:scripts-changed'));
+}

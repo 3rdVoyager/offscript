@@ -1,0 +1,124 @@
+.script-view-content {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.script-view-content[hidden] {
+  display: none;
+}
+
+.script-view-header h2 {
+  margin-bottom: var(--space-1);
+  color: var(--app-text);
+  font-size: 1.8rem;
+}
+
+.script-view-header p:last-child {
+  margin-bottom: 0;
+}
+
+.script-document {
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.script-document > [data-script-document] {
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.script-view-act {
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.script-view-act + .script-view-act {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--app-border);
+}
+
+.script-view-act > h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  color: var(--gold-light);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.script-view-act > h2::before,
+.script-view-act > h2::after {
+  flex: 1;
+  height: 1px;
+  background: var(--app-border);
+  content: '';
+}
+
+.script-view-scene + .script-view-scene {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--app-border) 70%, transparent);
+}
+
+.script-view-scene h3 {
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--app-border);
+  color: var(--app-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.script-view-line {
+  display: flex;
+  gap: var(--space-2);
+  padding: 0.75rem 0;
+}
+
+.script-view-speaker {
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.script-view-line p,
+.script-view-direction {
+  margin-bottom: 0;
+  color: var(--app-text);
+  line-height: 1.65;
+}
+
+.script-view-direction {
+  max-width: 48rem;
+  margin: var(--space-4) auto;
+  padding: var(--space-2) var(--space-3);
+  border-left: 2px solid var(--gold-dark);
+  background: var(--app-surface-raised);
+  color: var(--app-muted);
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .script-document {
+    padding: var(--space-3);
+  }
+
+  .script-view-line {
+    display: block;
+  }
+
+  .script-view-speaker {
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .script-view-act > h2 {
+    gap: var(--space-2);
+  }
+}

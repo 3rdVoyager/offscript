@@ -37,6 +37,12 @@ const isCurrent = (path: string) => currentPath === path;
         </a>
       </li>
       <li>
+        <a href="/app/script/view/" aria-current={isCurrent('/app/script/view') ? 'page' : undefined}>
+          <span class="material-icons nav-link-icon" aria-hidden="true">description</span>
+          <span class="nav-link-label">View</span>
+        </a>
+      </li>
+      <li>
         <a href="/app/script/progress/" aria-current={isCurrent('/app/script/progress') ? 'page' : undefined}>
           <span class="material-icons nav-link-icon" aria-hidden="true">trending_up</span>
           <span class="nav-link-label">Progress</span>

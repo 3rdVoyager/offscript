@@ -30,6 +30,8 @@ import Form from './Form.astro';
 </Form>
 
 <script>
+  import { addScript } from '../scripts/script-store';
+
   const form = document.querySelector('#add-script-form');
 
   if (form instanceof HTMLFormElement) {
@@ -98,12 +100,12 @@ import Form from './Form.astro';
           return;
         }
 
-        saveScript(script);
+        addScript(script);
         form.reset();
         if (fileName) {
           fileName.textContent = 'Click to upload a JSON file.';
         }
-        setStatus(`"${script.title.trim()}" was added.`);
+        window.location.assign('/app/manage/scripts/');
       } catch {
         setStatus('Choose a valid JSON file or paste valid script JSON.');
       }
@@ -159,22 +161,5 @@ import Form from './Form.astro';
       return null;
     }
 
-    function saveScript(script: any): void {
-      const stored = JSON.parse(
-        localStorage.getItem('offscript-scripts') ||
-          '{"activeScriptId":null,"scripts":[]}'
-      );
-      const { id: _uploadedId, ...scriptWithoutId } = script;
-      const id = crypto.randomUUID();
-      const normalizedScript = {
-        ...scriptWithoutId,
-        id,
-        title: script.title.trim(),
-      };
-
-      stored.scripts.push(normalizedScript);
-      stored.activeScriptId = id;
-      localStorage.setItem('offscript-scripts', JSON.stringify(stored));
-    }
   }
 </script>

@@ -13,6 +13,18 @@
   border: 1px solid var(--app-border);
   border-radius: var(--radius-card);
   background: var(--app-surface);
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.script-card:hover,
+.script-card:focus-visible {
+  border-color: var(--gold-dark);
+}
+
+.script-card.is-active {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
 }
 
 .script-card h2 {
@@ -26,6 +38,24 @@
   color: var(--app-muted);
 }
 
-.script-card .button-secondary {
+.script-card-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
   margin-top: auto;
+}
+
+.script-card-selection {
+  color: var(--app-muted);
+  font-size: 0.85rem;
+}
+
+.script-card.is-active .script-card-selection {
+  color: var(--gold-light);
+}
+
+.scripts-status {
+  margin: var(--space-3) 0 0;
+  color: var(--app-muted);
 }

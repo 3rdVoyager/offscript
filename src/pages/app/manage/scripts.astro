@@ -37,10 +37,13 @@ const tabs = [
     hidden
   >
     <div class="scripts-grid" data-scripts-grid></div>
+    <p class="scripts-status" data-scripts-status role="status" aria-live="polite"></p>
   </AppSection>
 </AppLayout>
 
 <script>
+  import { getScriptStore, setActiveScript } from '../../../scripts/script-store';
+
   const emptyState = document.querySelector('[data-empty-state]');
   const emptySection = document.querySelector('.scripts-empty-section');
   const scriptsGrid = document.querySelector('[data-scripts-grid]');
@@ -50,7 +53,8 @@ const tabs = [
       emptySection instanceof HTMLElement &&
       scriptsGrid instanceof HTMLElement &&
       scriptsSection instanceof HTMLElement) {
-    const scripts = readScripts();
+    const store = getScriptStore();
+    const scripts = store.scripts;
 
     if (scripts.length > 0) {
       emptyState.hidden = true;
@@ -58,23 +62,53 @@ const tabs = [
       scriptsSection.hidden = false;
 
       for (const script of scripts) {
-        scriptsGrid.appendChild(createScriptCard(script));
+        scriptsGrid.appendChild(createScriptCard(script, store.activeScriptId));
       }
     }
   }
 
-  function readScripts(): any[] {
-    try {
-      const data = JSON.parse(localStorage.getItem('offscript-scripts') || '{}');
-      return Array.isArray(data.scripts) ? data.scripts : [];
-    } catch {
-      return [];
+  scriptsGrid?.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
     }
-  }
 
-  function createScriptCard(script: any): HTMLElement {
+    if (event.target.closest('a')) {
+      return;
+    }
+
+    const card = event.target.closest('.script-card');
+    const scriptId = card?.getAttribute('data-script-id');
+    if (scriptId) {
+      selectScript(scriptId);
+    }
+  });
+
+  scriptsGrid?.addEventListener('keydown', (event) => {
+    if (!(event instanceof KeyboardEvent) ||
+        !(event.target instanceof HTMLElement) ||
+        !event.target.classList.contains('script-card') ||
+        (event.key !== 'Enter' && event.key !== ' ')) {
+      return;
+    }
+
+    event.preventDefault();
+    const scriptId = event.target.getAttribute('data-script-id');
+    if (scriptId) {
+      selectScript(scriptId);
+    }
+  });
+
+  function createScriptCard(script: any, activeScriptId: string | null): HTMLElement {
     const card = document.createElement('article');
     card.className = 'script-card';
+    card.dataset.scriptId = script.id;
+    card.setAttribute('role', 'button');
+    card.tabIndex = 0;
+    const isActive = script.id === activeScriptId;
+    if (isActive) {
+      card.classList.add('is-active');
+    }
+    card.setAttribute('aria-pressed', String(isActive));
 
     const title = document.createElement('h2');
     title.textContent = script.title || 'Untitled script';
@@ -83,13 +117,45 @@ const tabs = [
     details.className = 'script-card-details';
     details.textContent = `${script.acts?.length || 0} acts · ${countScenes(script)} scenes`;
 
+    const actions = document.createElement('div');
+    actions.className = 'script-card-actions';
+
+    const selection = document.createElement('span');
+    selection.className = 'script-card-selection';
+    selection.textContent = isActive ? 'Selected script' : 'Click to select';
+
     const link = document.createElement('a');
     link.className = 'button-secondary';
     link.href = '/app/script/overview/';
     link.textContent = 'Open overview';
 
-    card.append(title, details, link);
+    actions.append(selection, link);
+    card.append(title, details, actions);
     return card;
+  }
+
+  function selectScript(scriptId: string): void {
+    if (!setActiveScript(scriptId)) {
+      return;
+    }
+
+    const store = getScriptStore();
+
+    document.querySelectorAll('.script-card').forEach((card) => {
+      const isSelected = card.getAttribute('data-script-id') === scriptId;
+      card.classList.toggle('is-active', isSelected);
+      card.setAttribute('aria-pressed', String(isSelected));
+      const selection = card.querySelector('.script-card-selection');
+      if (selection) {
+        selection.textContent = isSelected ? 'Selected script' : 'Click to select';
+      }
+    });
+
+    const status = document.querySelector('[data-scripts-status]');
+    if (status) {
+      const selected = store.scripts.find((script) => script.id === scriptId);
+      status.textContent = `"${selected?.title || 'Script'}" is now selected.`;
+    }
   }
 
   function countScenes(script: any): number {

@@ -76,7 +76,8 @@ const tabs = [
 </AppLayout>
 
 <script>
-  import { getActiveScript } from '../../../scripts/script-store';
+  import { initializeActiveScriptPage } from '../../../scripts/active-script-page';
+  import type { StoredScript } from '../../../scripts/script-store';
   import {
     getPracticeOptions,
     getPracticeSettings,
@@ -85,17 +86,14 @@ const tabs = [
   } from '../../../scripts/practice-settings';
   import { showToast } from '../../../scripts/toasts';
 
-  const emptySection = document.querySelector('.practice-settings-empty-section');
-  const settingsContent = document.querySelector('[data-practice-settings]');
-  const script = getActiveScript();
+  let script: StoredScript | null = null;
+  script = initializeActiveScriptPage({
+    emptySelector: '.practice-settings-empty-section',
+    contentSelector: '[data-practice-settings]',
+    render: renderSettings,
+  });
 
-  if (script && emptySection instanceof HTMLElement && settingsContent instanceof HTMLElement) {
-    emptySection.hidden = true;
-    settingsContent.hidden = false;
-    renderSettings(script);
-  }
-
-  function renderSettings(activeScript: NonNullable<typeof script>): void {
+  function renderSettings(activeScript: StoredScript): void {
     const options = getPracticeOptions(activeScript);
     const settings = getPracticeSettings(activeScript);
     setText('[data-settings-script-title]', activeScript.title || 'Untitled script');

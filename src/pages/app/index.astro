@@ -49,17 +49,13 @@ import "../../styles/dashboard.css";
 </AppLayout>
 
 <script>
-  import { getActiveScript } from '../../scripts/script-store';
+  import { initializeActiveScriptPage } from '../../scripts/active-script-page';
   import { getProgressSummary } from '../../scripts/progress';
 
-  const emptySection = document.querySelector('.dashboard-empty-section');
-  const dashboardContent = document.querySelector('[data-dashboard-content]');
-  const script = getActiveScript();
-
-  if (script && emptySection instanceof HTMLElement && dashboardContent instanceof HTMLElement) {
-    emptySection.hidden = true;
-    dashboardContent.hidden = false;
-
+  initializeActiveScriptPage({
+    emptySelector: '.dashboard-empty-section',
+    contentSelector: '[data-dashboard-content]',
+    render: (script) => {
     const summary = getProgressSummary(script);
     setText('[data-dashboard-title]', script.title || 'Untitled script');
     setText('[data-dashboard-notes]', script.notes || 'No notes added for this script.');
@@ -69,7 +65,8 @@ import "../../styles/dashboard.css";
     if (progressBar instanceof HTMLElement) {
       progressBar.style.width = `${summary.progress}%`;
     }
-  }
+    },
+  });
 
   function setText(selector: string, value: string): void {
     const element = document.querySelector(selector);

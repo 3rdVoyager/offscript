@@ -55,18 +55,14 @@ import '../../../styles/progress.css';
 </AppLayout>
 
 <script>
-  import { getActiveScript } from '../../../scripts/script-store';
+  import { initializeActiveScriptPage } from '../../../scripts/active-script-page';
   import { getProgressSummary } from '../../../scripts/progress';
 
-  const emptySection = document.querySelector('.progress-empty-section');
-  const progressContent = document.querySelector('[data-progress-content]');
-  const script = getActiveScript();
-
-  if (script && emptySection instanceof HTMLElement && progressContent instanceof HTMLElement) {
-    emptySection.hidden = true;
-    progressContent.hidden = false;
-    renderProgress(script);
-  }
+  initializeActiveScriptPage({
+    emptySelector: '.progress-empty-section',
+    contentSelector: '[data-progress-content]',
+    render: renderProgress,
+  });
 
   function renderProgress(script: Parameters<typeof getProgressSummary>[0]): void {
     const summary = getProgressSummary(script);

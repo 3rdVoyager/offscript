@@ -69,27 +69,23 @@ import EmptyState from '../../../components/EmptyState.astro';
 </AppLayout>
 
 <script>
-  import { getActiveScript } from '../../../scripts/script-store';
+  import { initializeActiveScriptPage } from '../../../scripts/active-script-page';
   import { getLineProgress, setLineProgress } from '../../../scripts/progress';
   import { getPracticeLines } from '../../../scripts/practice';
   import { showToast } from '../../../scripts/toasts';
 
-  const emptySection = document.querySelector('.type-empty-section');
-  const typeContent = document.querySelector('[data-type-content]');
-  const script = getActiveScript();
-  const practiceLines = script ? getPracticeLines(script) : [];
-  let currentIndex = findNextLine(0);
-
-  if (
-    script &&
-    practiceLines.length > 0 &&
-    emptySection instanceof HTMLElement &&
-    typeContent instanceof HTMLElement
-  ) {
-    emptySection.hidden = true;
-    typeContent.hidden = false;
-    showCurrentLine();
-  }
+  let practiceLines: ReturnType<typeof getPracticeLines> = [];
+  let currentIndex = -1;
+  const script = initializeActiveScriptPage({
+    emptySelector: '.type-empty-section',
+    contentSelector: '[data-type-content]',
+    isReady: (activeScript) => {
+      practiceLines = getPracticeLines(activeScript);
+      currentIndex = findNextLine(0);
+      return practiceLines.length > 0;
+    },
+    render: showCurrentLine,
+  });
 
   document.querySelector('[data-check-answer]')?.addEventListener('click', checkAnswer);
   document.querySelector('[data-reveal-answer]')?.addEventListener('click', revealAnswer);

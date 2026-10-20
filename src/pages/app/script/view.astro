@@ -37,7 +37,7 @@ import '../../../styles/script-view.css';
 </AppLayout>
 
 <script>
-  import { getActiveScript } from '../../../scripts/script-store';
+  import { initializeActiveScriptPage } from '../../../scripts/active-script-page';
 
   interface ScriptLine {
     type?: string;
@@ -61,18 +61,11 @@ import '../../../styles/script-view.css';
     acts?: ScriptAct[];
   }
 
-  const emptySection = document.querySelector('.script-view-empty-section');
-  const viewContent = document.querySelector('[data-script-view]');
-
-  if (emptySection instanceof HTMLElement && viewContent instanceof HTMLElement) {
-    const script = getActiveScript();
-
-    if (script) {
-      emptySection.hidden = true;
-      viewContent.hidden = false;
-      renderScript(script);
-    }
-  }
+  initializeActiveScriptPage({
+    emptySelector: '.script-view-empty-section',
+    contentSelector: '[data-script-view]',
+    render: renderScript,
+  });
 
   function renderScript(script: Script): void {
     setText('[data-script-title]', script.title || 'Untitled script');

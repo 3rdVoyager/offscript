@@ -62,7 +62,7 @@ import '../../../styles/overview.css';
 </AppLayout>
 
 <script>
-  import { getActiveScript } from '../../../scripts/script-store';
+  import { initializeActiveScriptPage } from '../../../scripts/active-script-page';
 
   interface ScriptLine {
     type?: string;
@@ -86,18 +86,11 @@ import '../../../styles/overview.css';
     acts?: ScriptAct[];
   }
 
-  const emptySection = document.querySelector('.overview-empty-section');
-  const overviewContent = document.querySelector('[data-overview-content]');
-
-  if (emptySection instanceof HTMLElement && overviewContent instanceof HTMLElement) {
-    const script = getActiveScript();
-
-    if (script) {
-      emptySection.hidden = true;
-      overviewContent.hidden = false;
-      renderOverview(script);
-    }
-  }
+  initializeActiveScriptPage({
+    emptySelector: '.overview-empty-section',
+    contentSelector: '[data-overview-content]',
+    render: renderOverview,
+  });
 
   function renderOverview(script: Script): void {
     const stats = getStats(script);

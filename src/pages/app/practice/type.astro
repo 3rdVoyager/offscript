@@ -10,12 +10,499 @@ import EmptyState from '../../../components/EmptyState.astro';
     <p>Type each line from memory and check your answer as you practice.</p>
   </AppSection>
 
-  <AppSection>
+  <AppSection class="type-empty-section" ariaLabel="Type practice empty state">
     <AppSection variant="card">
       <EmptyState
-        title="Type practice coming soon"
-        description="Add a script and choose your practice settings to begin."
+        title="No script selected"
+        description="Select a script to begin typing lines from memory."
+        actionLabel="Choose a script"
+        actionHref="/app/manage/scripts/"
       />
     </AppSection>
   </AppSection>
+
+  <div class="type-content" data-type-content hidden>
+    <AppSection variant="card" class="type-tool" ariaLabel="Type practice">
+      <div class="type-toolbar">
+        <div>
+          <p class="type-label">Type practice</p>
+          <strong data-type-position></strong>
+        </div>
+        <div class="type-progress" aria-label="Line progress">
+          <span data-type-progress-bar></span>
+        </div>
+      </div>
+
+      <div class="type-prompt">
+        <p class="type-character" data-type-character></p>
+        <p class="type-answer" data-type-answer hidden></p>
+      </div>
+
+      <label class="type-input-label" for="type-answer">Your answer</label>
+      <textarea
+        id="type-answer"
+        data-type-input
+        rows="5"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Type the line from memory..."
+      ></textarea>
+
+      <div class="type-actions">
+        <button type="button" class="button" data-check-answer>Check answer</button>
+        <button type="button" class="button-secondary" data-reveal-answer>
+          Reveal answer
+        </button>
+        <button type="button" class="button-secondary" data-next-line hidden>
+          Next line
+        </button>
+      </div>
+    </AppSection>
+
+    <AppSection variant="card" class="type-complete" data-type-complete hidden>
+      <h2>Practice complete</h2>
+      <p>You have worked through every dialogue line in this script.</p>
+      <a class="button-secondary" href="/app/script/progress/">View progress</a>
+    </AppSection>
+  </div>
 </AppLayout>
+
+<script>
+  import { getActiveScript, type ScriptLine } from '../../../scripts/script-store';
+  import { getLineProgress, setLineProgress } from '../../../scripts/progress';
+  import { showToast } from '../../../scripts/toasts';
+
+  interface PracticeLine {
+    line: ScriptLine;
+    actIndex: number;
+    sceneIndex: number;
+    lineIndex: number;
+  }
+
+  const emptySection = document.querySelector('.type-empty-section');
+  const typeContent = document.querySelector('[data-type-content]');
+  const script = getActiveScript();
+  const practiceLines = script ? getPracticeLines(script) : [];
+  let currentIndex = findNextLine(0);
+
+  if (
+    script &&
+    practiceLines.length > 0 &&
+    emptySection instanceof HTMLElement &&
+    typeContent instanceof HTMLElement
+  ) {
+    emptySection.hidden = true;
+    typeContent.hidden = false;
+    showCurrentLine();
+  }
+
+  document.querySelector('[data-check-answer]')?.addEventListener('click', checkAnswer);
+  document.querySelector('[data-reveal-answer]')?.addEventListener('click', revealAnswer);
+  document.querySelector('[data-next-line]')?.addEventListener('click', nextLine);
+
+  document.querySelector('[data-type-input]')?.addEventListener('keydown', (event) => {
+    if (event instanceof KeyboardEvent && event.key === 'Enter' && event.ctrlKey) {
+      event.preventDefault();
+      checkAnswer();
+    }
+  });
+
+  function getPracticeLines(activeScript: NonNullable<typeof script>): PracticeLine[] {
+    const lines: PracticeLine[] = [];
+
+    for (const [actIndex, act] of (activeScript.acts || []).entries()) {
+      for (const [sceneIndex, scene] of (act.scenes || []).entries()) {
+        for (const [lineIndex, line] of (scene.lines || []).entries()) {
+          if (line.type === 'line' && line.text?.trim()) {
+            lines.push({ line, actIndex, sceneIndex, lineIndex });
+          }
+        }
+      }
+    }
+
+    return lines;
+  }
+
+  function findNextLine(startIndex: number): number {
+    for (let index = startIndex; index < practiceLines.length; index += 1) {
+      if (getLineProgress(practiceLines[index].line.progress) < 100) {
+        return index;
+      }
+    }
+
+    return -1;
+  }
+
+  function showCurrentLine(): void {
+    if (currentIndex === -1) {
+      showComplete();
+      return;
+    }
+
+    const practiceLine = practiceLines[currentIndex];
+    const input = document.querySelector('[data-type-input]');
+    const answer = document.querySelector('[data-type-answer]');
+    const nextButton = document.querySelector('[data-next-line]');
+    const checkButton = document.querySelector('[data-check-answer]');
+    const revealButton = document.querySelector('[data-reveal-answer]');
+
+    setText('[data-type-position]', `Line ${currentIndex + 1} of ${practiceLines.length}`);
+    setText(
+      '[data-type-character]',
+      practiceLine.line.characters?.join(' / ') || 'Unknown character',
+    );
+    setText('[data-type-answer]', practiceLine.line.text || '');
+    setText('[data-type-progress-bar]', '');
+
+    const progressBar = document.querySelector('[data-type-progress-bar]');
+    if (progressBar instanceof HTMLElement) {
+      progressBar.style.width = `${getLineProgress(practiceLine.line.progress)}%`;
+    }
+
+    if (input instanceof HTMLTextAreaElement) {
+      input.value = '';
+      input.disabled = false;
+      input.focus();
+    }
+    if (answer instanceof HTMLElement) {
+      answer.hidden = true;
+    }
+    if (nextButton instanceof HTMLElement) {
+      nextButton.hidden = true;
+    }
+    if (checkButton instanceof HTMLButtonElement) {
+      checkButton.disabled = false;
+    }
+    if (revealButton instanceof HTMLButtonElement) {
+      revealButton.disabled = false;
+    }
+  }
+
+  function checkAnswer(): void {
+    if (currentIndex === -1) {
+      return;
+    }
+
+    const input = document.querySelector('[data-type-input]');
+    if (!(input instanceof HTMLTextAreaElement)) {
+      return;
+    }
+
+    const practiceLine = practiceLines[currentIndex];
+    if (!linesMatch(input.value, practiceLine.line.text || '')) {
+      showToast('That does not match the line. Try again or reveal the answer.', 'error');
+      return;
+    }
+
+    const progress = Math.min(100, getLineProgress(practiceLine.line.progress) + 25);
+    setLineProgress(script!.id, practiceLine, progress);
+    practiceLine.line.progress = progress;
+    showToast('Correct. Line progress updated.');
+    finishCurrentLine();
+  }
+
+  function revealAnswer(): void {
+    const answer = document.querySelector('[data-type-answer]');
+    if (answer instanceof HTMLElement) {
+      answer.hidden = false;
+    }
+    finishCurrentLine();
+  }
+
+  function finishCurrentLine(): void {
+    const input = document.querySelector('[data-type-input]');
+    const nextButton = document.querySelector('[data-next-line]');
+    const checkButton = document.querySelector('[data-check-answer]');
+    const revealButton = document.querySelector('[data-reveal-answer]');
+
+    if (input instanceof HTMLTextAreaElement) {
+      input.disabled = true;
+    }
+    if (nextButton instanceof HTMLElement) {
+      nextButton.hidden = false;
+    }
+    if (checkButton instanceof HTMLButtonElement) {
+      checkButton.disabled = true;
+    }
+    if (revealButton instanceof HTMLButtonElement) {
+      revealButton.disabled = true;
+    }
+  }
+
+  function nextLine(): void {
+    currentIndex = findNextLine(currentIndex + 1);
+    if (currentIndex === -1) {
+      currentIndex = findNextLine(0);
+    }
+    showCurrentLine();
+  }
+
+  function showComplete(): void {
+    document.querySelector('[data-type-tool]')?.setAttribute('hidden', '');
+    const complete = document.querySelector('[data-type-complete]');
+    if (complete instanceof HTMLElement) {
+      complete.hidden = false;
+    }
+  }
+
+  function normalize(value: string): string {
+    return value
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}\s]/gu, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function splitWords(value: string): string[] {
+    return normalize(value).split(' ').filter(Boolean);
+  }
+
+  function levenshteinDistance(first: string, second: string): number {
+    const distances = Array.from(
+      { length: first.length + 1 },
+      () => new Array(second.length + 1).fill(0),
+    );
+
+    for (let row = 0; row <= first.length; row += 1) {
+      distances[row][0] = row;
+    }
+    for (let column = 0; column <= second.length; column += 1) {
+      distances[0][column] = column;
+    }
+
+    for (let row = 1; row <= first.length; row += 1) {
+      for (let column = 1; column <= second.length; column += 1) {
+        const cost = first[row - 1] === second[column - 1] ? 0 : 1;
+        distances[row][column] = Math.min(
+          distances[row - 1][column] + 1,
+          distances[row][column - 1] + 1,
+          distances[row - 1][column - 1] + cost,
+        );
+      }
+    }
+
+    return distances[first.length][second.length];
+  }
+
+  function wordsSimilar(typedWord: string, expectedWord: string): boolean {
+    if (typedWord === expectedWord) {
+      return true;
+    }
+
+    const maxDistance = expectedWord.length <= 4 ? 1 : 2;
+    return levenshteinDistance(typedWord, expectedWord) <= maxDistance;
+  }
+
+  function getWordMatchScore(typedText: string, expectedText: string): number {
+    const typedWords = splitWords(typedText);
+    const expectedWords = splitWords(expectedText);
+
+    if (expectedWords.length === 0) {
+      return typedWords.length === 0 ? 1 : 0;
+    }
+
+    let matched = 0;
+    let typedIndex = 0;
+
+    for (const expectedWord of expectedWords) {
+      let found = false;
+
+      while (typedIndex < typedWords.length) {
+        if (wordsSimilar(typedWords[typedIndex], expectedWord)) {
+          matched += 1;
+          typedIndex += 1;
+          found = true;
+          break;
+        }
+        typedIndex += 1;
+      }
+
+      if (!found) {
+        break;
+      }
+    }
+
+    let score = matched / expectedWords.length;
+    if (typedWords.length > expectedWords.length) {
+      score -= Math.min(0.15, (typedWords.length - expectedWords.length) * 0.03);
+    }
+
+    return Math.max(0, score);
+  }
+
+  function getCharacterSimilarity(typedText: string, expectedText: string): number {
+    const typed = normalize(typedText);
+    const expected = normalize(expectedText);
+    const maxLength = Math.max(typed.length, expected.length);
+
+    if (maxLength === 0) {
+      return 1;
+    }
+
+    return 1 - levenshteinDistance(typed, expected) / maxLength;
+  }
+
+  function linesMatch(typedText: string, expectedText: string): boolean {
+    const typed = normalize(typedText);
+    const expected = normalize(expectedText);
+
+    if (typed === expected) {
+      return true;
+    }
+
+    if (getWordMatchScore(typedText, expectedText) >= 0.9) {
+      return true;
+    }
+
+    return getCharacterSimilarity(typedText, expectedText) >= 0.95;
+  }
+
+  function setText(selector: string, value: string): void {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.textContent = value;
+    }
+  }
+</script>
+
+<style is:global>
+  .type-content {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .type-content[hidden],
+  .type-tool[hidden],
+  .type-complete[hidden] {
+    display: none;
+  }
+
+  .type-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--app-border);
+  }
+
+  .type-label {
+    margin-bottom: 0.2rem;
+    color: var(--app-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .type-toolbar strong {
+    color: var(--app-text);
+  }
+
+  .type-progress {
+    width: min(14rem, 40%);
+    height: 0.45rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--app-border);
+  }
+
+  .type-progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--gold);
+    transition: width 200ms ease;
+  }
+
+  .type-prompt {
+    padding: var(--space-5) 0 var(--space-3);
+  }
+
+  .type-character {
+    margin-bottom: var(--space-2);
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .type-answer {
+    max-width: 52rem;
+    margin-bottom: 0;
+    color: var(--app-muted);
+    font-style: italic;
+  }
+
+  .type-input-label {
+    display: block;
+    margin-bottom: var(--space-1);
+    color: var(--app-muted);
+    font-size: 0.9rem;
+  }
+
+  .type-tool textarea {
+    width: 100%;
+    min-height: 10rem;
+    resize: vertical;
+    padding: var(--space-4);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-card);
+    color: var(--app-text);
+    background: var(--app-surface-raised);
+    caret-color: var(--gold);
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1.6;
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 18%);
+    transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  .type-tool textarea::placeholder {
+    color: var(--app-muted);
+    opacity: 0.75;
+  }
+
+  .type-tool textarea:focus-visible {
+    border-color: var(--gold);
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+    background: var(--app-surface);
+    box-shadow: 0 0 0 3px rgb(233 185 85 / 12%), inset 0 1px 2px rgb(0 0 0 / 18%);
+  }
+
+  .type-tool textarea:disabled {
+    opacity: 0.7;
+  }
+
+  .type-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+
+  .type-complete {
+    text-align: center;
+  }
+
+  .type-complete h2 {
+    color: var(--app-text);
+  }
+
+  .type-complete p {
+    margin-bottom: var(--space-4);
+  }
+
+  @media (max-width: 700px) {
+    .type-toolbar {
+      display: block;
+    }
+
+    .type-progress {
+      width: 100%;
+      margin-top: var(--space-3);
+    }
+  }
+</style>

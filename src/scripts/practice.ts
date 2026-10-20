@@ -2,7 +2,7 @@ import {
   getPracticeSettings,
   getSceneKey,
 } from './practice-settings';
-import type { ScriptLine, StoredScript } from './script-store';
+import type { ScriptLine, StoredScript } from './script-schema';
 
 export interface PracticeLine {
   line: ScriptLine;

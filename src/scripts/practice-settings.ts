@@ -1,4 +1,4 @@
-import type { Script, StoredScript } from './script-store';
+import type { Script, StoredScript } from './script-schema';
 import { readStorageJson, writeStorageJson } from './storage';
 
 export interface PracticeSettings {

@@ -1,4 +1,5 @@
-import { getActiveScript, type StoredScript } from './script-store';
+import { getActiveScript } from './script-store';
+import type { StoredScript } from './script-schema';
 
 interface ActiveScriptPageOptions {
   emptySelector: string;

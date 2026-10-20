@@ -38,28 +38,12 @@ import '../../../styles/script-view.css';
 
 <script>
   import { initializeActiveScriptPage } from '../../../scripts/active-script-page';
-
-  interface ScriptLine {
-    type?: string;
-    text?: string;
-    characters?: string[];
-  }
-
-  interface ScriptScene {
-    title?: string;
-    lines?: ScriptLine[];
-  }
-
-  interface ScriptAct {
-    title?: string;
-    scenes?: ScriptScene[];
-  }
-
-  interface Script {
-    title?: string;
-    notes?: string;
-    acts?: ScriptAct[];
-  }
+  import type {
+    Script,
+    ScriptAct,
+    ScriptLine,
+    ScriptScene,
+  } from '../../../scripts/script-schema';
 
   initializeActiveScriptPage({
     emptySelector: '.script-view-empty-section',

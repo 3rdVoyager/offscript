@@ -1,5 +1,6 @@
 import { getPracticeLines } from './practice';
-import { updateScript, type StoredScript } from './script-store';
+import { updateScript } from './script-store';
+import type { StoredScript } from './script-schema';
 
 export interface LineLocation {
   actIndex: number;

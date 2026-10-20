@@ -43,6 +43,7 @@ const tabs = [
 
 <script>
   import { deleteScript, getScriptStore, setActiveScript } from '../../../scripts/script-store';
+  import type { ScriptAct, StoredScript } from '../../../scripts/script-schema';
   import { showToast } from '../../../scripts/toasts';
 
   const emptyState = document.querySelector('[data-empty-state]');
@@ -108,7 +109,7 @@ const tabs = [
     }
   });
 
-  function createScriptCard(script: any, activeScriptId: string | null): HTMLElement {
+  function createScriptCard(script: StoredScript, activeScriptId: string | null): HTMLElement {
     const card = document.createElement('article');
     card.className = 'script-card';
     card.dataset.scriptId = script.id;
@@ -193,13 +194,13 @@ const tabs = [
     showToast(`"${selected?.title || 'Script'}" is now selected.`);
   }
 
-  function countScenes(script: any): number {
+  function countScenes(script: StoredScript): number {
     if (!Array.isArray(script.acts)) {
       return 0;
     }
 
     return script.acts.reduce(
-      (total: number, act: any) =>
+      (total: number, act: ScriptAct) =>
         total + (Array.isArray(act.scenes) ? act.scenes.length : 0),
       0,
     );

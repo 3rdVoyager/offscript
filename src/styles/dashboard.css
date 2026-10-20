@@ -1,10 +1,82 @@
-.new-user-welcome h2 {
+.dashboard-content {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.dashboard-content[hidden] {
+  display: none;
+}
+
+.dashboard-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.dashboard-summary h2 {
   margin-bottom: var(--space-2);
   color: var(--app-text);
 }
 
-.new-user-welcome p {
+.dashboard-summary p {
   max-width: 38rem;
   margin-bottom: var(--space-4);
   color: var(--app-muted);
+}
+
+.dashboard-label {
+  margin-bottom: 0.25rem !important;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dashboard-progress {
+  min-width: 14rem;
+  text-align: right;
+}
+
+.dashboard-progress strong {
+  display: block;
+  color: var(--gold-light);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.dashboard-progress span {
+  color: var(--app-muted);
+  font-size: 0.85rem;
+}
+
+.dashboard-progress-meter {
+  height: 0.5rem;
+  overflow: hidden;
+  margin-top: var(--space-2);
+  border-radius: 999px;
+  background: var(--app-border);
+}
+
+.dashboard-progress-meter span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--gold);
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+@media (max-width: 700px) {
+  .dashboard-summary {
+    display: block;
+  }
+
+  .dashboard-progress {
+    margin-top: var(--space-4);
+    text-align: left;
+  }
 }

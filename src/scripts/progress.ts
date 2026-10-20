@@ -1,4 +1,5 @@
-import { updateScript, type Script, type StoredScript } from './script-store';
+import { getPracticeLines } from './practice';
+import { updateScript, type StoredScript } from './script-store';
 
 export interface LineLocation {
   actIndex: number;
@@ -28,48 +29,46 @@ export function getLineProgress(progress: number | undefined): number {
   return Math.round(Math.min(100, Math.max(0, progress)));
 }
 
-export function getProgressSummary(script: Script): ProgressSummary {
-  const acts = Array.isArray(script.acts) ? script.acts : [];
-  const actSummaries: ProgressEntry[] = [];
+export function getProgressSummary(script: StoredScript): ProgressSummary {
+  const practiceLines = getPracticeLines(script);
+  const actSummaries = new Map<number, ProgressEntry>();
   let totalProgress = 0;
   let totalLines = 0;
   let totalCompleted = 0;
 
-  for (const [actIndex, act] of acts.entries()) {
-    const scenes = Array.isArray(act.scenes) ? act.scenes : [];
-    let actProgress = 0;
-    let actLines = 0;
-    let actCompleted = 0;
+  for (const practiceLine of practiceLines) {
+    const progress = getLineProgress(practiceLine.line.progress);
+    const actIndex = practiceLine.actIndex;
+    const actTitle = script.acts?.[actIndex]?.title || `Act ${actIndex + 1}`;
+    const act = actSummaries.get(actIndex) || {
+      title: actTitle,
+      progress: 0,
+      completed: 0,
+      lines: 0,
+    };
 
-    for (const scene of scenes) {
-      const lines = Array.isArray(scene.lines) ? scene.lines : [];
-      for (const line of lines) {
-        const progress = getLineProgress(line.progress);
-        actProgress += progress;
-        actLines += 1;
-        totalProgress += progress;
-        totalLines += 1;
-
-        if (progress >= 100) {
-          actCompleted += 1;
-          totalCompleted += 1;
-        }
-      }
+    act.progress += progress;
+    act.lines += 1;
+    if (progress >= 100) {
+      act.completed += 1;
+      totalCompleted += 1;
     }
 
-    actSummaries.push({
-      title: act.title || `Act ${actIndex + 1}`,
-      progress: actLines ? Math.round(actProgress / actLines) : 0,
-      completed: actCompleted,
-      lines: actLines,
-    });
+    totalProgress += progress;
+    totalLines += 1;
+    actSummaries.set(actIndex, act);
   }
 
   return {
     progress: totalLines ? Math.round(totalProgress / totalLines) : 0,
     completed: totalCompleted,
     lines: totalLines,
-    acts: actSummaries,
+    acts: [...actSummaries.entries()]
+      .sort(([firstIndex], [secondIndex]) => firstIndex - secondIndex)
+      .map(([, act]) => ({
+        ...act,
+        progress: act.lines ? Math.round(act.progress / act.lines) : 0,
+      })),
   };
 }
 
@@ -79,12 +78,15 @@ export function setLineProgress(
   progress: number,
 ): boolean {
   return updateScript(scriptId, (script: StoredScript) => {
-    const line = script.acts?.[location.actIndex]?.scenes?.[location.sceneIndex]?.lines?.[
-      location.lineIndex
-    ];
+    const practiceLine = getPracticeLines(script).find(
+      (item) =>
+        item.actIndex === location.actIndex &&
+        item.sceneIndex === location.sceneIndex &&
+        item.lineIndex === location.lineIndex,
+    );
 
-    if (line) {
-      line.progress = getLineProgress(progress);
+    if (practiceLine) {
+      practiceLine.line.progress = getLineProgress(progress);
     }
   });
 }

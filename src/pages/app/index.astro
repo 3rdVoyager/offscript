@@ -2,8 +2,7 @@
 import AppLayout from "../../layouts/AppLayout.astro";
 import AppSection from "../../components/AppSection.astro";
 import EmptyState from "../../components/EmptyState.astro";
-
-const hasScripts = false;
+import "../../styles/dashboard.css";
 ---
 
 <AppLayout pageTitle="Dashboard">
@@ -12,16 +11,69 @@ const hasScripts = false;
     <p>Your home base for scripts, practice, and progress.</p>
   </AppSection>
 
-  {
-    hasScripts ? null : (
-      <AppSection>
-        <EmptyState
-          title="Welcome to OffScript"
-          description="Add a script to start practicing lines, tracking progress, and building confidence. Practice tools will appear here once you're ready."
-          actionLabel="Add your first script"
-          actionHref="/app/manage/scripts/add/"
-        />
-      </AppSection>
-    )
-  }
+  <AppSection class="dashboard-empty-section" ariaLabel="Dashboard empty state">
+    <EmptyState
+      title="Welcome to OffScript"
+      description="Add a script to start practicing lines, tracking progress, and building confidence."
+      actionLabel="Add your first script"
+      actionHref="/app/manage/scripts/add/"
+    />
+  </AppSection>
+
+  <div class="dashboard-content" data-dashboard-content hidden>
+    <AppSection variant="card" class="dashboard-summary" ariaLabel="Active script summary">
+      <div>
+        <p class="dashboard-label">Active script</p>
+        <h2 data-dashboard-title></h2>
+        <p data-dashboard-notes></p>
+      </div>
+      <div class="dashboard-progress">
+        <strong data-dashboard-progress>0%</strong>
+        <span>practice progress</span>
+        <div class="dashboard-progress-meter" aria-hidden="true">
+          <span data-dashboard-progress-bar></span>
+        </div>
+      </div>
+    </AppSection>
+
+    <AppSection variant="card" ariaLabel="Dashboard actions">
+      <h2>Continue practicing</h2>
+      <div class="dashboard-actions">
+        <a class="button" href="/app/practice/type/">Type lines</a>
+        <a class="button-secondary" href="/app/script/view/">View script</a>
+        <a class="button-secondary" href="/app/script/overview/">Open overview</a>
+      </div>
+    </AppSection>
+  </div>
 </AppLayout>
+
+<script>
+  import { getActiveScript } from '../../scripts/script-store';
+  import { getProgressSummary } from '../../scripts/progress';
+
+  const emptySection = document.querySelector('.dashboard-empty-section');
+  const dashboardContent = document.querySelector('[data-dashboard-content]');
+  const script = getActiveScript();
+
+  if (script && emptySection instanceof HTMLElement && dashboardContent instanceof HTMLElement) {
+    emptySection.hidden = true;
+    dashboardContent.hidden = false;
+
+    const summary = getProgressSummary(script);
+    setText('[data-dashboard-title]', script.title || 'Untitled script');
+    setText('[data-dashboard-notes]', script.notes || 'No notes added for this script.');
+    setText('[data-dashboard-progress]', `${summary.progress}%`);
+
+    const progressBar = document.querySelector('[data-dashboard-progress-bar]');
+    if (progressBar instanceof HTMLElement) {
+      progressBar.style.width = `${summary.progress}%`;
+    }
+  }
+
+  function setText(selector: string, value: string): void {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.textContent = value;
+    }
+  }
+</script>

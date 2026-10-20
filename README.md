@@ -1,46 +1,67 @@
-# Astro Starter Kit: Basics
+# OffScript
+
+OffScript is a browser-based script practice app. It helps performers import a
+script, choose what to practice, and rehearse lines from memory.
+
+The app uses Astro components for page structure and small client-side TypeScript modules
+for interactive features. Script data is currently stored in the browser's
+local storage.
+
+## Getting started
+
+Requirements:
+
+- Node.js 22.12 or newer
+- npm
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Open the local URL printed by Astro, usually `http://localhost:4321`.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── components/       Reusable Astro UI components
+├── layouts/          Site and app shells
+├── pages/            Routes and page-specific client scripts
+├── scripts/          Shared browser-side TypeScript
+└── styles/           Shared and page-specific CSS
+public/
+├── assets/           Brand assets and icons
+└── example-scripts/  Importable example script files
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Commands
 
-## 🧞 Commands
+Run these commands from the project root:
 
-All commands are run from the root of the project, from a terminal:
+| Command             | Description                            |
+| ------------------- | -------------------------------------- |
+| `npm install`       | Install dependencies                   |
+| `npm run dev`       | Start the local development server     |
+| `npm run build`     | Build the production site into `dist/` |
+| `npm run preview`   | Preview the production build locally   |
+| `npm run astro ...` | Run an Astro CLI command               |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Commits and releases
 
-## 👀 Want to learn more?
+Uses [Conventional Commits](https://www.conventionalcommits.org/) for changes:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```text
+feat: add scene practice settings
+fix: preserve the selected script
+chore: update dependencies
+```
+
+The Release Please workflow on `main` uses these commit messages to prepare
+release pull requests and generate version tags. Breaking changes should use
+`!` or include a `BREAKING CHANGE:` footer.
+
+## Astro documentation
+
+For Astro-specific questions, see the
+[Astro documentation](https://docs.astro.build/).

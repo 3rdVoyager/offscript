@@ -33,5 +33,16 @@ export function getPracticeLines(activeScript: StoredScript): PracticeLine[] {
     }
   }
 
-  return lines;
+  return settings.randomizeLineOrder ? shuffleLines(lines) : lines;
+}
+
+function shuffleLines(lines: PracticeLine[]): PracticeLine[] {
+  const shuffled = [...lines];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+  }
+
+  return shuffled;
 }

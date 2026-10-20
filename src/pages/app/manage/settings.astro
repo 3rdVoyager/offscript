@@ -71,6 +71,24 @@ const tabs = [
       </div>
       <div class="settings-options" data-scene-options></div>
     </AppSection>
+
+    <AppSection variant="card" ariaLabel="Practice order settings">
+      <div class="settings-section-heading">
+        <div>
+          <h2>Practice order</h2>
+          <p class="settings-note">
+            Change how lines are presented by practice tools.
+          </p>
+        </div>
+      </div>
+      <label class="settings-toggle">
+        <input type="checkbox" data-randomize-line-order />
+        <span>
+          <strong>Randomize line order</strong>
+          <small>Show selected lines in a different order each time practice starts.</small>
+        </span>
+      </label>
+    </AppSection>
   </div>
 
 </AppLayout>
@@ -126,6 +144,14 @@ const tabs = [
       );
     }
 
+    const randomizeLineOrder = document.querySelector<HTMLInputElement>(
+      '[data-randomize-line-order]',
+    );
+    if (randomizeLineOrder) {
+      randomizeLineOrder.checked = settings.randomizeLineOrder;
+      randomizeLineOrder.addEventListener('change', saveCurrentSettings);
+    }
+
     document.querySelectorAll('[data-practice-option]').forEach((option) => {
       option.addEventListener('change', saveCurrentSettings);
     });
@@ -179,9 +205,17 @@ const tabs = [
     const settings: PracticeSettings = {
       characters: readCheckedOptions('character'),
       scenes: readCheckedOptions('scene'),
+      randomizeLineOrder: readRandomizeLineOrder(),
     };
     savePracticeSettings(script.id, settings);
     showToast('Practice settings saved.');
+  }
+
+  function readRandomizeLineOrder(): boolean {
+    const input = document.querySelector<HTMLInputElement>(
+      '[data-randomize-line-order]',
+    );
+    return input?.checked === true;
   }
 
   function readCheckedOptions(type: 'character' | 'scene'): string[] {

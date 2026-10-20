@@ -70,6 +70,36 @@
   accent-color: var(--gold);
 }
 
+.settings-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-small);
+  color: var(--app-text);
+  background: var(--app-surface-raised);
+  cursor: pointer;
+}
+
+.settings-toggle input {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.15rem;
+  accent-color: var(--gold);
+}
+
+.settings-toggle span {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.settings-toggle small {
+  color: var(--app-muted);
+  line-height: 1.5;
+}
+
 @media (max-width: 700px) {
   .settings-section-heading {
     display: block;

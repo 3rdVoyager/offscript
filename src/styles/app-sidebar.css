@@ -27,6 +27,28 @@
   text-decoration: none;
 }
 
+.app-sidebar-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.45rem;
+}
+
+.app-sidebar-version {
+  flex-shrink: 0;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--app-border);
+  border-radius: 999px;
+  background: var(--app-surface);
+  color: var(--app-muted);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
 .app-sidebar-brand img {
   width: 2.5rem;
   height: 2.5rem;

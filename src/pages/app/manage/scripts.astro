@@ -21,27 +21,41 @@ const tabs = [
     <TabBar tabs={tabs} />
   </AppSection>
 
-  <AppSection variant="card" ariaLabel="Saved scripts">
+  <AppSection class="scripts-empty-section" ariaLabel="Saved scripts">
     <EmptyState
       title="No scripts yet"
       description="Add your first script to begin practicing."
       actionLabel="Add a script"
       actionHref="/app/manage/scripts/add/"
     />
-    <div class="scripts-grid" data-scripts-grid hidden></div>
+  </AppSection>
+
+  <AppSection
+    variant="card"
+    class="scripts-grid-section"
+    ariaLabel="Saved script cards"
+    hidden
+  >
+    <div class="scripts-grid" data-scripts-grid></div>
   </AppSection>
 </AppLayout>
 
 <script>
   const emptyState = document.querySelector('[data-empty-state]');
+  const emptySection = document.querySelector('.scripts-empty-section');
   const scriptsGrid = document.querySelector('[data-scripts-grid]');
+  const scriptsSection = document.querySelector('.scripts-grid-section');
 
-  if (emptyState instanceof HTMLElement && scriptsGrid instanceof HTMLElement) {
+  if (emptyState instanceof HTMLElement &&
+      emptySection instanceof HTMLElement &&
+      scriptsGrid instanceof HTMLElement &&
+      scriptsSection instanceof HTMLElement) {
     const scripts = readScripts();
 
     if (scripts.length > 0) {
       emptyState.hidden = true;
-      scriptsGrid.hidden = false;
+      emptySection.hidden = true;
+      scriptsSection.hidden = false;
 
       for (const script of scripts) {
         scriptsGrid.appendChild(createScriptCard(script));

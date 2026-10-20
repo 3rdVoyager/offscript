@@ -3,6 +3,7 @@ import AppLayout from '../../../../layouts/AppLayout.astro';
 import AppSection from '../../../../components/AppSection.astro';
 import TabBar from '../../../../components/TabBar.astro';
 import AddScriptForm from '../../../../components/AddScriptForm.astro';
+import '../../../../styles/add-script.css';
 
 const tabs = [
   { label: 'View scripts', href: '/app/manage/scripts/' },
@@ -23,4 +24,59 @@ const tabs = [
   <AppSection variant="card">
     <AddScriptForm />
   </AppSection>
+
+  <AppSection ariaLabel="Example scripts">
+    <h2>Example scripts</h2>
+    <p>Load one of these examples into the importer to try the app.</p>
+
+    <div class="example-grid">
+      <article class="example-card">
+        <h3>The Two Noble Kinsmen</h3>
+        <p>A full five-act example with scenes, stage directions, and character lines.</p>
+        <button
+          type="button"
+          class="button-secondary"
+          data-load-example="/example-scripts/two-noble-kinsmen.json"
+        >
+          Load example
+        </button>
+      </article>
+
+      <article class="example-card">
+        <h3>Little Women</h3>
+        <p>A larger example script for testing a more substantial import.</p>
+        <button
+          type="button"
+          class="button-secondary"
+          data-load-example="/example-scripts/little-women-offscript.json"
+        >
+          Load example
+        </button>
+      </article>
+    </div>
+  </AppSection>
 </AppLayout>
+
+<script>
+  document.querySelectorAll('[data-load-example]').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!(button instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      const examplePath = button.dataset.loadExample;
+
+      if (!examplePath) {
+        return;
+      }
+
+      document.dispatchEvent(
+        new CustomEvent('load-example', { detail: examplePath }),
+      );
+      document.querySelector('#add-script-form')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    });
+  });
+</script>

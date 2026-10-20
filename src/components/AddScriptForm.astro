@@ -47,6 +47,36 @@ import Form from './Form.astro';
       });
     }
 
+    document.addEventListener('load-example', (event) => {
+      if (!(event instanceof CustomEvent) ||
+          typeof event.detail !== 'string' ||
+          !(jsonInput instanceof HTMLTextAreaElement)) {
+        return;
+      }
+
+      loadExample(event.detail);
+    });
+
+    async function loadExample(path: string): Promise<void> {
+      if (!(jsonInput instanceof HTMLTextAreaElement)) {
+        return;
+      }
+
+      try {
+        const response = await fetch(path);
+
+        if (!response.ok) {
+          throw new Error('Could not load example script.');
+        }
+
+        const script = await response.json();
+        jsonInput.value = JSON.stringify(script, null, 2);
+        setStatus('Example loaded. Review it, then add the script.');
+      } catch {
+        setStatus('Could not load that example script.');
+      }
+    }
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
 

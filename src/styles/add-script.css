@@ -1,0 +1,30 @@
+.example-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--space-4);
+}
+
+.example-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 12rem;
+  padding: var(--space-4);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-card);
+  background: var(--app-surface);
+}
+
+.example-card h3 {
+  margin-bottom: var(--space-2);
+  color: var(--app-text);
+}
+
+.example-card p {
+  margin-bottom: var(--space-4);
+  color: var(--app-muted);
+}
+
+.example-card .button-secondary {
+  margin-top: auto;
+}

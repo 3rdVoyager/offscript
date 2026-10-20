@@ -1,0 +1,4747 @@
+{
+  "schemaVersion": 1,
+  "type": "play",
+  "title": "The Two Noble Kinsmen",
+  "notes": "Current rehearsal deck",
+  "acts": [
+    {
+      "title": "Act I",
+      "scenes": [
+        {
+          "title": "Scene 1",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Music. Enter Theseus between Then Hippolyta, the bride, led by Pirithous. After her, Emilia, holding up her train. Then Attendants. The Song, sung by the Boy. Enter three Queens in black. The first Queen falls down at the foot of Theseus; the second falls down at the foot of Hippolyta; the third before Emilia"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "O, Theseus, for pity's sake and true gentility's, hear and respect me."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND QUEEN"
+              ],
+              "text": "For your mother's sake, Hear and respect me."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD QUEEN"
+              ],
+              "text": "Be advocate For us and our distresses."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Sad lady, rise."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Stand up."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "No knees to me. What woman I may stead that is distressed Does bind me to her."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "What's your request? Deliver you for all."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "We are three queens whose sovereigns fell before The wrath of cruel Creon, in the foul fields of Thebes. He will not suffer us to burn their bones, To urn their ashes, nor to take th' offense Of mortal loathsomeness from the blest eye Of holy Phoebus, but infects the winds With stench of our slain lords. O, pity, duke! Thou purger of the Earth, draw thy feared sword That does good turns to th' world; give us the bones Of our dead kings, that we may chapel them."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Pray you, kneel not. I was transported with your speech and suffered Your knees to wrong themselves. I have heard the fortunes Of your dead lords, which gives me such lamenting As wakes my vengeance and revenge for 'em. O, no knees, none, widow! Unto the helmeted Bellona use them And pray for me, your soldier. Troubled I am. The First Queen rises."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND QUEEN"
+              ],
+              "text": "Honored Hippolyta, Most dreaded Amazonian, Speak 't in a woman's key, like such a woman As any of us three; weep ere you fail. Lend us a knee."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Poor lady, say no more. I had as lief trace this good action with you As that whereto I am going, and never yet Went I so willing way. My lord is taken Heart-deep with your distress; let him consider. I'll speak anon. Second Queen rises."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD QUEEN"
+              ],
+              "text": "O, my petition was set down in ice, which by hot grief uncandied melts into drops."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Pray stand up. Your grief is written in your cheek."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD QUEEN"
+              ],
+              "text": "She rises. Lady, lady, alack! He that will all the treasure know o' th' Earth must know the center too. O, pardon me! Extremity, that sharpens sundry wits, makes me a fool."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Your sorrow beats so ardently upon me That it shall make a counter-reflect 'gainst My brother's heart and warm it to some pity, Though it were made of stone. Pray have good comfort."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "(coming forward) Forward to th' temple. Leave not out a jot o' th' sacred ceremony."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "O, this celebration Will longer last and be more costly than Your suppliants' war. Think, dear duke, think What beds our slain kings have!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND QUEEN"
+              ],
+              "text": "What griefs our beds, That our dear lords have none!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD QUEEN"
+              ],
+              "text": "None fit for th' dead."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "But our lords Lie blist'ring 'fore the visitating sun, And were good kings when living."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "It is true, and I will give you comfort To give your dead lords graves; The which to do must make some work with Creon."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "And that work presents itself to th' doing. Now 'twill take form. Now he's secure. Not dreaming, we stand before your puissance, rinsing our holy begging in our eyes to make petition clear."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND QUEEN"
+              ],
+              "text": "Now you may take him, Drunk with his victory."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD QUEEN"
+              ],
+              "text": "And his army full Of bread and sloth."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Artesius, forth and levy Our worthiest instruments, whilst we dispatch This grand act of our life."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "(to Second and Third Queens) Dowagers, take hands. Let us be widows to our woes. Farewell."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND QUEEN"
+              ],
+              "text": "We come unseasonably; but when could grief Cull forth, as unpanged judgment can, fitt'st time For best solicitation?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Why, good ladies, This is a service whereto I am going Greater than any was."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "The more proclaiming our suit shall be neglected when her arms, able to lock Jove from a synod, shall by warranting moonlight corselet thee. O, when her twinning cherries shall their sweetness fall upon thy tasteful lips, what wilt thou think of rotten kings or blubbered queens?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "(to Theseus) Though much unlike you should be so transported, yet I think, did I not, by th' abstaining of my joy, which breeds a deeper longing, cure their surfeit that craves a present med'cine, I should pluck all ladies' scandal on me. She kneels. Prorogue this business we are going about, and hang your shield afore your heart."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "O, help now!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND QUEEN"
+              ],
+              "text": "Our cause cries"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD QUEEN"
+              ],
+              "text": "For your knee."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "(to Theseus, kneeling) If you grant not my sister her petition, I'll not dare to ask you anything, nor be so hardy ever to take a husband."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Pray stand up. Hippolyta and Emilia rise. I am entreating of myself to do A gathering of the gods That which you kneel to have me. - Pirithous, Lead on the bride; get you and pray the gods For success and return; omit not anything In the pretended celebration. - Queens, Follow your soldier. To Artesius. As before, hence you, And at the banks of Aulis meet us with The forces you can raise. Artesius exits. To Hippolyta - Set you forward, For I will see you gone. The wedding procession begins to exit towards the temple. - Pirithous, Keep the feast full; bate not an hour on 't."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Sir, I'll follow you at heels."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Cousin, I charge you, Budge not from Athens. - Once more, farewell all. All but Theseus and the Queens exit."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "Thus dost thou still make good the tongue o' th' world."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND QUEEN"
+              ],
+              "text": "And earn'st a deity equal with Mars."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD QUEEN"
+              ],
+              "text": "If not above him, for Thou, being but mortal, makest affections bend To godlike honors; they themselves, some say, Groan under such a mast'ry."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Good cheer, ladies. Now turn we towards your comforts. Flourish. They exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 2",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Palamon and Arcite"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Dear Palamon, dearer in love than blood And our prime cousin, let us leave the city Thebes, and the temptings in 't, before we further Sully our gloss of youth."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Your advice Is cried up with example. What strange ruins, Since first we went to school, may we perceive Walking in Thebes!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "How dangerous, if we will keep our honors, Thebes is for our residing, where every evil Hath a good color; where every seeming good's A certain evil."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "'Tis in our power - Unless we fear that apes can tutor 's - to Be masters of our manners. What need I Affect another's gait? Or to be fond upon Another's way of speech, when by mine own I may be reasonably conceived - saved too, Speaking it truly? Why am I bound By any generous bond to follow him Follows his tailor. What canon is there That does command my rapier from my hip To dangle 't in my hand. These poor slight sores Need not a plantain. That which rips my bosom Almost to th' heart's -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Our Uncle Creon."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "He. A most unbounded tyrant, whose successes Makes heaven unfeared and villainy assured Beyond its power there's nothing. Let The blood of mine that's sib to him be sucked From me with leeches; let them break and fall Off me with that corruption."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Clear-spirited cousin, Let's leave his court, that we may nothing share Of his loud infamy."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I think the echoes of his shames have deafed The ears of heav'nly justice. Enter Valerius. Valerius. Kin, related"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "VALERIUS"
+              ],
+              "text": "The King calls for you; yet be leaden-footed Till his great rage be off him"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "What's the matter?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "VALERIUS"
+              ],
+              "text": "Theseus, who where he threats appalls, hath sent Deadly defiance to him and pronounces Ruin to Thebes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Let him approach. Yet what man Thirds his own worth - the case is each of ours - When that his action's dregged with mind assured 'Tis bad he goes about?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Leave that unreasoned. Our services stand now for Thebes, not Creon. Yet to be neutral to him were dishonor, Rebellious to oppose. Therefore we must With him stand to the mercy of our fate."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "So we must. To Valerius. Is 't said this war's afoot? Or, it shall be, On fail of some condition?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "VALERIUS"
+              ],
+              "text": "'Tis in motion; The intelligence of state came in the instant With the defier."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Let's to the King. But alas, Our hands advanced before our hearts, what will The fall o' th' stroke do damage?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Let th' event, That never-erring arbitrator, tell us When we know all ourselves, and let us follow The becking of our chance. They exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 3",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Pirithous, Hippolyta, Emilia"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "No further."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Sir, farewell. Repeat my wishes To our great lord. Speed to him."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Though I know His ocean needs not my poor drops, yet they Must yield their tribute there. - My precious maid, Those best affections that the heavens infuse In their best-tempered pieces keep enthroned In your dear heart!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Thanks, sir. Remember me To our all-royal brother, for whose speed The great Bellona I'll solicit; I'll offer to her What I shall be advised she likes. Our hearts Are in his army, in his tent."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "In 's bosom. We have been soldiers, and we cannot weep When our friends don their helms or put to sea."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Peace be to you Pirithous exits."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "How his longing Follows his friend! Have you observed him Since our great lord departed?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "With much labor, And I did love him for 't. They two have cabined In many as dangerous as poor a corner, Peril and want contending; and they have Fought out together where Death's self was lodged. Yet fate hath brought them off. Their knot of love, Tied, weaved, entangled, with so true, so long, And with a finger of so deep a cunning, May be outworn, never undone. I think Theseus cannot be umpire to himself, Cleaving his conscience into twain and doing Each side like justice, which he loves best."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Doubtless There is a best, and reason has no manners To say it is not you. I was acquainted Once with a time when I enjoyed a playfellow; The Roman Goddess of war You were at wars when she the grave enriched, Who made too proud the bed; took leave o' th' moon, Which then looked pale at parting, when our count Was each eleven."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "'Twas Flavina."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Yes. You talk of Pirithous' and Theseus' love. Theirs has more ground, is more maturely seasoned, More buckled with strong judgment. But I, And she I sigh and spoke of, were things innocent, Loved for we did, and like the elements That know not what nor why, yet do effect Rare issues by their operance, our souls Did so to one another. Had mine ear Stol'n some new air, or at adventure hummed one From musical coinage, why, it was a note Whereon her spirits would sojourn - rather, dwell on - And sing it in her slumbers. This rehearsal - Which fury-innocent wots well comes in Like old importment's bastard - has this end, That the true love 'tween myself and other More than in sex individual."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "You're out of breath, And this high-speeded pace is but to say That you shall never love any."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "I am sure I shall not."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "But sure, my sister, If I were ripe for your persuasion, you Have said enough to shake me from the arm Of the all-noble Theseus, for whose fortunes I will now in and kneel, with great assurance That we, more than his Pirithous, possess The high throne in his heart."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "I am not Against your faith, yet I continue mine. They exit A temporary stay. Here is means the contrast between sojourning with the tune (visiting it) and dwelling there (living permanently with it)."
+            }
+          ]
+        },
+        {
+          "title": "Scene 4",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Cornets. A battle struck within; then a retreat. Flourish. Then enter, through one door, Theseus, the victor. Entering through another door, the three Queens meet him, and fall on their faces before him"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST QUEEN"
+              ],
+              "text": "To thee no star be dark!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND QUEEN"
+              ],
+              "text": "Both heaven and Earth Friend thee forever."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD QUEEN"
+              ],
+              "text": "All the good that may Be wished upon thy head, I cry \"Amen\" to 't!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Go and find out the bones of your dead lords and honor them with treble ceremony. So, adieu, and heaven's good eyes look on you. What are those?"
+            },
+            {
+              "type": "direction",
+              "text": "Queens exit. Enter Artesius and Soldiers bearing Palamon and Arcite on biers."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARTESIUS"
+              ],
+              "text": "Men of great quality, as may be judged By their appointment. They are nephews to the King."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "By th' helm of Mars, I saw them in the war, Like to a pair of lions. What prisoner was 't that told me When I enquired their names?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARTESIUS"
+              ],
+              "text": "Wi' leave, they're called Arcite and Palamon."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "'Tis right; those, those. They are not dead?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARTESIUS"
+              ],
+              "text": "Yet they breathe And have the name of men."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Then like men use 'em. Their lives concern us Much more than Thebes is worth. We'd rather than have 'em Prisoners to us than Death. For our love And great Apollo's mercy, all our best Their best skill tender. - Lead into the city. Flourish. They exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 5",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Music. Enter the Queens with the hearses of their knights, in a funeral solemnity The dirge. They exit severally. Greek god of archery, music and dance, truth and prophecy, healing and diseases, the Sun and light, poetry, and more"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Act II",
+      "scenes": [
+        {
+          "title": "Scene 1",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Jailer and Wooer"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "I may depart with little while I live; something I may cast to you, not much. Alas, the prison I keep, though it be for great ones, yet they seldom come. Marry, what I have, be it what it will, I will assure upon my daughter at the day of my death."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Sir, I demand no more than your own offer, and I will estate your daughter in what I have promised."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "But have you a full promise of her? When that shall be seen, I tender my consent. Enter the Jailer's Daughter."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "I have sir. Here she comes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": ", to Daughter Your friend and I have chanced to name you here, upon the old business. I' th' meantime, look tenderly to the two prisoners. I can tell you they are princes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "'Tis pity they are in prison. I do think they have patience to make any adversity ashamed."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "I heard them reported in the battle to be the only doers."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Nay, most likely, for they are noble suff'rers. It seems to me they have no more sense of their captivity than I of ruling Athens."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "I never saw 'em."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "The Duke himself came privately in the night, and so did they. Enter Palamon and Arcite, in shackles. Look, yonder they are; that's Arcite looks out."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "No, sir, no, that's Palamon. Arcite is the lower of the twain; you may perceive a part of him."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Go to, leave your pointing; they would not make us their object. Out of their sight."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "It is a holiday to look on them. Lord, the diff'rence of men! Jailer, Daughter, and Wooer exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 2",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Palamon and Arcite remain, above"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "How do you, noble cousin?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "How do you, sir?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Why, strong enough to laugh at misery And bear the chance of war; yet we are prisoners I fear forever, cousin."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I believe it, And to that destiny have patiently Laid up my hour to come."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "O, cousin Arcite, Where is Thebes now? Where is our noble country? Where are our friends and kindreds? Never more Must we behold those comforts, never see The hardy youths strive for the games of honor, Hung with the painted favors of their ladies, Like tall ships under sail; O, never Shall we two exercise, like twins of honor, Our arms again, and feel our fiery horses Like proud seas under us."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "No, Palamon, Those hopes are prisoners with us. Here we are And here the graces of our youths must wither Like a too-timely spring. Here age must find us And - which is heaviest, Palamon - unmarried. The sweet embraces of a loving wife, Loaden with kisses, armed with thousand Cupids, Shall never clasp our necks; The fair-eyed maids shall weep our banishments And in their songs curse ever-blinded Fortune Till she for shame see what a wrong she has done To youth and nature. This is all our world. We shall know nothing here but one another, Hear nothing but the clock that tells our woes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "'Tis too true, Arcite. We shall die, Which is the curse of honor, lastly, Children of grief and ignorance."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Yet, cousin, Even from the bottom of these miseries, I see two comforts rising, two mere blessings, If the gods please: to hold here a brave patience, And the enjoying of our griefs together. Whilst Palamon is with me, let me perish If I think this our prison!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Certainly 'Tis a main goodness, cousin, that our fortunes Were twined together. 'Tis most true, two souls Put in two noble bodies, let 'em suffer The gall of hazard, so they grow together, Will never sink."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Shall we make worthy uses of this place That all men hate so much?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "How, gentle cousin?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Let's think this prison holy sanctuary To keep us from corruption of worse men. We are young and yet desire the ways of honor We are an endless mine to one another; We are one another's wife, ever begetting New births of love; we are father, friends, acquaintance; We are, in one another, families; I am your heir, and you are mine. This place Is our inheritance; no hard oppressor Dare take this from us; here with a little patience We shall live long and loving. No surfeits seek us; The hand of war hurts none here, nor the seas Swallow their youth."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "You have made me - I thank you, cousin Arcite - almost wanton With my captivity. I find the court here, I am sure, a more content; and all those pleasures That woo the wills of men to vanity I see through now, and am sufficient What had we been, old in the court of Creon, Where sin is justice, lust and ignorance The virtues of the great ones? Cousin Arcite, We had died as they do, ill old men, unwept, And had their epitaphs, the people's curses. Shall I say more?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I would hear you still."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "You shall. Is there record of any two that loved Better than we do, Arcite?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Sure there cannot."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I do not think it possible our friendship Should ever leave us."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Till our deaths it cannot. Enter Emilia and her Woman, below. And after death our spirits shall be led To those that love eternally. Palamon catches sight of Emilia. Speak on, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": ", to her Woman This garden has a world of pleasures in 't. What flower is this?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOMAN"
+              ],
+              "text": "'Tis called narcissus , madam."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "That was a fair boy certain, but a fool Reference to the Greek myth of Narcissus To love himself. Were there not maids enough?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": ", to Palamon, who is stunned by the sight of Emilia Pray, forward."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Yes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": ", to Woman Or were they all hard-hearted?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOMAN"
+              ],
+              "text": "They could not be to one so fair."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Thou wouldst not."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOMAN"
+              ],
+              "text": "I think I should not, madam."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "That's a good wench. But take heed to your kindness, though."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOMAN"
+              ],
+              "text": "Why, madam?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Men are mad things."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": ", to Palamon Cousin, cousin! How do you, sir? Why, Palamon!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Never till now I was in prison, Arcite."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Why, what's the matter, man?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Behold, and wonder! By heaven, she is a goddess."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": ", seeing Emilia Ha!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Do reverence. She is a goddess, Arcite."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": ", to Woman Of all flowers Methinks a rose is best."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOMAN"
+              ],
+              "text": "Why, gentle madam?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "It is the very emblem of a maid. For when the west wind courts her gently, How modestly she blows and paints the sun With her chaste blushes! When the north comes near her, Rude and impatient, then, like chastity, She locks her beauties in her bud again, And leaves him to base briers."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOMAN"
+              ],
+              "text": "Yet, good madam, Sometimes her modesty will blow so far She falls for 't."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Thou art wanton!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": ", to Palamon She is wondrous fair."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "She is all the beauty extant."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": ", to Woman The sun grows high. Let's walk in. I am wondrous merry-hearted. I could laugh now. Emilia and Woman exit."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "What think you of this beauty?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "'Tis a rare one."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Is 't but a rare one?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Yes, a matchless beauty."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Might not a man well lose himself and love her?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Beshrew mine eyes for 't! Now I feel my shackles."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "You love her, then?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Who would not?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "And desire her?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Before my liberty."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I saw her first."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "That's nothing."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "But it shall be."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I saw her, too."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Yes, but you must not love her."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Who shall deny me?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I, that first saw her; If thou lov'st her, Or entertain'st a hope to blast my wishes, Thou art a traitor, Arcite, and a fellow False as thy title to her. Friendship, blood, And all the ties between us I disclaim If thou once think upon her."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Yes, I love her, I love her with my soul. If that will lose you, farewell, Palamon."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Have I called thee friend?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Yes, and have found me so. Why are you moved thus? Let me deal coldly with you: am not I Part of your blood, part of your soul? You have told me That I was Palamon and you were Arcite."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Yes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Why then would you deal so cunningly, So strangely, so unlike a noble kinsman, To love alone? Speak truly, do you think me Unworthy of her sight?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "No, but unjust If thou pursue that sight."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "You are mad. Fie, sir! You play the child extremely. I will love her; I must, I ought"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "O, that now, that now, Thy false self and thy friend had but this fortune To be one hour at liberty, and grasp Our good swords in our hands, I would quickly teach thee What 'twere to filch affection from another. Put but thy head out of this window more And, as I have a soul, I'll nail thy life to 't."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Put my head out? I'll throw my body out And leap the garden when I see her next, And pitch between her arms to anger thee. Enter Jailer, above."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "No more; the keeper's coming. I shall live To knock thy brains out with my shackles."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Do!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "By your leave, gentlemen."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Now, honest keeper?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Lord Arcite, you must presently to th' Duke; The cause I know not yet."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I am ready, keeper."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Prince Palamon, I must awhile bereave you Of your fair cousin's company. Arcite and Jailer exit."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Why is he sent for? It may be he shall marry her; he's goodly, And like enough the Duke hath taken notice Both of his blood and body. If that Get him a wife so noble and so fair, Let honest men ne'er love again. Once more I would but see this fair one. How I would spread and fling my wanton arms In at her window; I would bring her fruit Fit for the gods to feed on. Enter Jailer, above. And then I am sure she would love me. - How now, keeper, Where's Arcite?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Banished. Prince Pirithous Obtained his liberty, but never more Upon his oath and life must he set foot Upon this kingdom."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "He's a blessèd man. He shall see Thebes again. Arcite shall have a fortune, If he dare make himself a worthy lover, Yet in the field to strike a battle for her, And, if he lose her then, he's a cold coward. Were I at liberty, I would do things Of such a virtuous greatness for this lady."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "My lord, for you I have this charge to -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "To discharge my life?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "No, but from this place to remove your Lordship; The windows are too open."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Prithee, kill me. I will not go."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Indeed you must, my lord."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "May I see the garden?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "No."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Then I am resolved, I will not go. Must I go?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "There is no remedy."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Farewell, kind window. May rude wind never hurt thee. O, my lady, If ever thou hast felt what sorrow was, Dream how I suffer. - Come; now bury me. Palamon and Jailer exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 3",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Arcite"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Banished the kingdom? 'Tis a benefit, A mercy I must thank 'em for; but banished The free enjoying of that face I die for? Palamon, Thou hast the start now; thou shalt stay and see Her bright eyes break each morning 'gainst thy window Good gods, what happiness has Palamon! If I go, he has her. I am resolved another shape shall make me Or end my fortunes. Enter Country people, and one with a garland before them. Arcite steps aside."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST COUNTRYMAN"
+              ],
+              "text": "My masters, I'll be there, that's certain."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND COUNTRYMAN"
+              ],
+              "text": "And I'll be there."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD COUNTRYMAN"
+              ],
+              "text": "And I."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FOURTH COUNTRYMAN"
+              ],
+              "text": "Why, then, have with you, boys. 'Tis but a chiding. Let the plough play today."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD COUNTRYMAN"
+              ],
+              "text": "Do we all hold against the Maying?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST COUNTRYMAN"
+              ],
+              "text": "Hold? What should ail us?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD COUNTRYMAN"
+              ],
+              "text": "Arcas will be there."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND COUNTRYMAN"
+              ],
+              "text": "Will the dainty domine , the Schoolmaster, keep touch, do you think? For he does all, you know. Schoolmaster"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD COUNTRYMAN"
+              ],
+              "text": "He'll eat a hornbook ere he fail."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FOURTH COUNTRYMAN"
+              ],
+              "text": "Shall we be lusty ?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND COUNTRYMAN"
+              ],
+              "text": "All the boys in Athens blow wind i' th' breech on 's."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD COUNTRYMAN"
+              ],
+              "text": "We'll see the sports, then every man to 's tackle. And, sweet companions, let's rehearse, before the ladies see us."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FOURTH COUNTRYMAN"
+              ],
+              "text": "Content. The sports once ended, we'll perform. Away, boys, and hold. Arcite comes forward."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "By your leaves, honest friends: pray you, whither go you?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FOURTH COUNTRYMAN"
+              ],
+              "text": "Whither? Why, what a question's that?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Yes, 'tis a question To me that know not."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD COUNTRYMAN"
+              ],
+              "text": "To the games, my friend."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND COUNTRYMAN"
+              ],
+              "text": "Where were you bred, you know it not?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Not far, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FOURTH COUNTRYMAN"
+              ],
+              "text": "Well, sir, Take your own time. - Come, boys."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST COUNTRYMAN"
+              ],
+              "text": ", aside to the others My mind misgives Me. Mark how his body's made for 't."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND COUNTRYMAN"
+              ],
+              "text": ", aside to the others Hang him, plum porridge! He wrestle? He roast eggs! Come, let's be gone, lads. The four exit."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "This is an offered opportunity I durst not wish for. I'll venture, And in some poor disguise be there. Who knows Whether happiness prefer me to a place Where I may ever dwell in sight of her? Lively, jolly (a rhetorical question) A flat piece of horn with the alphabet and other basic information inscribed on it, for beginning pupils to use. Arcite exits."
+            }
+          ]
+        },
+        {
+          "title": "Scene 4",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Jailer's Daughter, alone"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Why should I love this gentleman? 'Tis odds He never will affect me. I am base, My father the mean keeper of his prison, And he a prince. To marry him is hopeless; To be his wench is witless. Out upon 't! What pushes are we wenches driven to When fifteen once has found us! First, I saw him; I, seeing, thought he was a goodly man; He has as much to please a woman in him, If he please to bestow it so, as ever These eyes yet looked on. Next, I pitied him, And so would any young wench, o' my conscience. Then I loved him, Extremely loved him, infinitely loved him! And yet he had a cousin, fair as he too. But in my heart was Palamon, and there, Lord, what a coil he keeps! To hear him Sing in an evening, what a heaven it is! And yet his songs are sad ones. Fairer spoken Was never gentleman. He grieves much - And me as much to see his misery. What should I do to make him know I love him? For I would fain enjoy him. Say I ventured To set him free? What says the law then? Thus much for law or kindred! I will do it, And this night, or tomorrow, he shall love me. She exits."
+            }
+          ]
+        },
+        {
+          "title": "Scene 5",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "This short flourish of cornets and shouts within. Enter Theseus, Hippolyta, Pirithous, Emilia, Arcite in disguise, with a garland, Attendants, and others"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": ", to Arcite You have done worthily. You run the best and wrestle That these times can allow."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I am proud to please you."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "What country bred you?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "This; but far off, prince."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Are you a gentleman?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "My father said so,"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Are you his heir?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "His youngest, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Your father, Sure, is a happy sire, then. What proves you?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "A little of all noble qualities. I dare not praise My feat in horsemanship, yet they that knew me Would say it was my best piece. Last, and greatest, I would be thought a soldier."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "You are perfect."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Upon my soul, a proper man."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "He is so."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": ", to Hippolyta How do you like him, lady?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "I admire him."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "His mother was a wondrous handsome woman; His face, methinks, goes that way."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "But his body And fiery mind illustrate a brave father."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Mark how his virtue, like a hidden sun, Breaks through his baser garments."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "He's well got, sure."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": ", to Arcite What made you seek this place, sir?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Noble Theseus, To purchase name and do my ablest service For only in thy court, of all the world, Dwells fair-eyed Honor."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "All his words are worthy."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Sir, we are much indebted to your travel, Nor shall you lose your wish. - Pirithous, Dispose of this fair gentleman."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Thanks, Theseus. - Whate'er you are, you're mine, and I shall give you To a most noble service: to this lady, He brings Arcite to Emilia. You have honored her fair birthday with your virtues, And, as your due, you're hers. Kiss her fair hand, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Sir, you're a noble giver. - Dearest beauty, Thus let me seal my vowed faith. He kisses her hand. When your servant, Your most unworthy creature, but offends you, Command him die, he shall."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "That were too cruel."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": ", to Arcite I'll see you furnished"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": ", to Hippolyta Sweet, you must be ready, - And you, Emilia, - and you, friend, - and all, Tomorrow by the sun, to do observance To flowery May in Dian's wood. - Wait well, sir, Upon your mistress. - Emily, I hope He shall not go afoot."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "That were a shame, sir, While I have horses. - Take your choice, and what You want at any time, let me but know it. If you serve faithfully, I dare assure you You'll find a loving mistress. Flourish. They all exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 6",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Jailer's Daughter alone"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Let all the dukes and all the devils roar! He is at liberty. I have ventured for him, And out I have brought him; to a little wood A mile hence I have sent him, where He shall keep close Till I provide him files and food, for yet His iron bracelets are not off. I love him beyond love and beyond reason Or wit or safety. I have made him know it; I care not, I am desperate.That way he takes I purpose is my way too. Sure he cannot Be so unmanly as to leave me here. And yet he has not thanked me For what I have done; no, not so much as kissed me, And that, methinks, is not so well. I'll presently Provide him necessaries and pack my clothes up, And where there is a path of ground I'll venture, So he be with me. Within this hour the hubbub Will be all o'er the prison. I am then Kissing the man they look for. Farewell, father! She exits."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Act III",
+      "scenes": [
+        {
+          "title": "Scene 1",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Cornets in sundry places. Noise and hallowing as people a-Maying. Enter Arcite alone"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "This is a solemn rite They owe bloomed May, O Queen Emilia, Fresher than May, Thrice blessèd chance To drop on such a mistress, expectation Most guiltless on 't. Tell me, O Lady Fortune, Next after Emily my sovereign, how far I may be proud. She takes strong note of me, Hath made me near her; and this beauteous morn, presents me with a brace of horses; Alas, alas, Poor cousin Palamon, poor prisoner, thou So little dream'st upon my fortune that Thou think'st thyself the happier thing, to be So near Emilia; me thou deem'st at Thebes, And therein wretched, although free. But if Thou knew'st my mistress breathed on me, and that I eared her language, lived in her eye - O coz, What passion would enclose thee! Enter Palamon as out of a bush, with his shackles; he bends his fist at Arcite."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Traitor kinsman, Thou shouldst perceive my passion if these signs Of prisonment were off me, and this hand But owner of a sword. Call'st thou her thine? I'll prove it in my shackles, that thou liest, and art A very thief in love. Had I a sword, And these house clogs away -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Dear cousin Palamon -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Cozener Arcite, give me language such As thou hast showed me feat."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Honor and honesty I cherish and depend on, howsoe'er You skip them in me, and with them, fair coz, I'll maintain my proceedings. Pray be pleased To show in generous terms your griefs, since that Your question's with your equal, who professes To clear his own way with the mind and sword Of a true gentleman."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "That thou durst, Arcite!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "My coz, my coz, you have been well advertised How much I dare; you've seen me use my sword Against th' advice of fear."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Sir, you were called A good knight and a bold. But the whole week's not Fair If any day it rain. Come before me then, A good sword in thy hand, and do but say That Emily is thine, I will forgive The trespass thou hast done me - yea, my life, If then thou carry 't."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Be content. These impediments Will I file off. You shall have garments and Perfumes to kill the smell o' th' prison. After, there shall be at your choice Both sword and armor."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I do embrace you and your offer; for Your offer do 't I only. Sir, your person Without hypocrisy I may not wish More than my sword's edge on 't. Wind horns off; sound cornets."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Give me your hand; farewell. I'll bring you every needful thing. I pray you, Take comfort and be strong."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Pray hold your promise, And do the deed with a bent brow. Most certain You love me not; be rough with me, and pour This oil out of your language."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Wind horns. Hark, sir, they call The scattered to the banquet; you must guess I have an office there."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "You are going now to gaze upon my mistress, For note you, mine she is -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Nay then, -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Nay, pray you, You talk of feeding me to breed me strength. You are going now to look upon a sun That strengthens what it looks on; there You have a vantage o'er me, but enjoy 't till I may enforce my remedy. Farewell. They exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 2",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Jailer's Daughter, alone"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "He has mistook the brake I meant, is gone After his fancy. 'Tis now well-nigh morning. No matter; would it were perpetual night, And darkness lord o' th' world. Hark, 'tis a wolf! In me hath grief slain fear, and but for one thing, I care for nothing, and that's Palamon. I reck not if the wolves would jaw me, so He had this file. What if I hallowed for him? I cannot hallow. How stand I then? My father's to be hanged for his escape; Myself to beg, if I prized life so much As to deny my act, but that I would not, Should I try death by dozens. I am moped; Food took I none these two days; Sipped some water. I have not closed mine eyes So, which way now? The best way is the next way to a grave; The moon is down. All offices are done Save what I fail in. But the point is this - An end, and that is all. She exits."
+            }
+          ]
+        },
+        {
+          "title": "Scene 3",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Arcite with meat, wine, and files"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I should be near the place. - Ho! Cousin Palamon!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": ", within Arcite?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "The same. I have brought you food and files. Come forth and fear not; here's no Theseus. Enter Palamon."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Nor none so honest, Arcite."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "That's no matter. We'll argue that hereafter. Here, sir, drink - I know you are faint - then I'll talk further with you."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Arcite, thou mightst now poison me."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I might; But I must fear you first. Sit down and, good now, No more of these vain parleys. To your health. He drinks."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Do!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Pray sit down, then, and let me entreat you, No mention of this woman;"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Well, sir, I'll pledge you. He drinks."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Do not you feel it thaw you?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Stay, I'll tell you After a draught or two more."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Eat now."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Yes. He eats."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Your hunger needs no sauce, I see."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Not much. But if it did, yours is too tart, sweet cousin. What is this?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Venison."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "'Tis a lusty meat. Give me more wine. Here, Arcite, to the wenches We have known in our days! He raises his cup in a toast. The Lord Steward's daughter! Do you remember her?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "After you, coz."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "She loved a black-haired man."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "She did so; well, sir?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "And I have heard some call him Arcite, and -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Out with 't, faith."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "She met him in an arbor. What did she there, coz? Play o' th' virginals?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Something she did, sir. The Marshal's sister Had her share, too, as I remember, cousin,"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Yes. He lifts his cup and then drinks."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "There was a time When young men went a-hunting, and a wood, Heigh ho!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "For Emily, upon my life! Fool, Away with this strained mirth. I say again That sigh was breathed for Emily."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "You are wide."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "By heaven and Earth, There's nothing in thee honest."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Then I'll leave you. You are a beast now."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "As thou mak'st me, traitor."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I'll come again some two hours hence and bring That that shall quiet all."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "A sword and armor."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Fear me not. You are now too foul. Farewell."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Sirrah -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I'll hear no more. He exits."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "If he keep touch, he dies for 't. He exits."
+            }
+          ]
+        },
+        {
+          "title": "Scene 4",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Jailer's Daughter"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "I am very cold, - Palamon! Alas, no; he's in heaven. Where am I now? Yonder's the sea, and there's a ship. How 't tumbles! Up with a course or two, and tack about, boys! Good night, good night; you're gone. I am very hungry. Would I could find a fine frog; he would tell me News from all parts o' th' world; Now my father, Twenty to one, is trussed up in a trice Tomorrow morning. I'll say never a word. Song She exits."
+            }
+          ]
+        },
+        {
+          "title": "Scene 5",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter a Schoolmaster and six Countrymen, one dressed as a Bavian"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Fie, fie, what tediosity and disinsanity is here among you! Have my rudiments been labored so long with you, milked unto you, and, by a figure, even the very plum broth and marrow of my understanding laid upon you, and do you still cry \"Where?\" and \"How?\" and \"Wherefore?\" Proh deum, medius fidius , you are all dunces! For why, here stand I; here the Duke comes; there are you, close in the thicket; the Duke appears; I meet him and unto him I utter learnèd things, and then cries \"Rare!\" and I go forward. At length I fling my cap up - mark there! Then do you like true lovers, cast yourselves in a body decently, and sweetly, by a figure, trace and turn, boys."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST COUNTRYMAN"
+              ],
+              "text": "And sweetly we will do it, Master Gerald."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Quo usque tandem? Here is a woman wanting. Enter Jailer's Daughter."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": ", sings The George Alow came from the south, From the coast of Barbary-a, And there he met with brave gallants of war, By one, by two, by three-a. \"Well hailed, well hailed, you jolly gallants, And whither now are you bound-a? O, let me have your company Till I come to the sound-a.\" There was three fools, fell out about an owlet - Sings The one he said it was an owl, The other he said nay, The third he said it was a hawk, And her bells were cut away."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD COUNTRYMAN"
+              ],
+              "text": "There's a dainty madwoman, master, I warrant her, she'll do the rarest gambols."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": ", to Jailer's Daughter And are you mad, good woman?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "I would be sorry else. Give me your hand."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Why?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "I can tell your fortune. She looks at his hand. You are a fool. Friend, you must eat no white bread; if you do, your teeth will bleed extremely. Shall we dance, ho? I know you, you're a tinker."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Dii boni! A tinker, damsel?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Or a conjurer."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Go, take her, and fluently persuade her to a peace. Strike up, and lead her in."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND COUNTRYMAN"
+              ],
+              "text": "Come, lass, let's trip it."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "I'll lead."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THIRD COUNTRYMAN"
+              ],
+              "text": "Do, do!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Persuasively, and cunningly. Wind horns. Away, boys! I hear the horns. Give me some meditation, and mark your cue. All but Schoolmaster exit. Pallas , inspire me! Enter Theseus, Pirithous, Hippolyta, Emilia, and train."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "This way the stag took."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Stay, and edify!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "What have we here?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Some country sport, upon my life, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": ", to Schoolmaster Well, sir, go forward. We will \"edify.\" Chairs and stools brought out. Theseus, Hippolyta, and Emilia sit."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Thou doughty duke, all hail! - All hail, sweet ladies! Greek Titan, the Titan god of warcraft and of the springtime campaign season"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": ", aside This is a cold beginning."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "If you but favor, our country pastime made is. We are a few of those collected here That ruder tongues distinguish \"villager.\" And to say verity, and not to fable, We are a merry rout, or else a rabble, Or company, or by a figure, chorus, That 'fore thy dignity will dance a morris. Say \"ay,\" and all shall presently advance."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Ay, ay, by any means, dear Domine."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Produce!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Come forth and foot it. Music. Enter the Countrymen, Countrywomen, and Jailer's Daughter; they perform a morris dance."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "Ladies, if we have been merry And have pleased ye with a derry, And a derry and a down, Say the Schoolmaster's no clown. -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "How does my sweetheart?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Never so pleased, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "'Twas an excellent dance,"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Schoolmaster, I thank you. - One see 'em all rewarded. An Attendant gives money."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "And here's something to paint your pole withal. He gives money."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Now to our sports again."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SCHOOLMASTER"
+              ],
+              "text": "May the stag thou hunt'st stand long, And thy dogs be swift and strong; May they kill him without lets, And the ladies eat his dowsets. Wind horns within. Theseus, Hippolyta, Emilia, Pirithous, and Train exit. Come, we are all made. They exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 6",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Palamon from the bush"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "About this hour my cousin gave his faith To visit me again, and with him bring Two swords and two good armors. If he fail, He's neither man nor soldier. When he left me, I did not think a week could have restored My lost strength to me, I was grown so low And crestfall'n with my wants. I thank thee, Arcite, Thou art yet a fair foe, and I feel myself, With this refreshing, able once again To outdure danger. This blest morning Shall be the last; and that sword he refuses, If it but hold, I kill him with. 'Tis justice. So, love and fortune for me! Enter Arcite with armors and swords. O, good morrow."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Good morrow, noble kinsman."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I have put you To too much pains, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "That too much, fair cousin, Is but a debt to honor and my duty."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Would you were so in all, sir; I could wish you As kind a kinsman as you force me find A beneficial foe, that my embraces Might thank you, not my blows."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I shall think either, Well done, a noble recompense."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Then I shall quit you."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Will 't please you arm, sir? Your person I am friends with, And I could wish I had not said I loved her, Though I had died. But loving such a lady, And justifying my love, I must not fly from 't."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Arcite, thou art so brave an enemy That no man but thy cousin's fit to kill thee. Choose your arms."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Choose you, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "He chooses armor. This I'll take."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "taking the other That's mine, then. I'll arm you first."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Do. Arcite begins arming him. Pray thee tell me, cousin, Where got'st thou this good armor?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "'Tis the Duke's, And to say true, I stole it. Do I pinch you?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "No."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Is 't not too heavy?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I have worn a lighter, But I shall make it serve."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I'll buckle 't close."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "By any means. Good cousin, thrust the buckle Through far enough."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I warrant you."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "My casque now."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Will you fight bare-armed?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "We shall be the nimbler."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "But use your gauntlets though. Those are o' th' least. Prithee take mine, good cousin."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Thank you, Arcite. How do I look? Am I fall'n much away?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Faith, very little; love has used you kindly."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I'll warrant thee, I'll strike home."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Do, and spare not. I'll give you cause, sweet cousin."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Now to you, sir. He begins to arm Arcite. Methinks this armor's very like that, Arcite, Thou wor'st that day the three kings fell, but lighter."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I well remember, you outdid me, cousin. I never saw such valor."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "You are modest, cousin. Is not this piece too strait?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "No, no, 'tis well."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I would have nothing hurt thee but my sword. A bruise would be dishonor."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Now I am perfect."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Stand off, then."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Take my sword; I hold it better."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I thank you, no; keep it; your life lies on it. Here's one. My cause and honor guard me!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "And me my love! They bow several ways, then advance and stand. Is there aught else to say?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "This only, and no more: Fight bravely, cousin. Give me thy noble hand."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": ", as they shake hands Here, Palamon. This hand shall never more Come near thee with such friendship."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I commend thee."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "If I fall, curse me, and say I was a coward, For none but such dare die in these just trials. Once more farewell, my cousin."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Farewell, Arcite. Fight. Horns within. They stand."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Lo, cousin, lo, our folly has undone us!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Why?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "This is the Duke, a-hunting. Gentle cousin, If you be seen, you perish instantly For breaking prison, and I, if you reveal me, For my contempt."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "No, no, cousin, I will no more be hidden, nor put off This great adventure to a second trial."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "You are not mad?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Or I will make th' advantage of this hour Mine own, and what to come shall threaten me I fear less than my fortune. Know, weak cousin, I love Emilia, and in that I'll bury Thee and all crosses else."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Then come what can come, Have at thy life!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Look to thine own well, Arcite. Fight again. Horns. Enter Theseus, Hippolyta, Emilia, Pirithous and train."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "What ignorant and mad malicious traitors Are you, that 'gainst the tenor of my laws Are making battle, thus like knights appointed, Without my leave and officers of arms? By Castor , both shall die."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Hold thy word, Theseus. We are certainly both traitors, both despisers Of thee and of thy goodness. I am Palamon, that broke thy prison. And this is Arcite. A bolder traitor never trod thy ground, A falser ne'er seemed friend. This is the man Against thine own edict, follows thy sister, That fortunate bright star, the fair Emilia, This treachery, like a most trusty lover, I called him now to answer. The true decider of all injuries, Say \"Fight again,\" and thou shalt see me, Theseus, Do such a justice thou thyself wilt envy. \"By Castor\", in Roman comedy, is a milk oath, and some believed only women used it. However, it is a serious oath in this context Then take my life; I'll woo thee to 't."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "O heaven, What more than man is this!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "I have sworn."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "We seek not Thy breath of mercy, Theseus. Let me say thus much: if in love be treason, So let me be most traitor, and you please me. For scorning thy edict, duke, ask that lady Why she is fair, and why her eyes command me Stay here to love her; and if she say \"traitor,\" I am a villain fit to lie unburied."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Let's die together at one instant, duke; Only a little let him fall before me, That I may tell my soul he shall not have her."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "I grant your wish, for to say true, your cousin Has ten times more offended, for I gave him More mercy than you found, sir, your offenses Being no more than his. - None here speak for 'em, For ere the sun set both shall sleep forever."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Alas, the pity! Now or never, sister, Speak not to be denied."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "In my face, dear sister, I find no anger to 'em, nor no ruin. The misadventure of their own eyes kill 'em. Yet that I will be woman and have pity, My knees shall grow to th' ground but I'll get mercy. She kneels. Help me, dear sister; in a deed so virtuous, The powers of all women will be with us. Hippolyta kneels. Most royal brother -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Sir, by our tie of marriage -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "By your own spotless honor -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "By that faith, That fair hand, and that honest heart you gave me -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "By that you would have pity in another; By your own virtues infinite -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "By valor;"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "These are strange conjurings."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Nay, then, I'll in too. He kneels. By all our friendship, sir, by all our dangers;"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "By that you would have trembled to deny A blushing maid -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "By your own eyes; by strength, In which you swore I went beyond all women,"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "To crown all this: by your most noble soul, Which cannot want due mercy, I beg first -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Next hear my prayers -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Last let me entreat, sir -"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "For mercy."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Mercy."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Mercy on these princes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "You make my faith reel. ( To Emilia. ) Say I felt Compassion to 'em both, how would you place it? They rise from their knees."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Upon their lives, but with their banishments."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "If you desire their lives, invent a way Safer than banishment. Can these two live, And have the agony of love about 'em, And not kill one another? Be wise, then, And here forget 'em; it concerns your credit And my oath equally."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "O, my noble brother, That oath was rashly made, and in your anger; Besides, I have another oath 'gainst yours, Of more authority."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "What is it, sister?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "That you would ne'er deny me anything Fit for my modest suit and your free granting. I tie you to your word now. Shall anything that loves me perish for me? That were a cruel wisdom. O, Duke Theseus, The goodly mothers that have groaned for these, And all the longing maids that ever loved, If your vow stand, shall curse me and my beauty, Despise my cruelty, and cry woe worth me, Till I am nothing but the scorn of women. For heaven's sake, save their lives, and banish 'em."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "On what conditions?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Swear 'em never more To make me their contention, or to know me, To tread upon thy dukedom, and to be, Wherever they shall travel, ever strangers To one another."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "I'll be cut a-pieces Before I take this oath! Forget I love her? O, all you gods, despise me then! I must love, and will, And for that love must and dare kill this cousin."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Will you, Arcite, Take these conditions?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "No, never, duke. 'Tis worse to me than begging To take my life so basely; though I think I never shall enjoy her, yet I'll preserve The honor of affection, and die for her, Make death a devil!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "What may be done? For now I feel compassion."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Let it not fall again, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Say, Emilia, If one of them were dead, as one must, are you Content to take th' other to your husband? I give consent. - Are you content too, princes? BOTH With all our souls."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "He that she refuses Must die then. BOTH Any death thou canst invent, duke."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "If she refuse me, yet my grave will wed me."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": ", to Emilia Make choice, then."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "I cannot, sir; they are both too excellent."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "What will become of 'em?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Thus I ordain it - you shall both to your country, And each within this month, appear again in this place, In which I'll plant a pyramid; and whether, Before us that are here, can force his cousin By fair and knightly strength to touch the pillar, He shall enjoy her; the other lose his head."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Yes. - Here, Cousin Arcite, I am friends again till that hour. He offers his hand."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I embrace you. They shake hands."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Are you content, sister?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Yes, I must, sir, Else both miscarry."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": ", to Palamon and Arcite Come, shake hands again, then, And take heed, as you are gentlemen, this quarrel Sleep till the hour prefixed, and hold your course."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "We dare not fail thee, Theseus. They shake hands again."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "When you return, who wins I'll settle here; Who loses, yet I'll weep upon his bier. They exit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Act IV",
+      "scenes": [
+        {
+          "title": "Scene 1",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Jailer and his Friend, the Doctor"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Heard you no more? Was nothing said of me Concerning the escape of Palamon? Good sir, remember!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FIRST COUNTRYMAN"
+              ],
+              "text": "Palamon has cleared you And got your pardon, and discovered how And by whose means he escaped, which was your daughter's, Whose pardon is procured too; and the prisoner, Not to be held ungrateful to her goodness, Has given a sum of money to her marriage - A large one, I'll assure you."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "You are a good man And ever bring good news. How was it ended?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SECOND COUNTRYMAN"
+              ],
+              "text": "Why, as it should be: they that ne'er begged But they prevailed had their suits fairly granted; The prisoners have their lives. But there be new conditions, which you'll hear of At better time."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "I hope they are good."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "They are honorable; How good they'll prove I know not. Enter Wooer."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Alas, sir, where's your daughter?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Why do you ask?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "O, sir, when did you see her?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": ", aside How he looks!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "This morning."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Was she well? Was she in health? Sir, when did she sleep?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": ", aside These are strange questions."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "I do not think she was very well - I asked her questions, and she answered me So far from what she was, so childishly, So sillily, as if she were a fool, An innocent, and I was very angry. But what of her, sir?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Nothing but my pity; But you must know it, and as good by me As by another that less loves her."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Well, sir?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "No, sir, not well."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FRIEND"
+              ],
+              "text": "Not well?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "'Tis too true; she is mad."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FRIEND"
+              ],
+              "text": "It cannot be."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Believe you'll find it so."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "The gods comfort her! Either this was her love to Palamon, Or fear of my miscarrying on his 'scape, Or both."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "'Tis likely."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "But why all this haste, sir?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "I'll tell you quickly. As I late was angling In the great lake that lies behind the palace, I heard a voice, a shrill one; Twas one that sung, and by the smallness of it A boy or woman. I laid me down And listened to the words she sung, for then, Through a small glade cut by the fishermen, I saw it was your daughter."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Pray go on, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "She sung much, but no sense; only I heard her Repeat this often: \"Palamon is gone, Is gone to th' wood to gather mulberries; I'll find him out tomorrow.\""
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FRIEND"
+              ],
+              "text": "Pretty soul!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "\"His shackles will betray him; he'll be taken, And what shall I do then?\" Then she talked of you, sir - That you must lose your head tomorrow morning, And she must gather flowers to bury you, And see the house made handsome. Then she sung Nothing but \"Willow, willow, willow,\" and between Ever was \"Palamon, fair Palamon.\" And then she wept, and sung again, and sighed, And with the same breath smiled and kissed her hand."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "FRIEND"
+              ],
+              "text": "Alas, what pity it is!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "I made in to her. She saw me, and straight sought the flood. I saved her And set her safe to land, when presently She slipped away. I left her with your brother, And hither came to tell you. Enter Jailer's Brother, Jailer's Daughter. Here they are."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": ", sings May you never more enjoy the light, etc. Is not this a fine song?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "BROTHER"
+              ],
+              "text": "O, a very fine one."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "I can sing twenty more."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "BROTHER"
+              ],
+              "text": "I think you can."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Are not you a tailor?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "BROTHER"
+              ],
+              "text": "Yes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Where's my wedding gown?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "BROTHER"
+              ],
+              "text": "I'll bring it tomorrow."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Do. Sings. O fair, O sweet, etc."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "BROTHER"
+              ],
+              "text": ", to Jailer You must e'en take it patiently."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "'Tis true."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Good e'en, good men. Pray, did you ever hear of one young Palamon?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Yes, wench, we know him."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Is 't not a fine young gentleman?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "'Tis, love."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "BROTHER"
+              ],
+              "text": ", aside to others By no mean cross her; she is then distempered far worse than now she shows."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": ", to Daughter Yes, he's a fine man."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "O , is he so? You have a sister."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Yes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "But she shall never have him - tell her so - All the young maids of our town are in love with him, but I laugh at 'em and let 'em all alone. Is 't not a wise course?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "This is strange."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "As ever you heard, but say nothing."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "No."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Women come from all parts of the dukedom to him; I'll warrant you, he had not so few last night as twenty to dispatch. He'll tickle 't up in two hours, if his hand be in."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": ", aside She's lost past all cure."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "BROTHER"
+              ],
+              "text": "Heaven forbid, man!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": ", to Jailer You are master of a ship?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Yes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Where's your compass?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Here."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Set it to th' north. And now direct your course to th' wood, where Palamon lies longing for me. Sings. When Cynthia with her borrowed light, etc. They exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 2",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Emilia alone, with two pictures"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "I'll choose, And end their strife. Two such young handsome men Shall never fall for me; Looks at one of the pictures. Good heaven, What a sweet face has Arcite! What an eye, Of what a fiery sparkle and quick sweetness, Has this young prince! Here Love himself sits smiling; A shining constellation. Looks at the other picture. Palamon Is but his foil, to him a mere dull shadow; He's swart and meager, of an eye as heavy As if he had lost his mother; a still temper, No stirring in him, no alacrity; Of all this sprightly sharpness not a smile. Yet these that we count errors may become him; Narcissus was a sad boy but a heavenly. O, who can find the bent of woman's fancy? And only beautiful, and these the eyes, These the bright lamps of beauty, that command And threaten love. Lie there, Arcite. She puts aside his picture. Thou art a changeling to him, I am sotted, Utterly lost. For if my brother but even now had asked me Whether I loved, I had run mad for Arcite. Now, if my sister, more for Palamon. Stand both together. What a mere child is Fancy, That, having two fair gods of equal sweetness, Cannot distinguish, but must cry for both. Enter Pirithous. How now, sir?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "From the noble duke, your brother, Madam, I bring you news: the knights are come."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "To end the quarrel?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Yes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Would I might end first! Enter Theseus, Hippolyta"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": ", Your two contending lovers are returned. Now, my fair sister, You must love one of them."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "I had rather both, So neither for my sake should fall untimely."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Lady, you shall see men fight now."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "I wish it, But not the cause, my lord. 'Tis pity love should be so tyrannous. - O, my soft-hearted sister, what think you? Weep not till they weep blood. Wench, it must be."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": ", to Emilia You have steeled 'em with your beauty. ( To Pirithous. ) Honored friend, To you I give the field; pray order it Fitting the persons that must use it."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Yes, sir."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Good friend, be royal."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "There shall want no bravery. All but Emilia exit."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Poor wench, go weep, for whosoever wins Loses a noble cousin for thy sins. She exits."
+            }
+          ]
+        },
+        {
+          "title": "Scene 3",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Jailer, Wooer, Doctor"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Her distraction is more at some time of the moon than at other some, is it not?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "She is continually in a harmless distemper, dreaming of another world, and a better; and what broken piece of matter soe'er she's about, the name Palamon lards it, that she farces ev'ry business withal, fits it to every question. Enter Jailer's Daughter. Look where she comes; you shall perceive her behavior. They stand aside."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "We maids that have our livers perished, cracked to pieces with love, we shall come there, and do nothing all day long but pick flowers with Proserpine . Then will I make Palamon a nosegay ; then let him mark me then."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Note her a little further."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Alas, 'tis a sore life they have i' th' other place - such burning, frying, boiling, hissing, howling, chatt'ring, cursing - O, they have shrewd measure, take heed! If one be mad, or hang or drown themselves, thither they go, Jupiter bless us."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "How her brains coins!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Lords and courtiers that have got maids with child, they are in this place. In troth, a very grievous punishment,"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "How she continues this fancy! 'Tis not an engraffed madness, but a most thick and profound melancholy."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "To hear there a proud lady and a proud city wife howl together - I were a beast an I'd call it good sport. Sings. I will be true, my stars, my fate, etc. Daughter exits."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "What think you of her, sir?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "I think she has a perturbed mind, which I cannot minister to."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Alas, what then?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Understand you she ever affected any man ere she beheld Palamon?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "I was once, sir, in great hope she had fixed her liking on this gentleman."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "I did think so, too, and would account I had a great penn'orth on 't to give half my state that both she and I, at this present, stood unfeignedly on the same terms. a small bunch of flowers, typically one that is sweet-scented Queen of the underworld, carried off by Pluto while gathering flowers."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Take upon you, young sir, her friend, the name of Palamon; say you come to eat with her, and to commune of love. This will catch her attention, for this her mind beats upon; Sing to her such green songs of love as she says Palamon hath sung in prison . Desire to eat with her, carve her, drink to her, and still among intermingle your petition of grace and acceptance into her favor. It is a falsehood she is in, which is with falsehoods to be combated. This may bring her to eat, to sleep, and reduce what's now out of square in her into their former law and regiment. Let us put it in execution and hasten the success, which doubt not will bring forth comfort. They exit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Act V",
+      "scenes": [
+        {
+          "title": "Scene 1",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Flourish. Enter Theseus, Pirithous, Hippolyta, . Three altars set up onstage"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Now let 'em enter and before the gods Tender their holy prayers. work in hand will honor The very powers that love 'em."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Sir, they enter. Flourish of cornets. Enter Palamon and Arcite."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "You valiant and strong-hearted enemies, Lay by your anger for an hour and, dove-like, Before the holy altars of your helpers, The all-feared gods, bow down your stubborn bodies. I'll leave you to your prayers."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Honor crown the worthiest! Theseus and his train exit."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "The glass is running now that cannot finish Till one of us expire."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "I am in labor To push your name, your ancient love, our kindred Out of my memory."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "You speak well. Before I turn, let me embrace thee, cousin. They embrace. This I shall never do again."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "One farewell."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Why, let it be so. Farewell, coz."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Farewell, sir. Palamon exits. True worshippers of Mars, go with me Before the god of our profession. There Require of him the hearts of lions and The breath of tigers, yea, the fierceness too, Yea, the speed also - to go on, I mean; Else wish we to be snails. You know my prize Must be dragged out of blood; force and great feat Must put my garland on, where she sticks, The queen of flowers. Our intercession, then, Must be to him that makes the camp a cistern Brimmed with the blood of men. Give me your aid, And bend your spirits towards him. He goes to Mars's altar, falls on His facebefore it, and then kneels. Give me, great Mars, Some token of thy pleasure. Here hefalls on his face as formerly, and there is heard clanging of armor, with a short thunder, as the burst of a battle, whereupon they all rise and bow to the altar. O, great corrector of enormous times, Shaker of o'er-rank states, I do take Thy signs auspiciously, and in thy name To my design march boldly. - Let us go. They exit. Enter Palamon, with the former observance."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "My stars must glister with new fire, or be Today extinct. Myargument is love, Which, if the goddess of it grant, she gives Victory too. To the goddess Venus Commend me myproceeding, and implore Her power unto myparty. Here he goes to Venus's altar, falls on his faces before it, and then kneel. Hail, sovereign queen of secrets, that hast the might Even with an eye-glance to choke Mars's drum And turn th' alarm to whispers; What godlike power Hast thou not power upon? Take to thy grace Me, thy vowed soldier, who do bear thy yoke As 'twere a wreath of roses, yet is heavier Than lead itself, stings more than nettles. O, then, most soft sweet goddess, Give me the victory of this question, which Is true love's merit, and bless me with a sign Of thy great pleasure. Here music is heard; doves are seen to flutter. They fall again upon their faces, then on their knees. I give thee thanks For this fair token, which being laid unto Mine innocent true heart, arms in assurance My body to this business. - Let us rise And bow before the goddess. They rise and bow. Time comes on. They exit. Still music of recorders. Enter Emilia in white, her hair about her shoulders, wearing a wheaten wreath; one in white holding up her train, her hair stuck with flowers; one before her carrying a silver hind, in which is conveyed incense and sweet odors, which being set upon the altar of Diana, her maids standing aloof, she sets fire to it. Then they curtsy and kneel."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "O sacred, shadowy, cold, and constant queen, Abandoner of revels, mute contemplative, Sweet, solitary, thy priest, Am humbled 'fore thine altar. Look on thy virgin, And, sacred silver mistress, lend thine ear to my petition, Seasoned with holy fear. I am bride-habited But maiden-hearted. A husband I have 'pointed, But do not know him. Out of two I should Choose one, and pray for his success, but I Am guiltless of election. Therefore, most modest queen, He of the two pretenders that best loves me And has the truest title in 't, let him Take off my wheaten garland, or else grant The file and quality I hold I may Continue in thy band. Here the hind vanishes under the altar, and in the place ascends a rose tree, having one rose upon it. See what our general of ebbs and flows Out from the bowels of her holy altar With sacred act advances: but one rose. If well inspired, this battle shall confound Both these brave knights, Here is heard a sudden twang of instruments, and the rose falls from the tree. The flower is fall'n. O mistress, Thou here dischargest me. I shall be gathered; I think so, but I know not thine own will. Unclasp thy mystery! - I hope she's pleased; Her signs were gracious. They curtsy and exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 2",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Doctor, Jailer, and Wooer in the habit of Palamon"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Has this advice I told you done any good upon her?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "O, very much. The maids that kept her company Have half-persuaded her that I am Palamon; Within this half-hour she came smiling to me, And asked me what I would eat, and when I would kiss her. I told her \"Presently,\""
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "'Twas well done"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Then she told me she would have me sing."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "You did so?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "No."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "'Twas very ill done, then. You should observe her ev'ry way."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Alas, I have no voice, sir, to confirm her that way."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "That's all one, if you make a noise. If she entreat again, do anything."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Ho there, doctor!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Yes, in the way of cure."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "But first, by your leave, I' th' way of honesty."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "That's but a niceness. Pray bring her in And let's see how she is."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "I will, and tell her Her Palamon stays for her. But, doctor, Methinks you are i' th' wrong still. Jailer exits."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Go, go. You fathers are fine fools. Enter Jailer, Daughter She comes; pray humor her. Wooer and Doctor stand aside."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": ", to Daughter Come, your love Palamon stays for you, child, And has done this long hour, to visit you."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "I thank him for his gentle patience. He's a kind gentleman, and I am much bound to him. Did you ne'er see the horse he gave me?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Yes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "How do you like him?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "He's a very fair one."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "You never saw him dance?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "No."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "I have, often. He dances very finely."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "That's fine indeed."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": ", aside What stuff she utters! Wooer and Doctor come forward."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Make curtsy; here your love comes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Pretty soul, How do you? Daughter curtsies. That's a fine maid; there's a curtsy!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Yours to command i' th' way of honesty. - How far is 't now to th' end o' th' world, my masters?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Why, a day's journey, wench."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": ", to Wooer Will you go with me?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "What shall we do there, wench?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Why, play at stool-ball. What is there else to do?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "I am content, If we shall keep our wedding there."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "'Tis true, For there, I will assure you, we shall find Some blind priest for the purpose, that will venture To marry us; for here they are nice and foolish. Besides, my father must be hanged tomorrow, And that would be a blot i' th' business. Are not you Palamon?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Do not you know me?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Yes, but you care not for me; I have nothing."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "That's all one; I will have you."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Will you surely?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": ", taking her hand Yes, by this fair hand, will I."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Is not this your cousin Arcite? She indicates Doctor."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Yes, sweetheart, And I am glad my cousin Palamon Has made so fair a choice."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "Do you think he'll have me?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Yes, without doubt."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": ", to Jailer Do you think so too?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Yes."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "We shall have many children. ( To Doctor. ) Lord, how you're grown! My Palamon, I hope, will grow too, finely, Now he's at liberty. Alas, poor chicken, He was kept down with hard meat and ill lodging,"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": ", aside to Doctor How do you like her?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "I'll warrant you, within these three or four days I'll make her right again. ( To Wooer. ) You must not from her, But still preserve her in this way."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "I will."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DOCTOR"
+              ],
+              "text": "Let's get her in."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "Come, sweet, we'll go to dinner And then we'll play at cards."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "And shall we kiss too?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "A hundred times."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "But you shall not hurt me."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "WOOER"
+              ],
+              "text": "I will not, sweet."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "DAUGHTER"
+              ],
+              "text": "If you do, love, I'll cry. They exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 3",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Flourish. Enter Theseus, Hippolyta, Emilia, Pirithous, and some Attendants"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "I'll no step further."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Will you lose this sight?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "I had rather see a wren hawk at a fly Than this decision; ev'ry blow that falls Threats a brave life; I will stay here. It is enough my hearing shall be punished With what shall happen"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": ", to Theseus Sir, my good lord, Your sister will no further."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "O, she must."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Pardon me. If I were there, I'd wink."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "You must go."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "In faith, I will not."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Why, the knights must kindle Their valor at your eye. Know, of this war You are the treasure."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Sir, pardon me. The title of a kingdom may be tried Out of itself."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Well, well, then; at your pleasure."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Farewell, sister. I am like to know your husband 'fore yourself Theseus, Hippolyta, Pirithous, and others, exit. Emilia remains, comparing again the pictures of Arcite and Palamon."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Arcite is gently visaged, yet his eye Is like an engine bent, or a sharp weapon In a soft sheath. Palamon Has a most menacing aspect; his brow Is graved, and seems to bury what it frowns on; Yet sometimes 'tis not so, but alters to The quality of his thoughts. Long time his eye Will dwell upon his object. Melancholy Becomes him nobly; so does Arcite's mirth; But Palamon's sadness is a kind of mirth, So mingled, as if mirth did make him sad And sadness merry. Cornets. Trumpets sound as to a charge. Hark how yon spurs to spirit do incite The princes to their proof! If I were by, I might do hurt, for they would glance their eyes Towards my seat, and in that motion might Omit a ward or forfeit an offense Which craved that very time. Cornets. A great cry and noise within crying \"À Palamon!\" It is much better I am not there. O, better never born Than minister to such harm! Enter Servant. What is the chance?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SERVANT"
+              ],
+              "text": "The cry's \"À Palamon.\""
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Then he has won. 'Twas ever likely. He looked all grace and success. I prithee run And tell me how it goes. Shout and cornets, crying \"À Palamon!\""
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SERVANT"
+              ],
+              "text": "Still \"Palamon.\""
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Run and inquire. Servant exits. Addressing Arcite's picture. Poor servant, thou hast lost. Upon my right side still I wore thy picture, Palamon's on the left. Another cry, and shout within, and cornets. This burst of clamor Is sure th' end o' th' combat. Enter Servant."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SERVANT"
+              ],
+              "text": "They said that Palamon had Arcite's body Within an inch o' th' pyramid, that the cry Was general \"À Palamon.\" But anon, Th' assistants made a brave redemption, and The two bold titlers at this instant are Hand to hand at it."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Were they metamorphosed Both into one. Cornets. Cry within, \"Arcite, Arcite.\" More exulting? \"Palamon\" still?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SERVANT"
+              ],
+              "text": "Nay, now the sound is \"Arcite.\""
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "I prithee lay attention to the cry; Set both thine ears to th' business. Cornets. A great shout, and cry \"Arcite, victory!\""
+            },
+            {
+              "type": "line",
+              "characters": [
+                "SERVANT"
+              ],
+              "text": "The cry is \"Arcite\" And \"Victory! Hark, Arcite, victory!\" The combat's consummation is proclaimed By the wind instruments."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Half-sights saw That Arcite was no babe. God's lid, his richness And costliness of spirit looked through him; I did think Good Palamon would miscarry, yet I knew not Why I did think so. Our reasons are not prophets When oft our fancies are. They are coming off. Alas, poor Palamon! Cornets. Enter Theseus, Hippolyta, Pirithous, Arcite as victor, and Attendants and others."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Fairest Emily, The gods by their divine arbitrament Have given you this knight; he is a good one As ever struck at head. - Give me your hands. Receive you her, you him. Be plighted with A love that grows as you decay."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Emily, To buy you I have lost what's dearest to me Save what is bought, and yet I purchase cheaply, As I do rate your value."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "O loved sister, He speaks now of as brave a knight as e'er Did spur a noble steed. Surely the gods Would have him die a bachelor, lest his race Should show i' th' world too godlike. - Wear the garland With joy that you have won. - For the subdued, Give them our present justice, since I know Their lives but pinch 'em. Let it here be done. The scene's not for our seeing. Go we hence Right joyful, with some sorrow. - Arm your prize; I know you will not lose her. - Emilia, I see one eye of yours conceives a tear, The which it will deliver."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "Is this winning? O all you heavenly powers, where is your mercy?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "HIPPOLYTA"
+              ],
+              "text": "Infinite pity That four such eyes should be so fixed on one That two must needs be blind for 't."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "So it is. Flourish. They exit."
+            }
+          ]
+        },
+        {
+          "title": "Scene 4",
+          "lines": [
+            {
+              "type": "direction",
+              "text": "Enter Guard with Palamon and pinioned; Jailer, and Executioner"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "There's many a man alive that hath outlived The love o' th' people. We expire, And not without men's pity. To live still, Have their good wishes. My dear kinsmen, Whose lives for this poor comfort are laid down, You have sold 'em too too cheap. To Jailer. Ah ha, my friend, my friend, Your gentle daughter gave me freedom once; You'll see 't done now forever. Pray, how does she? I heard she was not well; her kind of ill Gave me some sorrow."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "Sir, she's well restored, And to be married shortly."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "By my short life, I am most glad on 't. 'Tis the latest thing I shall be glad of; prithee, tell her so. Commend me to her, and to piece her portion, Tender her this. He gives his purse to Jailer."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "JAILER"
+              ],
+              "text": "The gods requite you and make her thankful!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Adieu, and let my life be now as short As my leave-taking. Lays his head on the block. A great noise within crying \"Run!\" \"Save!\" \"Hold!\" Enter in haste a Messenger."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "MESSENGER"
+              ],
+              "text": "Hold, hold! O, hold, hold, hold! Enter Pirithous in haste."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Hold, ho! It is a cursèd haste you made If you have done so quickly! - Noble Palamon, The gods will show their glory in a life That thou art yet to lead."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "How do things fare?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "Arise, great sir, and give the tidings ear That are most dearly sweet and bitter."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": ", rising What Hath waked me from my dream?"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PIRITHOUS"
+              ],
+              "text": "List then: your cousin, Mounted upon a steed that Emily Did first bestow on him–on this horse is Arcite Trotting the stones of Athens. As he thus went counting The flinty pavement, dancing, as 'twere, to th' music His own hooves made darted a spark, the hot horse, hot as fire, Took toy at this and fell to what disorder His power could give his will; on his hind hoofs On end he stands That Arcite's legs, being higher than his head, Seemed with strange art to hang. His victor's wreath Even then fell off his head, and presently Backward the jade comes o'er, and his full poise Becomes the rider's load. Yet is he living But such a vessel 'tis that floats but for The surge that next approaches. He much desires To have some speech with you. Lo, he appears. Enter Theseus, Hippolyta, Emilia, and Arcite carried in a chair."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "O, miserable end of our alliance! The gods are mighty, Arcite. If thy heart, Thy worthy, manly heart, be yet unbroken, Give me thy last words. I am Palamon, One that yet loves thee dying."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "ARCITE"
+              ],
+              "text": "Take Emilia And with her all the world's joy. Reach thy hand; Farewell. I have told my last hour. I was false, Yet never treacherous. Forgive me, cousin. One kiss from fair Emilia. She kisses him. 'Tis done. Take her. I die. He dies."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "Thy brave soul seek Elysium!"
+            },
+            {
+              "type": "line",
+              "characters": [
+                "EMILIA"
+              ],
+              "text": "I'll close thine eyes, prince. Blessed souls be with thee! Thou art a right good man, and while I live, This day I give to tears."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "And I to honor."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "In this place first you fought; e'en very here I sundered you. Acknowledge to the gods Our thanks that you are living. So the deities Have showed due justice. - Bear this hence."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "PALAMON"
+              ],
+              "text": "O cousin, That we should things desire which do cost us The loss of our desire, that naught could buy Dear love but loss of dear love. Arcite's body is carried out."
+            },
+            {
+              "type": "line",
+              "characters": [
+                "THESEUS"
+              ],
+              "text": "Never Fortune Did play a subtler game. The conquered triumphs; The victor has the loss; yet in the passage The gods have been most equal. - Palamon, Your kinsman hath confessed the right o' th' lady Did lie in you, for you first saw her and Even then proclaimed your fancy. Lead your lady off, And call your lovers from the stage of death, Whom I adopt my friends. A day or two Let us look sadly, and give grace unto The funeral of Arcite, in whose end The visages of bridegrooms we'll put on And smile with Palamon. O you heavenly charmers, What things you make of us! For what we lack We laugh, for what we have are sorry, still Are children in some kind. Let's go off And bear us like the time. Flourish. They exit."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

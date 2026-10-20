@@ -68,16 +68,10 @@ import EmptyState from '../../../components/EmptyState.astro';
 </AppLayout>
 
 <script>
-  import { getActiveScript, type ScriptLine } from '../../../scripts/script-store';
+  import { getActiveScript } from '../../../scripts/script-store';
   import { getLineProgress, setLineProgress } from '../../../scripts/progress';
+  import { getPracticeLines } from '../../../scripts/practice';
   import { showToast } from '../../../scripts/toasts';
-
-  interface PracticeLine {
-    line: ScriptLine;
-    actIndex: number;
-    sceneIndex: number;
-    lineIndex: number;
-  }
 
   const emptySection = document.querySelector('.type-empty-section');
   const typeContent = document.querySelector('[data-type-content]');
@@ -106,22 +100,6 @@ import EmptyState from '../../../components/EmptyState.astro';
       checkAnswer();
     }
   });
-
-  function getPracticeLines(activeScript: NonNullable<typeof script>): PracticeLine[] {
-    const lines: PracticeLine[] = [];
-
-    for (const [actIndex, act] of (activeScript.acts || []).entries()) {
-      for (const [sceneIndex, scene] of (act.scenes || []).entries()) {
-        for (const [lineIndex, line] of (scene.lines || []).entries()) {
-          if (line.type === 'line' && line.text?.trim()) {
-            lines.push({ line, actIndex, sceneIndex, lineIndex });
-          }
-        }
-      }
-    }
-
-    return lines;
-  }
 
   function findNextLine(startIndex: number): number {
     for (let index = startIndex; index < practiceLines.length; index += 1) {
@@ -343,6 +321,8 @@ import EmptyState from '../../../components/EmptyState.astro';
   }
 
   function linesMatch(typedText: string, expectedText: string): boolean {
+    const wordMatchThreshold = 0.85;
+    const characterMatchThreshold = 0.9;
     const typed = normalize(typedText);
     const expected = normalize(expectedText);
 
@@ -350,11 +330,11 @@ import EmptyState from '../../../components/EmptyState.astro';
       return true;
     }
 
-    if (getWordMatchScore(typedText, expectedText) >= 0.9) {
+    if (getWordMatchScore(typedText, expectedText) >= wordMatchThreshold) {
       return true;
     }
 
-    return getCharacterSimilarity(typedText, expectedText) >= 0.95;
+    return getCharacterSimilarity(typedText, expectedText) >= characterMatchThreshold;
   }
 
   function setText(selector: string, value: string): void {

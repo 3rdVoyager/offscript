@@ -3,6 +3,7 @@ import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
 import TabBar from '../../../components/TabBar.astro';
 import EmptyState from '../../../components/EmptyState.astro';
+import '../../../styles/settings.css';
 
 const tabs = [
   { label: 'Practice settings', href: '/app/manage/settings/' },
@@ -20,13 +21,180 @@ const tabs = [
     <TabBar tabs={tabs} />
   </AppSection>
 
-  <AppSection ariaLabelledby="practice-heading">
+  <AppSection class="practice-settings-empty-section" ariaLabel="Practice settings empty state">
     <AppSection variant="card">
       <EmptyState
-        title="No practice settings yet"
-        description="Practice options will become available after you add and select a script."
+        title="No script selected"
+        description="Select a script to configure character and scene practice."
+        actionLabel="Choose a script"
+        actionHref="/app/manage/scripts/"
       />
     </AppSection>
   </AppSection>
 
+  <div class="practice-settings-content" data-practice-settings hidden>
+    <AppSection variant="card" ariaLabel="Active script practice settings">
+      <p class="settings-label">Practice settings for</p>
+      <h2 data-settings-script-title></h2>
+      <p class="settings-note">Choose which characters and scenes should appear in practice tools.</p>
+    </AppSection>
+
+    <AppSection variant="card" ariaLabel="Practice character selection">
+      <div class="settings-section-heading">
+        <div>
+          <h2>Characters</h2>
+          <p class="settings-note">Only selected characters will be included in practice.</p>
+        </div>
+        <div class="settings-selection-actions">
+          <button type="button" class="button-secondary" data-select-characters>
+            Select all
+          </button>
+          <button type="button" class="button-ghost" data-clear-characters>Clear</button>
+        </div>
+      </div>
+      <div class="settings-options" data-character-options></div>
+    </AppSection>
+
+    <AppSection variant="card" ariaLabel="Practice scene selection">
+      <div class="settings-section-heading">
+        <div>
+          <h2>Scenes</h2>
+          <p class="settings-note">Only selected scenes will be included in practice.</p>
+        </div>
+        <div class="settings-selection-actions">
+          <button type="button" class="button-secondary" data-select-scenes>
+            Select all
+          </button>
+          <button type="button" class="button-ghost" data-clear-scenes>Clear</button>
+        </div>
+      </div>
+      <div class="settings-options" data-scene-options></div>
+    </AppSection>
+  </div>
+
 </AppLayout>
+
+<script>
+  import { getActiveScript } from '../../../scripts/script-store';
+  import {
+    getPracticeOptions,
+    getPracticeSettings,
+    savePracticeSettings,
+    type PracticeSettings,
+  } from '../../../scripts/practice-settings';
+  import { showToast } from '../../../scripts/toasts';
+
+  const emptySection = document.querySelector('.practice-settings-empty-section');
+  const settingsContent = document.querySelector('[data-practice-settings]');
+  const script = getActiveScript();
+
+  if (script && emptySection instanceof HTMLElement && settingsContent instanceof HTMLElement) {
+    emptySection.hidden = true;
+    settingsContent.hidden = false;
+    renderSettings(script);
+  }
+
+  function renderSettings(activeScript: NonNullable<typeof script>): void {
+    const options = getPracticeOptions(activeScript);
+    const settings = getPracticeSettings(activeScript);
+    setText('[data-settings-script-title]', activeScript.title || 'Untitled script');
+
+    const characterOptions = document.querySelector('[data-character-options]');
+    if (characterOptions) {
+      characterOptions.replaceChildren(
+        ...options.characters.map((character) =>
+          createOption(
+            'character',
+            character.name,
+            `${character.name} · ${character.lines} lines`,
+            settings.characters.includes(character.name),
+          ),
+        ),
+      );
+    }
+
+    const sceneOptions = document.querySelector('[data-scene-options]');
+    if (sceneOptions) {
+      sceneOptions.replaceChildren(
+        ...options.scenes.map((scene) =>
+          createOption(
+            'scene',
+            scene.key,
+            `${scene.actTitle} · ${scene.label} · ${scene.lines} lines`,
+            settings.scenes.includes(scene.key),
+          ),
+        ),
+      );
+    }
+
+    document.querySelectorAll('[data-practice-option]').forEach((option) => {
+      option.addEventListener('change', saveCurrentSettings);
+    });
+    document.querySelector('[data-select-characters]')?.addEventListener('click', () =>
+      setAllOptions('character', true),
+    );
+    document.querySelector('[data-clear-characters]')?.addEventListener('click', () =>
+      setAllOptions('character', false),
+    );
+    document.querySelector('[data-select-scenes]')?.addEventListener('click', () =>
+      setAllOptions('scene', true),
+    );
+    document.querySelector('[data-clear-scenes]')?.addEventListener('click', () =>
+      setAllOptions('scene', false),
+    );
+  }
+
+  function createOption(
+    type: 'character' | 'scene',
+    value: string,
+    label: string,
+    checked: boolean,
+  ): HTMLElement {
+    const wrapper = document.createElement('label');
+    wrapper.className = 'settings-option';
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.value = value;
+    input.checked = checked;
+    input.dataset.practiceOption = type;
+    const text = document.createElement('span');
+    text.textContent = label;
+    wrapper.append(input, text);
+    return wrapper;
+  }
+
+  function setAllOptions(type: 'character' | 'scene', checked: boolean): void {
+    document
+      .querySelectorAll<HTMLInputElement>(`[data-practice-option="${type}"]`)
+      .forEach((input) => {
+        input.checked = checked;
+      });
+    saveCurrentSettings();
+  }
+
+  function saveCurrentSettings(): void {
+    if (!script) {
+      return;
+    }
+
+    const settings: PracticeSettings = {
+      characters: readCheckedOptions('character'),
+      scenes: readCheckedOptions('scene'),
+    };
+    savePracticeSettings(script.id, settings);
+    showToast('Practice settings saved.');
+  }
+
+  function readCheckedOptions(type: 'character' | 'scene'): string[] {
+    return [...document.querySelectorAll<HTMLInputElement>(
+      `[data-practice-option="${type}"]:checked`,
+    )].map((input) => input.value);
+  }
+
+  function setText(selector: string, value: string): void {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.textContent = value;
+    }
+  }
+</script>

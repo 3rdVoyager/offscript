@@ -2,3 +2,80 @@
   max-width: 38rem;
   color: var(--app-muted);
 }
+
+.practice-settings-content {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.practice-settings-content[hidden] {
+  display: none;
+}
+
+.settings-label {
+  margin-bottom: 0.25rem;
+  color: var(--app-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.practice-settings-content h2 {
+  margin-bottom: var(--space-1);
+  color: var(--app-text);
+}
+
+.practice-settings-content .settings-note:last-child {
+  margin-bottom: 0;
+}
+
+.settings-section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.settings-selection-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.settings-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--space-2);
+}
+
+.settings-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 3rem;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-small);
+  color: var(--app-text);
+  background: var(--app-surface-raised);
+  cursor: pointer;
+}
+
+.settings-option:has(input:checked) {
+  border-color: var(--gold-dark);
+}
+
+.settings-option input {
+  accent-color: var(--gold);
+}
+
+@media (max-width: 700px) {
+  .settings-section-heading {
+    display: block;
+  }
+
+  .settings-selection-actions {
+    margin-top: var(--space-3);
+  }
+}

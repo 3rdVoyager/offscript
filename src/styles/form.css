@@ -1,0 +1,151 @@
+.app-form {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 48rem;
+}
+
+.app-form label,
+.app-form legend {
+  font-weight: 600;
+}
+
+.app-form input,
+.app-form textarea,
+.app-form select {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-small);
+  background: var(--app-background);
+  color: var(--app-text);
+  font: inherit;
+}
+
+.app-form textarea {
+  min-height: 10rem;
+  resize: vertical;
+}
+
+.app-form input:focus-visible,
+.app-form textarea:focus-visible,
+.app-form select:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.app-form fieldset {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0;
+  border: 0;
+}
+
+.app-form fieldset label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 400;
+}
+
+.app-form fieldset input {
+  width: auto;
+}
+
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.add-script-form {
+  width: 100%;
+  max-width: none;
+}
+
+.script-import-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.script-import-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: 17rem;
+  padding: var(--space-4);
+  border: 2px dashed var(--app-border);
+  border-radius: var(--radius-card);
+  background: var(--app-surface-raised);
+  color: var(--app-muted);
+  text-align: center;
+  transition:
+    border-color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+.script-import-box:first-child {
+  cursor: pointer;
+}
+
+.script-import-box:nth-child(2) {
+  border-style: solid;
+}
+
+.script-import-box:hover {
+  border-color: var(--gold);
+  background: var(--app-surface);
+}
+
+.script-import-box:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgb(233 185 85 / 20%);
+}
+
+.script-import-icon {
+  color: var(--gold);
+  font-size: 2.5rem;
+}
+
+.script-import-box-title {
+  color: var(--app-text);
+  font-size: 1.1rem;
+}
+
+.script-import-box input[type='file'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.script-import-file-name {
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--app-muted);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.script-import-box textarea {
+  align-self: stretch;
+  min-height: 7rem;
+  margin-top: var(--space-2);
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  .script-import-options {
+    grid-template-columns: 1fr;
+  }
+}

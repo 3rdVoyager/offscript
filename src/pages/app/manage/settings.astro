@@ -2,6 +2,7 @@
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
 import TabBar from '../../../components/TabBar.astro';
+import Form from '../../../components/Form.astro';
 
 const tabs = [
   { label: 'Practice settings', href: '/app/manage/settings/' },
@@ -22,14 +23,14 @@ const tabs = [
   <AppSection ariaLabelledby="practice-heading">
     <h2 id="practice-heading">Practice settings</h2>
     <AppSection variant="card">
-      <form class="app-form">
+      <Form class="app-form">
         <fieldset>
           <legend>Practice with</legend>
           <label><input type="checkbox" name="characters" /> Characters</label>
           <label><input type="checkbox" name="scenes" /> Scenes</label>
         </fieldset>
         <p class="settings-note">Practice options will become available after a script is saved.</p>
-      </form>
+      </Form>
     </AppSection>
   </AppSection>
 

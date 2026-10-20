@@ -1,15 +1,96 @@
-.button {
-    display: inline-block;
-    padding: 0.75rem 1.25rem;
-    border-radius: var(--radius-small);
-    background: var(--gold);
-    color: var(--navy);
-    font-weight: 700;
-    text-decoration: none;
-    transition: background-color 0.2s ease-in-out;
+.button,
+.button-primary,
+.button-secondary,
+.button-ghost,
+.button-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: 2.75rem;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+}
+
+.button,
+.button-primary {
+  background: var(--gold);
+  color: var(--navy);
 }
 
 .button:hover,
-.button:focus-visible {
-    background: var(--gold-dark);
+.button:focus-visible,
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--gold-dark);
+  color: var(--navy-dark);
+  transform: translateY(-1px);
+}
+
+.button-secondary {
+  border-color: var(--app-border);
+  background: var(--app-surface);
+  color: var(--app-text);
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  border-color: var(--gold);
+  background: var(--app-surface-raised);
+  color: var(--app-text);
+}
+
+.button-ghost {
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--text);
+}
+
+.button-ghost:hover,
+.button-ghost:focus-visible {
+  border-color: var(--gold);
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.button-danger {
+  background: var(--red);
+  color: var(--text-on-dark);
+}
+
+.button-danger:hover,
+.button-danger:focus-visible {
+  background: var(--red-dark);
+  color: var(--text-on-dark);
+}
+
+.button:focus-visible,
+.button-primary:focus-visible,
+.button-secondary:focus-visible,
+.button-ghost:focus-visible,
+.button-danger:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.button:disabled,
+.button-primary:disabled,
+.button-secondary:disabled,
+.button-ghost:disabled,
+.button-danger:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
 }

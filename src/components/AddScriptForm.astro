@@ -1,0 +1,150 @@
+---
+import Form from './Form.astro';
+---
+
+<Form id="add-script-form" class="app-form add-script-form" ariaLabel="Add script">
+  <div class="script-import-options">
+    <label class="script-import-box">
+      <span class="material-icons script-import-icon" aria-hidden="true">upload_file</span>
+      <strong class="script-import-box-title">Upload a JSON file</strong>
+      <span class="script-import-file-name" data-file-name>Click to upload a JSON file.</span>
+      <input type="file" name="script-file" accept=".json,application/json" />
+    </label>
+
+    <label class="script-import-box">
+      <span class="material-icons script-import-icon" aria-hidden="true">edit_note</span>
+      <strong class="script-import-box-title">Paste script JSON</strong>
+      <span>Copy and paste your converted script data below.</span>
+      <textarea
+        name="script-json"
+        placeholder="Paste the JSON for your script here."
+      ></textarea>
+    </label>
+  </div>
+
+  <div class="app-actions">
+    <button type="submit" class="button">Add script</button>
+  </div>
+
+  <p data-import-status role="status" aria-live="polite"></p>
+</Form>
+
+<script>
+  const form = document.querySelector('#add-script-form');
+
+  if (form instanceof HTMLFormElement) {
+    const fileInput = form.elements.namedItem('script-file');
+    const jsonInput = form.elements.namedItem('script-json');
+    const status = form.querySelector('[data-import-status]');
+    const fileName = form.querySelector('[data-file-name]');
+
+    if (fileInput instanceof HTMLInputElement) {
+      fileInput.addEventListener('change', () => {
+        if (fileName) {
+          fileName.textContent = fileInput.files?.[0]?.name ||
+            'Click to upload a JSON file.';
+        }
+      });
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!(fileInput instanceof HTMLInputElement) ||
+          !(jsonInput instanceof HTMLTextAreaElement)) {
+        return;
+      }
+
+      const file = fileInput.files?.[0];
+      const pastedJson = jsonInput.value.trim();
+
+      try {
+        const source = file ? await file.text() : pastedJson;
+        const script = JSON.parse(source);
+        const validationError = validateScript(script);
+
+        if (validationError) {
+          setStatus(validationError);
+          return;
+        }
+
+        saveScript(script);
+        form.reset();
+        if (fileName) {
+          fileName.textContent = 'Click to upload a JSON file.';
+        }
+        setStatus(`"${script.title.trim()}" was added.`);
+      } catch {
+        setStatus('Choose a valid JSON file or paste valid script JSON.');
+      }
+    });
+
+    function setStatus(message: string): void {
+      if (status) {
+        status.textContent = message;
+      }
+    }
+
+    function validateScript(script: any): string | null {
+      if (!script || typeof script !== 'object') {
+        return 'The script must be a JSON object.';
+      }
+
+      if (script.schemaVersion !== 1 || script.type !== 'play') {
+        return 'The script must use schema version 1 and type "play".';
+      }
+
+      if (typeof script.title !== 'string' || !script.title.trim()) {
+        return 'The script needs a title.';
+      }
+
+      if (!Array.isArray(script.acts) || script.acts.length === 0) {
+        return 'The script needs at least one act.';
+      }
+
+      for (const act of script.acts) {
+        if (!act || typeof act.title !== 'string' || !Array.isArray(act.scenes)) {
+          return 'Each act needs a title and scenes.';
+        }
+
+        for (const scene of act.scenes) {
+          if (!scene || typeof scene.title !== 'string' || !Array.isArray(scene.lines)) {
+            return 'Each scene needs a title and lines.';
+          }
+
+          for (const line of scene.lines) {
+            if (!line || !['line', 'direction'].includes(line.type) ||
+                typeof line.text !== 'string') {
+              return 'Each line needs a valid type and text.';
+            }
+
+            if (line.type === 'line' &&
+                (!Array.isArray(line.characters) || line.characters.length === 0)) {
+              return 'Each spoken line needs at least one character.';
+            }
+          }
+        }
+      }
+
+      return null;
+    }
+
+    function saveScript(script: any): void {
+      const stored = JSON.parse(
+        localStorage.getItem('offscript-scripts') ||
+          '{"activeScriptId":null,"scripts":[]}'
+      );
+      const { id: _uploadedId, ...scriptWithoutId } = script;
+      const id = crypto.randomUUID();
+      const normalizedScript = {
+        ...scriptWithoutId,
+        id,
+        title: script.title.trim(),
+      };
+
+      stored.scripts.push(normalizedScript);
+      stored.activeScriptId = id;
+      localStorage.setItem('offscript-scripts', JSON.stringify(stored));
+    }
+  }
+</script>

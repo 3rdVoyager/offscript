@@ -1,0 +1,32 @@
+---
+import '../styles/form.css';
+
+interface Props {
+  id?: string;
+  action?: string;
+  method?: 'get' | 'post';
+  class?: string;
+  ariaLabel?: string;
+  ariaDescribedby?: string;
+}
+
+const {
+  id,
+  action,
+  method = 'get',
+  class: className,
+  ariaLabel,
+  ariaDescribedby,
+} = Astro.props;
+---
+
+<form
+  id={id}
+  action={action}
+  method={method}
+  class={className}
+  aria-label={ariaLabel}
+  aria-describedby={ariaDescribedby}
+>
+  <slot />
+</form>

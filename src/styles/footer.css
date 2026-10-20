@@ -8,10 +8,6 @@
   color: var(--text-on-dark);
 }
 
-.site-footer-brand {
-  font-weight: 700;
-}
-
 .site-footer-copy {
   color: var(--muted-on-dark);
 }

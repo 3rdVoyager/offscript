@@ -4,6 +4,37 @@ import '../styles/icons.css';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (path: string) => currentPath === path;
+
+const dashboard = {
+  label: 'Dashboard',
+  href: '/app/',
+  icon: 'home',
+};
+
+const sections = [
+  {
+    label: 'Script',
+    links: [
+      { label: 'Overview', href: '/app/script/overview/', icon: 'book' },
+      { label: 'View', href: '/app/script/view/', icon: 'description' },
+      { label: 'Progress', href: '/app/script/progress/', icon: 'trending_up' },
+    ],
+  },
+  {
+    label: 'Practice',
+    links: [
+      { label: 'Type', href: '/app/practice/type/', icon: 'keyboard' },
+    ],
+  },
+  {
+    label: 'Manage',
+    className: 'app-sidebar-bottom',
+    links: [
+      { label: 'Scripts', href: '/app/manage/scripts/', icon: 'library_books' },
+      { label: 'Settings', href: '/app/manage/settings/', icon: 'settings' },
+    ],
+  },
+];
 ---
 
 <aside class="app-sidebar">
@@ -20,69 +51,35 @@ const isCurrent = (path: string) => currentPath === path;
   <nav class="app-sidebar-nav">
     <ul>
       <li>
-        <a href="/app/" aria-current={isCurrent('/app') ? 'page' : undefined}>
-          <span class="material-icons nav-link-icon" aria-hidden="true">home</span>
-          <span class="nav-link-label">Dashboard</span>
-        </a>
-      </li>
-    </ul>
-
-    <p class="app-sidebar-section-label">Script</p>
-
-    <ul>
-      <li>
-        <a href="/app/script/overview/" aria-current={isCurrent('/app/script/overview') ? 'page' : undefined}>
-          <span class="material-icons nav-link-icon" aria-hidden="true">book</span>
-          <span class="nav-link-label">Overview</span>
-        </a>
-      </li>
-      <li>
-        <a href="/app/script/view/" aria-current={isCurrent('/app/script/view') ? 'page' : undefined}>
-          <span class="material-icons nav-link-icon" aria-hidden="true">description</span>
-          <span class="nav-link-label">View</span>
-        </a>
-      </li>
-      <li>
-        <a href="/app/script/progress/" aria-current={isCurrent('/app/script/progress') ? 'page' : undefined}>
-          <span class="material-icons nav-link-icon" aria-hidden="true">trending_up</span>
-          <span class="nav-link-label">Progress</span>
+        <a href={dashboard.href} aria-current={isCurrent('/app') ? 'page' : undefined}>
+          <span class="material-icons nav-link-icon" aria-hidden="true">{dashboard.icon}</span>
+          <span class="nav-link-label">{dashboard.label}</span>
         </a>
       </li>
     </ul>
   </nav>
 
-  <nav class="app-sidebar-nav" aria-label="Practice">
-    <p class="app-sidebar-section-label">Practice</p>
-
-    <ul>
-      <li>
-        <a
-          href="/app/practice/type/"
-          aria-current={isCurrent('/app/practice/type') ? 'page' : undefined}
-        >
-          <span class="material-icons nav-link-icon" aria-hidden="true">keyboard</span>
-          <span class="nav-link-label">Type</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <nav class="app-sidebar-nav app-sidebar-bottom" aria-label="Manage">
-    <p class="app-sidebar-section-label">Manage</p>
-
-    <ul>
-      <li>
-        <a href="/app/manage/scripts/" aria-current={isCurrent('/app/manage/scripts') ? 'page' : undefined}>
-          <span class="material-icons nav-link-icon" aria-hidden="true">library_books</span>
-          <span class="nav-link-label">Scripts</span>
-        </a>
-      </li>
-      <li>
-        <a href="/app/manage/settings/" aria-current={isCurrent('/app/manage/settings') ? 'page' : undefined}>
-          <span class="material-icons nav-link-icon" aria-hidden="true">settings</span>
-          <span class="nav-link-label">Settings</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+  {
+    sections.map((section) => (
+      <nav
+        class:list={['app-sidebar-nav', section.className]}
+        aria-label={section.label}
+      >
+        <p class="app-sidebar-section-label">{section.label}</p>
+        <ul>
+          {section.links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={isCurrent(link.href.replace(/\/$/, '')) ? 'page' : undefined}
+              >
+                <span class="material-icons nav-link-icon" aria-hidden="true">{link.icon}</span>
+                <span class="nav-link-label">{link.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    ))
+  }
 </aside>

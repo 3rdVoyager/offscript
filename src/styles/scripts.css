@@ -54,8 +54,3 @@
 .script-card.is-active .script-card-selection {
   color: var(--gold-light);
 }
-
-.scripts-status {
-  margin: var(--space-3) 0 0;
-  color: var(--app-muted);
-}

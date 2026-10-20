@@ -37,12 +37,12 @@ const tabs = [
     hidden
   >
     <div class="scripts-grid" data-scripts-grid></div>
-    <p class="scripts-status" data-scripts-status role="status" aria-live="polite"></p>
   </AppSection>
 </AppLayout>
 
 <script>
   import { getScriptStore, setActiveScript } from '../../../scripts/script-store';
+  import { showToast } from '../../../scripts/toasts';
 
   const emptyState = document.querySelector('[data-empty-state]');
   const emptySection = document.querySelector('.scripts-empty-section');
@@ -151,11 +151,8 @@ const tabs = [
       }
     });
 
-    const status = document.querySelector('[data-scripts-status]');
-    if (status) {
-      const selected = store.scripts.find((script) => script.id === scriptId);
-      status.textContent = `"${selected?.title || 'Script'}" is now selected.`;
-    }
+    const selected = store.scripts.find((script) => script.id === scriptId);
+    showToast(`"${selected?.title || 'Script'}" is now selected.`);
   }
 
   function countScenes(script: any): number {

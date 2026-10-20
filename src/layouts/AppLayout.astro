@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import AppSidebar from '../components/AppSidebar.astro';
+import Toasts from '../components/Toasts.astro';
 import '../styles/app.css';
 
 const { pageTitle } = Astro.props;
@@ -12,5 +13,6 @@ const { pageTitle } = Astro.props;
     <main class="app-main">
       <slot />
     </main>
+    <Toasts />
   </div>
 </BaseLayout>

@@ -26,18 +26,17 @@ import Form from './Form.astro';
     <button type="submit" class="button">Add script</button>
   </div>
 
-  <p data-import-status role="status" aria-live="polite"></p>
 </Form>
 
 <script>
   import { addScript } from '../scripts/script-store';
+  import { showToast, type ToastVariant } from '../scripts/toasts';
 
   const form = document.querySelector('#add-script-form');
 
   if (form instanceof HTMLFormElement) {
     const fileInput = form.elements.namedItem('script-file');
     const jsonInput = form.elements.namedItem('script-json');
-    const status = form.querySelector('[data-import-status]');
     const fileName = form.querySelector('[data-file-name]');
 
     if (fileInput instanceof HTMLInputElement) {
@@ -75,7 +74,7 @@ import Form from './Form.astro';
         jsonInput.value = JSON.stringify(script, null, 2);
         setStatus('Example loaded. Review it, then add the script.');
       } catch {
-        setStatus('Could not load that example script.');
+        setStatus('Could not load that example script.', 'error');
       }
     }
 
@@ -96,7 +95,7 @@ import Form from './Form.astro';
         const validationError = validateScript(script);
 
         if (validationError) {
-          setStatus(validationError);
+          setStatus(validationError, 'error');
           return;
         }
 
@@ -105,16 +104,21 @@ import Form from './Form.astro';
         if (fileName) {
           fileName.textContent = 'Click to upload a JSON file.';
         }
+        sessionStorage.setItem(
+          'offscript-pending-toast',
+          JSON.stringify({
+            message: `"${script.title.trim()}" was added.`,
+            variant: 'success',
+          }),
+        );
         window.location.assign('/app/manage/scripts/');
       } catch {
-        setStatus('Choose a valid JSON file or paste valid script JSON.');
+        setStatus('Choose a valid JSON file or paste valid script JSON.', 'error');
       }
     });
 
-    function setStatus(message: string): void {
-      if (status) {
-        status.textContent = message;
-      }
+    function setStatus(message: string, variant: ToastVariant = 'success'): void {
+      showToast(message, variant);
     }
 
     function validateScript(script: any): string | null {

@@ -1,0 +1,23 @@
+---
+import '../styles/toasts.css';
+---
+
+<div class="toasts" data-toasts aria-live="polite" aria-atomic="false"></div>
+
+<script>
+  import { showToast } from '../scripts/toasts';
+
+  const pendingToast = sessionStorage.getItem('offscript-pending-toast');
+  if (pendingToast) {
+    sessionStorage.removeItem('offscript-pending-toast');
+
+    try {
+      const toast = JSON.parse(pendingToast);
+      if (typeof toast.message === 'string') {
+        showToast(toast.message, toast.variant === 'error' ? 'error' : 'success');
+      }
+    } catch {
+      // Ignore malformed pending notifications.
+    }
+  }
+</script>

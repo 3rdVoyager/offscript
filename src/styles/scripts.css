@@ -1,0 +1,7 @@
+.scripts-empty h3 {
+  margin-bottom: var(--space-2);
+}
+
+.scripts-empty .button {
+  margin-top: var(--space-3);
+}

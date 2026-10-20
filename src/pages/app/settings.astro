@@ -1,0 +1,52 @@
+---
+import AppLayout from '../../layouts/AppLayout.astro';
+import '../../styles/settings.css';
+---
+
+<AppLayout pageTitle="Settings">
+  <header class="app-page-header">
+    <h1>Settings</h1>
+    <p>Choose your script and practice options for the active script.</p>
+  </header>
+
+  <section class="app-section" aria-labelledby="script-heading">
+    <h2 id="script-heading">Script</h2>
+    <form class="app-panel app-form">
+      <label>
+        Script title
+        <input type="text" name="script-title" placeholder="My script" />
+      </label>
+
+      <label>
+        Paste your script
+        <textarea
+          name="script-content"
+          placeholder="Paste your script or study material here."
+        ></textarea>
+      </label>
+
+      <div class="app-actions">
+        <button type="button" class="button">Save script</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="app-section" aria-labelledby="practice-heading">
+    <h2 id="practice-heading">Practice settings</h2>
+    <div class="app-panel app-form">
+      <fieldset>
+        <legend>Practice with</legend>
+        <label><input type="checkbox" name="characters" /> Characters</label>
+        <label><input type="checkbox" name="scenes" /> Scenes</label>
+      </fieldset>
+      <p class="settings-note">Practice options will become available after a script is saved.</p>
+    </div>
+  </section>
+
+  <section class="app-section" aria-labelledby="app-settings-heading">
+    <h2 id="app-settings-heading">App settings</h2>
+    <div class="app-panel">
+      <p class="settings-note">More app preferences will be added here.</p>
+    </div>
+  </section>
+</AppLayout>

@@ -1,6 +1,9 @@
 ---
 import '../styles/app-sidebar.css';
 import '../styles/icons.css';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (path) => currentPath === path;
 ---
 
 <aside class="app-sidebar">
@@ -12,19 +15,19 @@ import '../styles/icons.css';
   <nav class="app-sidebar-nav">
     <ul>
       <li>
-        <a href="/app/" aria-current="page">
+        <a href="/app/" aria-current={isCurrent('/app') ? 'page' : undefined}>
           <span class="material-icons nav-link-icon" aria-hidden="true">home</span>
           <span class="nav-link-label">Home</span>
         </a>
       </li>
       <li>
-        <a href="/app/scripts">
+        <a href="/app/scripts/" aria-current={isCurrent('/app/scripts') ? 'page' : undefined}>
           <span class="material-icons nav-link-icon" aria-hidden="true">library_books</span>
           <span class="nav-link-label">Scripts</span>
         </a>
       </li>
       <li>
-        <a href="/app/settings">
+        <a href="/app/settings/" aria-current={isCurrent('/app/settings') ? 'page' : undefined}>
           <span class="material-icons nav-link-icon" aria-hidden="true">settings</span>
           <span class="nav-link-label">Settings</span>
         </a>

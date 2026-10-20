@@ -1,92 +1,108 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import "../styles/home.css";
+
+const showcases = [
+  {
+    title: "Import your script",
+    description:
+      "Upload a JSON file or paste converted script data. Example scripts are included if you want to try the app first.",
+    image: "/assets/screenshots/offscript-import.png",
+    alt: "Add script screen with upload and paste fields",
+  },
+  {
+    title: "Keep scripts in one place",
+    description:
+      "Save multiple plays or study documents, select the one you are working on, and jump back in where you left off.",
+    image: "/assets/screenshots/offscript-scripts.png",
+    alt: "Scripts library with a selected play card",
+  },
+  {
+    title: "See the big picture",
+    description:
+      "Review acts, scenes, spoken lines, and character counts before you start drilling lines.",
+    image: "/assets/screenshots/offscript-overview.png",
+    alt: "Script overview with structure and character statistics",
+  },
+  {
+    title: "Practice with Tools",
+    description:
+      "Work through your lines from memory, check answers, and build recall one line at a time.",
+    image: "/assets/screenshots/offscript-type.png",
+    alt: "Type practice tool with character prompt and answer field",
+  },
+  {
+    title: "Track your progress",
+    description:
+      "See overall completion and progress by act so you know what still needs work.",
+    image: "/assets/screenshots/offscript-progress.png",
+    alt: "Progress page with overall completion and per-act breakdown",
+  },
+];
 ---
 
 <SiteLayout pageTitle="From Reading to Remembering">
   <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-glow" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <p class="hero-eyebrow">For actors, students &amp; readers</p>
-      <h1 id="hero-heading">From Reading to <em>Remembering</em></h1>
-      <p class="hero-lead">
-      OffScript turns scripts and study material into quick practice sessions so
-      lines stick, scenes feel natural, and recall comes when you need it.
-      </p>
-      <div class="hero-actions">
-        <a href="/app/" class="button-primary">Get Started</a>
-        <a href="#how-it-works" class="button-ghost">See how it works</a>
+    <div class="hero-layout">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">For actors, students &amp; readers</p>
+        <h1 id="hero-heading">From Reading to <em>Remembering</em></h1>
+        <p class="hero-lead">
+          OffScript helps you import a script, choose what to practice, and rehearse
+          lines in the browser. Your data stays local on your device, no account required.
+        </p>
+        <div class="hero-actions">
+          <a href="/app/" class="button-primary">Get Started</a>
+          <a href="#product" class="button-ghost">See the app</a>
+        </div>
       </div>
+      <figure class="hero-preview">
+        <img
+          src="/assets/screenshots/offscript-overview.png"
+          alt="OffScript overview showing script statistics and structure"
+          width="980"
+          height="800"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
     </div>
   </section>
 
-  <section id="features" class="section features" aria-labelledby="features-heading">
+  <section id="product" class="section showcase" aria-labelledby="product-heading">
     <div class="section-inner">
       <header class="section-header">
-        <p class="section-eyebrow">Features</p>
-        <h2 id="features-heading">Practice that actually sticks</h2>
+        <p class="section-eyebrow">The app</p>
+        <h2 id="product-heading">Built for real rehearsal</h2>
         <p class="section-lead">
-        Built for people who need to know their material cold—not just read it
-        once.
+          Import a script, practice with tools that force recall, and track how much
+          you have mastered.
         </p>
       </header>
 
-    <ul class="feature-grid">
-      <li class="feature-card">
-        <span class="material-icons feature-icon" aria-hidden="true">mic</span>
-        <h3>Line-by-line practice</h3>
-        <p>Hide lines, test yourself, and build memory for every phrase.</p>
-      </li>
-      <li class="feature-card">
-        <span class="material-icons feature-icon" aria-hidden="true">library_books</span>
-        <h3>Your scripts, organized</h3>
-        <p>
-          Keep plays, auditions, and study notes together without losing your
-          place.
-        </p>
-      </li>
-      <li class="feature-card">
-        <span class="material-icons feature-icon" aria-hidden="true">trending_up</span>
-        <h3>Track your progress</h3>
-        <p>See which scenes are mastered and which need another pass.</p>
-      </li>
-    </ul>
-    </div>
-  </section>
-
-  <section id="how-it-works" class="section steps" aria-labelledby="steps-heading">
-    <div class="section-inner">
-      <header class="section-header">
-        <p class="section-eyebrow">How it works</p>
-        <h2 id="steps-heading">Three steps to off-book</h2>
-      </header>
-
-      <ol class="steps-list">
-        <li class="step-card">
-          <span class="step-number" aria-hidden="true">1</span>
-          <div class="step-content">
-            <h3>Add your script</h3>
-            <p>
-              Import or paste your material and choose the characters and scenes to
-              practice.
-            </p>
-          </div>
-        </li>
-        <li class="step-card">
-          <span class="step-number" aria-hidden="true">2</span>
-          <div class="step-content">
-            <h3>Practice actively</h3>
-            <p>Use drills that force recall instead of passive re-reading.</p>
-          </div>
-        </li>
-        <li class="step-card">
-          <span class="step-number" aria-hidden="true">3</span>
-          <div class="step-content">
-            <h3>Perform with confidence</h3>
-            <p>Walk into the room knowing the words are inside you.</p>
-          </div>
-        </li>
-      </ol>
+      <ul class="showcase-list">
+        {
+          showcases.map((item, index) => (
+            <li class:list={["showcase-item", index % 2 === 1 && "showcase-item-reverse"]}>
+              <figure class="showcase-shot">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width="980"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div class="showcase-copy">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
@@ -97,28 +113,28 @@ import "../styles/home.css";
         <h2 id="audience-heading">Made for anyone who performs from memory</h2>
       </header>
 
-    <ul class="audience-grid">
-      <li class="audience-card">
-        <h3>Actors</h3>
-        <p>Get off-book faster for auditions, rehearsals, and opening night.</p>
-      </li>
-      <li class="audience-card">
-        <h3>Students</h3>
-        <p>Prepare speeches, presentations, and exams with real recall.</p>
-      </li>
-      <li class="audience-card">
-        <h3>Readers</h3>
-        <p>Retain what you read long after you close the book.</p>
-      </li>
-    </ul>
+      <ul class="audience-grid">
+        <li class="audience-card">
+          <h3>Actors</h3>
+          <p>Get off-book faster for auditions, rehearsals, and opening night.</p>
+        </li>
+        <li class="audience-card">
+          <h3>Students</h3>
+          <p>Prepare speeches, presentations, and exams with real recall.</p>
+        </li>
+        <li class="audience-card">
+          <h3>Readers</h3>
+          <p>Retain what you read long after you close the book.</p>
+        </li>
+      </ul>
     </div>
   </section>
 
   <section id="home-cta" class="cta-banner" aria-labelledby="cta-heading">
     <div class="cta-banner-inner">
-    <h2 id="cta-heading">Ready to go off script?</h2>
-    <p>Start practicing for free: no account required.</p>
-    <a href="/app/" class="button-primary">Get Started</a>
+      <h2 id="cta-heading">Ready to go off script?</h2>
+      <p>Start practicing for free. No account required.</p>
+      <a href="/app/" class="button-primary">Get Started</a>
     </div>
   </section>
 </SiteLayout>

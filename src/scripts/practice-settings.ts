@@ -1,4 +1,5 @@
 import type { Script, StoredScript } from './script-store';
+import { readStorageJson, writeStorageJson } from './storage';
 
 export interface PracticeSettings {
   characters: string[];
@@ -76,8 +77,9 @@ export function savePracticeSettings(
 ): void {
   const allSettings = readSettings();
   allSettings[scriptId] = settings;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(allSettings));
-  window.dispatchEvent(new CustomEvent('offscript:practice-settings-changed'));
+  if (writeStorageJson(STORAGE_KEY, allSettings)) {
+    window.dispatchEvent(new CustomEvent('offscript:practice-settings-changed'));
+  }
 }
 
 export function getSceneKey(actIndex: number, sceneIndex: number): string {
@@ -85,10 +87,8 @@ export function getSceneKey(actIndex: number, sceneIndex: number): string {
 }
 
 function readSettings(): Record<string, PracticeSettings> {
-  try {
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    return stored && typeof stored === 'object' ? stored : {};
-  } catch {
-    return {};
-  }
+  const stored = readStorageJson<unknown>(STORAGE_KEY, {});
+  return stored && typeof stored === 'object' && !Array.isArray(stored)
+    ? (stored as Record<string, PracticeSettings>)
+    : {};
 }

@@ -30,6 +30,7 @@ import Form from './Form.astro';
 
 <script>
   import { addScript } from '../scripts/script-store';
+  import { getScriptValidationError, isValidScript } from '../scripts/script-schema';
   import { showToast, type ToastVariant } from '../scripts/toasts';
 
   const form = document.querySelector('#add-script-form');
@@ -92,10 +93,14 @@ import Form from './Form.astro';
       try {
         const source = file ? await file.text() : pastedJson;
         const script = JSON.parse(source);
-        const validationError = validateScript(script);
+        const validationError = getScriptValidationError(script);
 
         if (validationError) {
           setStatus(validationError, 'error');
+          return;
+        }
+
+        if (!isValidScript(script)) {
           return;
         }
 
@@ -107,7 +112,7 @@ import Form from './Form.astro';
         sessionStorage.setItem(
           'offscript-pending-toast',
           JSON.stringify({
-            message: `"${script.title.trim()}" was added.`,
+            message: `"${script.title?.trim() || 'Untitled script'}" was added.`,
             variant: 'success',
           }),
         );
@@ -119,50 +124,6 @@ import Form from './Form.astro';
 
     function setStatus(message: string, variant: ToastVariant = 'success'): void {
       showToast(message, variant);
-    }
-
-    function validateScript(script: any): string | null {
-      if (!script || typeof script !== 'object') {
-        return 'The script must be a JSON object.';
-      }
-
-      if (script.schemaVersion !== 1 || script.type !== 'play') {
-        return 'The script must use schema version 1 and type "play".';
-      }
-
-      if (typeof script.title !== 'string' || !script.title.trim()) {
-        return 'The script needs a title.';
-      }
-
-      if (!Array.isArray(script.acts) || script.acts.length === 0) {
-        return 'The script needs at least one act.';
-      }
-
-      for (const act of script.acts) {
-        if (!act || typeof act.title !== 'string' || !Array.isArray(act.scenes)) {
-          return 'Each act needs a title and scenes.';
-        }
-
-        for (const scene of act.scenes) {
-          if (!scene || typeof scene.title !== 'string' || !Array.isArray(scene.lines)) {
-            return 'Each scene needs a title and lines.';
-          }
-
-          for (const line of scene.lines) {
-            if (!line || !['line', 'direction'].includes(line.type) ||
-                typeof line.text !== 'string') {
-              return 'Each line needs a valid type and text.';
-            }
-
-            if (line.type === 'line' &&
-                (!Array.isArray(line.characters) || line.characters.length === 0)) {
-              return 'Each spoken line needs at least one character.';
-            }
-          }
-        }
-      }
-
-      return null;
     }
 
   }

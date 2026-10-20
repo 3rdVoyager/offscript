@@ -1,32 +1,18 @@
-export interface ScriptLine {
-  type?: string;
-  text?: string;
-  characters?: string[];
-  progress?: number;
-}
+import {
+  isStoredScript,
+  normalizeScript,
+  type Script,
+  type StoredScript,
+} from './script-schema';
+import { readStorageJson, writeStorageJson } from './storage';
 
-export interface ScriptScene {
-  title?: string;
-  lines?: ScriptLine[];
-}
-
-export interface ScriptAct {
-  title?: string;
-  scenes?: ScriptScene[];
-}
-
-export interface Script {
-  id?: string;
-  schemaVersion?: number;
-  type?: string;
-  title?: string;
-  notes?: string;
-  acts?: ScriptAct[];
-}
-
-export interface StoredScript extends Script {
-  id: string;
-}
+export type {
+  Script,
+  ScriptLine,
+  ScriptAct,
+  ScriptScene,
+  StoredScript,
+} from './script-schema';
 
 export interface ScriptStore {
   activeScriptId: string | null;
@@ -40,34 +26,30 @@ const EMPTY_STORE: ScriptStore = {
 };
 
 export function getScriptStore(): ScriptStore {
-  if (typeof localStorage === 'undefined') {
+  const stored = readStorageJson<unknown>(STORAGE_KEY, null);
+  if (
+    !stored ||
+    typeof stored !== 'object' ||
+    !('scripts' in stored) ||
+    !Array.isArray(stored.scripts)
+  ) {
     return { ...EMPTY_STORE, scripts: [] };
   }
 
-  try {
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '');
-    if (!stored || !Array.isArray(stored.scripts)) {
-      return { ...EMPTY_STORE, scripts: [] };
-    }
+  const scripts = stored.scripts
+    .filter(isStoredScript)
+    .map((script) => normalizeScript(script) as StoredScript);
+  const savedActiveId =
+    'activeScriptId' in stored && typeof stored.activeScriptId === 'string'
+      ? stored.activeScriptId
+      : null;
 
-    return {
-      activeScriptId:
-        typeof stored.activeScriptId === 'string' ? stored.activeScriptId : null,
-      scripts: stored.scripts
-        .filter(
-          (script: Script): script is StoredScript =>
-            script &&
-            typeof script === 'object' &&
-            typeof script.id === 'string',
-        )
-        .map((script: StoredScript) => ({
-          ...script,
-          acts: addDefaultLineProgress(script.acts),
-        })),
-    };
-  } catch {
-    return { ...EMPTY_STORE, scripts: [] };
-  }
+  return {
+    activeScriptId: scripts.some((script) => script.id === savedActiveId)
+      ? savedActiveId
+      : scripts[0]?.id || null,
+    scripts,
+  };
 }
 
 export function getScripts(): StoredScript[] {
@@ -90,11 +72,10 @@ export function getActiveScriptId(): string | null {
 export function addScript(script: Script): StoredScript {
   const store = getScriptStore();
   const { id: _oldId, ...scriptWithoutId } = script;
+  const normalizedScript = normalizeScript(scriptWithoutId);
   const storedScript: StoredScript = {
-    ...scriptWithoutId,
+    ...normalizedScript,
     id: crypto.randomUUID(),
-    title: script.title?.trim() || 'Untitled script',
-    acts: addDefaultLineProgress(script.acts),
   };
 
   store.scripts.push(storedScript);
@@ -146,35 +127,7 @@ export function deleteScript(scriptId: string): boolean {
 }
 
 function saveStore(store: ScriptStore): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
-  window.dispatchEvent(new CustomEvent('offscript:scripts-changed'));
-}
-
-function addDefaultLineProgress(acts: ScriptAct[] | undefined): ScriptAct[] | undefined {
-  if (!Array.isArray(acts)) {
-    return acts;
+  if (writeStorageJson(STORAGE_KEY, store)) {
+    window.dispatchEvent(new CustomEvent('offscript:scripts-changed'));
   }
-
-  return acts.map((act) => ({
-    ...act,
-    scenes: Array.isArray(act.scenes)
-      ? act.scenes.map((scene) => ({
-          ...scene,
-          lines: Array.isArray(scene.lines)
-            ? scene.lines.map((line) => ({
-                ...line,
-                progress: clampProgress(line.progress),
-              }))
-            : scene.lines,
-        }))
-      : act.scenes,
-  }));
-}
-
-function clampProgress(progress: number | undefined): number {
-  if (typeof progress !== 'number' || !Number.isFinite(progress)) {
-    return 0;
-  }
-
-  return Math.min(100, Math.max(0, progress));
 }

@@ -1,12 +1,22 @@
 ---
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
+import TabBar from '../../../components/TabBar.astro';
+
+const tabs = [
+  { label: 'View scripts', href: '/app/manage/scripts/' },
+  { label: 'Add script', href: '/app/manage/scripts/add/' },
+];
 ---
 
 <AppLayout pageTitle="Scripts">
   <AppSection class="app-page-header">
     <h1>Scripts</h1>
     <p>Keep your scripts in one place and choose what you want to practice.</p>
+  </AppSection>
+
+  <AppSection>
+    <TabBar tabs={tabs} />
   </AppSection>
 
   <AppSection ariaLabelledby="scripts-heading">

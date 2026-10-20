@@ -1,0 +1,42 @@
+---
+import AppLayout from '../../../../layouts/AppLayout.astro';
+import AppSection from '../../../../components/AppSection.astro';
+import TabBar from '../../../../components/TabBar.astro';
+
+const tabs = [
+  { label: 'View scripts', href: '/app/manage/scripts/' },
+  { label: 'Add script', href: '/app/manage/scripts/add/' },
+];
+---
+
+<AppLayout pageTitle="Add Script">
+  <AppSection class="app-page-header">
+    <h1>Add script</h1>
+    <p>Save a script or study document to start practicing.</p>
+  </AppSection>
+
+  <AppSection>
+    <TabBar tabs={tabs} />
+  </AppSection>
+
+  <AppSection variant="card">
+    <form class="app-form">
+      <label>
+        Script title
+        <input type="text" name="script-title" placeholder="My script" />
+      </label>
+
+      <label>
+        Paste your script
+        <textarea
+          name="script-content"
+          placeholder="Paste your script or study material here."
+        ></textarea>
+      </label>
+
+      <div class="app-actions">
+        <button type="button" class="button">Save script</button>
+      </div>
+    </form>
+  </AppSection>
+</AppLayout>

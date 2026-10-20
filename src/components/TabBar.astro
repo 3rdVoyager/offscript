@@ -1,0 +1,54 @@
+---
+import '../styles/tab-bar.css';
+import '../styles/icons.css';
+
+interface Tab {
+  label: string;
+  href: string;
+  icon?: string;
+}
+
+interface Props {
+  tabs: Tab[];
+  activeHref?: string;
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  tabs,
+  activeHref,
+  ariaLabel = 'Section navigation',
+  class: className,
+} = Astro.props;
+
+const normalizePath = (path: string) => {
+  const pathname = new URL(path, Astro.url).pathname;
+  return pathname.replace(/\/$/, '') || '/';
+};
+
+const currentPath = normalizePath(Astro.url.pathname);
+const isActive = (tab: Tab) => {
+  const tabPath = normalizePath(tab.href);
+  const selectedPath = activeHref ? normalizePath(activeHref) : currentPath;
+
+  return tabPath === selectedPath;
+};
+
+const classes = ['tab-bar', className].filter(Boolean).join(' ');
+---
+
+<nav class={classes} aria-label={ariaLabel}>
+  <ul>
+    {
+      tabs.map((tab) => (
+        <li>
+          <a href={tab.href} aria-current={isActive(tab) ? 'page' : undefined}>
+            {tab.icon && <span class="material-icons" aria-hidden="true">{tab.icon}</span>}
+            <span>{tab.label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

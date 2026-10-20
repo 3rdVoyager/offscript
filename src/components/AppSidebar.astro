@@ -3,7 +3,13 @@ import '../styles/app-sidebar.css';
 import '../styles/icons.css';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isCurrent = (path: string) => currentPath === path;
+const isCurrent = (path: string, includeChildren = false): boolean => {
+  const normalizedPath = path.replace(/\/$/, '') || '/';
+  return (
+    currentPath === normalizedPath ||
+    (includeChildren && currentPath.startsWith(`${normalizedPath}/`))
+  );
+};
 
 const dashboard = {
   label: 'Dashboard',
@@ -71,7 +77,7 @@ const sections = [
             <li>
               <a
                 href={link.href}
-                aria-current={isCurrent(link.href.replace(/\/$/, '')) ? 'page' : undefined}
+                aria-current={isCurrent(link.href, true) ? 'page' : undefined}
               >
                 <span class="material-icons nav-link-icon" aria-hidden="true">{link.icon}</span>
                 <span class="nav-link-label">{link.label}</span>

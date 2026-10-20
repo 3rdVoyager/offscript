@@ -7,6 +7,7 @@ interface Props {
   id?: string;
   ariaLabelledby?: string;
   ariaLabel?: string;
+  hidden?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   id,
   ariaLabelledby,
   ariaLabel,
+  hidden = false,
 } = Astro.props;
 
 const classes = ['app-section', `app-section--${variant}`, className]
@@ -27,6 +29,7 @@ const classes = ['app-section', `app-section--${variant}`, className]
   id={id}
   aria-labelledby={ariaLabelledby}
   aria-label={ariaLabel}
+  hidden={hidden}
 >
   <slot />
 </section>

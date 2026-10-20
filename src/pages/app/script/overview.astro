@@ -2,20 +2,391 @@
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
 import EmptyState from '../../../components/EmptyState.astro';
+import '../../../styles/overview.css';
 ---
 
 <AppLayout pageTitle="Overview">
   <AppSection class="app-page-header">
     <h1>Overview</h1>
-    <p>See the characters, scenes, and structure of your active script.</p>
+    <p data-script-subtitle>See the characters, scenes, and structure of your active script.</p>
   </AppSection>
 
-  <AppSection>
+  <AppSection class="overview-empty-section" ariaLabel="Script overview empty state">
     <AppSection variant="card">
       <EmptyState
-        title="Overview coming soon"
-        description="This page will show the structure of your selected script."
+        title="No script selected"
+        description="Add a script and select it to see its structure and rehearsal details."
+        actionLabel="Add a script"
+        actionHref="/app/manage/scripts/add/"
       />
     </AppSection>
   </AppSection>
+
+  <div class="overview-content" data-overview-content hidden>
+    <AppSection variant="card" class="overview-summary" ariaLabel="Script summary">
+      <div class="overview-summary-info">
+        <p class="overview-label">Active script</p>
+        <h2 data-script-title></h2>
+        <p data-script-notes></p>
+      </div>
+      <div class="overview-stats" data-summary-stats></div>
+      <div class="overview-details" data-script-details></div>
+    </AppSection>
+
+    <AppSection variant="card" ariaLabel="Lines per character">
+      <h2>Lines per character</h2>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Character</th>
+              <th scope="col">Acts</th>
+              <th scope="col">Scenes</th>
+              <th scope="col">Lines</th>
+              <th scope="col">Words</th>
+            </tr>
+          </thead>
+          <tbody data-character-lines></tbody>
+        </table>
+      </div>
+    </AppSection>
+
+    <AppSection variant="card" ariaLabel="Script structure">
+      <h2>Structure</h2>
+      <div class="overview-structure" data-script-structure></div>
+    </AppSection>
+  </div>
 </AppLayout>
+
+<script>
+  interface ScriptLine {
+    type?: string;
+    text?: string;
+    characters?: string[];
+  }
+
+  interface ScriptScene {
+    title?: string;
+    lines?: ScriptLine[];
+  }
+
+  interface ScriptAct {
+    title?: string;
+    scenes?: ScriptScene[];
+  }
+
+  interface Script {
+    title?: string;
+    notes?: string;
+    acts?: ScriptAct[];
+  }
+
+  const emptySection = document.querySelector('.overview-empty-section');
+  const overviewContent = document.querySelector('[data-overview-content]');
+
+  if (emptySection instanceof HTMLElement && overviewContent instanceof HTMLElement) {
+    const script = readActiveScript();
+
+    if (script) {
+      emptySection.hidden = true;
+      overviewContent.hidden = false;
+      renderOverview(script);
+    }
+  }
+
+  function readActiveScript(): Script | null {
+    try {
+      const stored = JSON.parse(
+        localStorage.getItem('offscript-scripts') || '{"activeScriptId":null,"scripts":[]}',
+      );
+
+      if (!Array.isArray(stored.scripts) || stored.scripts.length === 0) {
+        return null;
+      }
+
+      return (
+        stored.scripts.find((script: Script & { id?: string }) => script.id === stored.activeScriptId) ||
+        stored.scripts[0]
+      );
+    } catch {
+      return null;
+    }
+  }
+
+  function renderOverview(script: Script): void {
+    const stats = getStats(script);
+    setText('[data-script-title]', script.title || 'Untitled script');
+    setText('[data-script-notes]', script.notes || 'No notes added for this script.');
+    setText(
+      '[data-script-subtitle]',
+      `${stats.acts} acts, ${stats.scenes} scenes, and ${stats.spokenLines} spoken lines.`,
+    );
+
+    const summary = document.querySelector('[data-summary-stats]');
+    if (summary) {
+      summary.replaceChildren(
+        createStat('Acts', stats.acts),
+        createStat('Scenes', stats.scenes),
+        createStat('Lines', stats.spokenLines),
+        createStat('Characters', stats.characters.length),
+      );
+    }
+
+    const characterLines = document.querySelector('[data-character-lines]');
+    if (characterLines) {
+      characterLines.replaceChildren(
+        ...stats.characters.map((character) => createCharacterRow(character)),
+      );
+      if (stats.characters.length === 0) {
+        const row = document.createElement('tr');
+        const cell = document.createElement('td');
+        cell.colSpan = 5;
+        cell.textContent = 'No character lines found.';
+        row.append(cell);
+        characterLines.append(row);
+      }
+    }
+
+    const details = document.querySelector('[data-script-details]');
+    if (details) {
+      details.replaceChildren(
+        createListItem('Spoken lines', String(stats.spokenLines)),
+        createListItem('Stage directions', String(stats.directions)),
+        createListItem('Words', stats.words.toLocaleString()),
+        createListItem('Average line length', `${stats.averageWords} words`),
+        createListItem('Longest scene', stats.longestScene),
+      );
+    }
+
+    const structure = document.querySelector('[data-script-structure]');
+    if (structure) {
+      structure.replaceChildren(
+        ...stats.structure.map((act) => {
+          const item = document.createElement('div');
+          item.className = 'overview-act';
+          const heading = document.createElement('h3');
+          heading.textContent = act.title;
+          item.append(heading);
+
+          const summary = document.createElement('p');
+          summary.className = 'overview-act-summary';
+          summary.textContent = `${act.characters} ${
+            act.characters === 1 ? 'character' : 'characters'
+          } · ${act.lines} ${act.lines === 1 ? 'line' : 'lines'} · ${act.words.toLocaleString()} words`;
+          item.append(summary);
+
+          const scenes = document.createElement('div');
+          scenes.className = 'table-wrap';
+          const table = document.createElement('table');
+          table.className = 'data-table';
+          table.innerHTML =
+            '<thead><tr><th scope="col">Scene</th><th scope="col">Characters</th><th scope="col">Lines</th><th scope="col">Words</th></tr></thead>';
+          const body = document.createElement('tbody');
+          body.append(
+            ...act.sceneDetails.map((scene) => {
+              const row = document.createElement('tr');
+              row.innerHTML = '<th scope="row"></th><td></td><td></td><td></td>';
+              const cells = row.querySelectorAll('th, td');
+              cells[0].textContent = scene.title;
+              cells[1].textContent = scene.characters.toLocaleString();
+              cells[2].textContent = scene.lines.toLocaleString();
+              cells[3].textContent = scene.words.toLocaleString();
+              return row;
+            }),
+          );
+
+          if (act.sceneDetails.length === 0) {
+            const row = document.createElement('tr');
+            const cell = document.createElement('td');
+            cell.colSpan = 4;
+            cell.textContent = 'No scenes found.';
+            row.append(cell);
+            body.append(row);
+          }
+
+          table.append(body);
+          scenes.append(table);
+          item.append(scenes);
+          return item;
+        }),
+      );
+    }
+  }
+
+  function getStats(script: Script) {
+    const acts = Array.isArray(script.acts) ? script.acts : [];
+    const characterStats = new Map<
+      string,
+      { acts: Set<number>; scenes: Set<string>; lines: number; words: number }
+    >();
+    let scenes = 0;
+    let spokenLines = 0;
+    let directions = 0;
+    let words = 0;
+    let longestScene = 'None';
+    let longestSceneLines = 0;
+    const structure: {
+      title: string;
+      characters: number;
+      lines: number;
+      words: number;
+      sceneDetails: {
+        title: string;
+        characters: number;
+        lines: number;
+        words: number;
+      }[];
+    }[] = [];
+
+    for (const [actIndex, act] of acts.entries()) {
+      const actScenes = Array.isArray(act.scenes) ? act.scenes : [];
+      const actCharacters = new Set<string>();
+      let actLines = 0;
+      let actWords = 0;
+      const sceneDetails: {
+        title: string;
+        characters: number;
+        lines: number;
+        words: number;
+      }[] = [];
+      scenes += actScenes.length;
+
+      for (const [sceneIndex, scene] of actScenes.entries()) {
+        const lines = Array.isArray(scene.lines) ? scene.lines : [];
+        const sceneSpokenLines = lines.filter((line) => line.type === 'line').length;
+        const sceneCharacters = new Set<string>();
+        let sceneWords = 0;
+        actLines += sceneSpokenLines;
+
+        if (sceneSpokenLines > longestSceneLines) {
+          longestSceneLines = sceneSpokenLines;
+          longestScene = `${scene.title || `Scene ${sceneIndex + 1}`} (${act.title || `Act ${actIndex + 1}`})`;
+        }
+
+        for (const line of lines) {
+          const text = typeof line.text === 'string' ? line.text : '';
+          words += countWords(text);
+
+          if (line.type === 'direction') {
+            directions += 1;
+            continue;
+          }
+
+          if (line.type === 'line') {
+            spokenLines += 1;
+            const lineCharacters = new Set(Array.isArray(line.characters) ? line.characters : []);
+            sceneWords += countWords(text);
+            actWords += countWords(text);
+            for (const character of lineCharacters) {
+              sceneCharacters.add(character);
+              actCharacters.add(character);
+              const stats = characterStats.get(character) || {
+                acts: new Set<number>(),
+                scenes: new Set<string>(),
+                lines: 0,
+                words: 0,
+              };
+              stats.acts.add(actIndex);
+              stats.scenes.add(`${actIndex}-${sceneIndex}`);
+              stats.lines += 1;
+              stats.words += countWords(text);
+              characterStats.set(character, stats);
+            }
+          }
+        }
+
+        sceneDetails.push({
+          title: scene.title || `Scene ${sceneIndex + 1}`,
+          characters: sceneCharacters.size,
+          lines: sceneSpokenLines,
+          words: sceneWords,
+        });
+      }
+
+      structure.push({
+        title: act.title || `Act ${actIndex + 1}`,
+        characters: actCharacters.size,
+        lines: actLines,
+        words: actWords,
+        sceneDetails,
+      });
+    }
+
+    return {
+      acts: acts.length,
+      scenes,
+      spokenLines,
+      directions,
+      words,
+      averageWords: spokenLines ? Math.round(words / spokenLines) : 0,
+      longestScene,
+      characters: [...characterStats.entries()]
+        .map(([name, stats]) => ({
+          name,
+          acts: stats.acts.size,
+          scenes: stats.scenes.size,
+          lines: stats.lines,
+          words: stats.words,
+        }))
+        .sort((a, b) => b.lines - a.lines),
+      structure,
+    };
+  }
+
+  function createCharacterRow(character: {
+    name: string;
+    acts: number;
+    scenes: number;
+    lines: number;
+    words: number;
+  }): HTMLTableRowElement {
+    const row = document.createElement('tr');
+    const values = [
+      character.name,
+      character.acts.toLocaleString(),
+      character.scenes.toLocaleString(),
+      character.lines.toLocaleString(),
+      character.words.toLocaleString(),
+    ];
+
+    for (const [index, value] of values.entries()) {
+      const cell = document.createElement(index === 0 ? 'th' : 'td');
+      if (index === 0) {
+        cell.scope = 'row';
+      }
+      cell.textContent = value;
+      row.append(cell);
+    }
+
+    return row;
+  }
+
+  function createStat(label: string, value: number): HTMLElement {
+    const item = document.createElement('div');
+    item.className = 'overview-stat';
+    item.innerHTML = `<strong></strong><span></span>`;
+    item.querySelector('strong')!.textContent = value.toLocaleString();
+    item.querySelector('span')!.textContent = label;
+    return item;
+  }
+
+  function createListItem(label: string, value: string): HTMLElement {
+    const item = document.createElement('div');
+    item.className = 'overview-list-item';
+    item.innerHTML = `<span></span><strong></strong>`;
+    item.querySelector('span')!.textContent = label;
+    item.querySelector('strong')!.textContent = value;
+    return item;
+  }
+
+  function setText(selector: string, value: string): void {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.textContent = value;
+    }
+  }
+
+  function countWords(text: string): number {
+    return text.trim() ? text.trim().split(/\s+/).length : 0;
+  }
+</script>

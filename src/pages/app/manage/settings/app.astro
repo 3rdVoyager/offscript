@@ -1,6 +1,7 @@
 ---
 import AppLayout from '../../../../layouts/AppLayout.astro';
 import AppSection from '../../../../components/AppSection.astro';
+import AppPageHeader from '../../../../components/AppPageHeader.astro';
 import TabBar from '../../../../components/TabBar.astro';
 import EmptyState from '../../../../components/EmptyState.astro';
 
@@ -11,10 +12,10 @@ const tabs = [
 ---
 
 <AppLayout pageTitle="App Settings">
-  <AppSection class="app-page-header">
-    <h1>Settings</h1>
-    <p>Configure practice and app options for your active script.</p>
-  </AppSection>
+  <AppPageHeader
+    title="Settings"
+    description="Configure practice and app options for your active script."
+  />
 
   <AppSection>
     <TabBar tabs={tabs} />

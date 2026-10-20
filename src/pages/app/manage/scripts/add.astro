@@ -1,6 +1,7 @@
 ---
 import AppLayout from '../../../../layouts/AppLayout.astro';
 import AppSection from '../../../../components/AppSection.astro';
+import AppPageHeader from '../../../../components/AppPageHeader.astro';
 import TabBar from '../../../../components/TabBar.astro';
 import AddScriptForm from '../../../../components/AddScriptForm.astro';
 import '../../../../styles/add-script.css';
@@ -12,10 +13,10 @@ const tabs = [
 ---
 
 <AppLayout pageTitle="Add Script">
-  <AppSection class="app-page-header">
-    <h1>Add script</h1>
-    <p>Save a script or study document to start practicing.</p>
-  </AppSection>
+  <AppPageHeader
+    title="Add script"
+    description="Save a script or study document to start practicing."
+  />
 
   <AppSection>
     <TabBar tabs={tabs} />

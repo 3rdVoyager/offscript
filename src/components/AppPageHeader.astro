@@ -1,0 +1,18 @@
+---
+import AppSection from './AppSection.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  descriptionId?: string;
+  class?: string;
+}
+
+const { title, description, descriptionId, class: className } = Astro.props;
+const classes = ['app-page-header', className].filter(Boolean).join(' ');
+---
+
+<AppSection class={classes}>
+  <h1>{title}</h1>
+  <p id={descriptionId}>{description}</p>
+</AppSection>

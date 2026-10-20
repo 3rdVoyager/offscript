@@ -1,15 +1,16 @@
 ---
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
+import AppPageHeader from '../../../components/AppPageHeader.astro';
 import EmptyState from '../../../components/EmptyState.astro';
 import '../../../styles/script-view.css';
 ---
 
 <AppLayout pageTitle="View">
-  <AppSection class="app-page-header">
-    <h1>View</h1>
-    <p>Read the complete text of your active script.</p>
-  </AppSection>
+  <AppPageHeader
+    title="View"
+    description="Read the complete text of your active script."
+  />
 
   <AppSection class="script-view-empty-section" ariaLabel="Script view empty state">
     <AppSection variant="card">

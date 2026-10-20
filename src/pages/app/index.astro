@@ -2,14 +2,15 @@
 import AppLayout from "../../layouts/AppLayout.astro";
 import AppSection from "../../components/AppSection.astro";
 import EmptyState from "../../components/EmptyState.astro";
+import AppPageHeader from "../../components/AppPageHeader.astro";
 import "../../styles/dashboard.css";
 ---
 
 <AppLayout pageTitle="Dashboard">
-  <AppSection class="app-page-header">
-    <h1>Dashboard</h1>
-    <p>Your home base for scripts, practice, and progress.</p>
-  </AppSection>
+  <AppPageHeader
+    title="Dashboard"
+    description="Your home base for scripts, practice, and progress."
+  />
 
   <AppSection class="dashboard-empty-section" ariaLabel="Dashboard empty state">
     <EmptyState

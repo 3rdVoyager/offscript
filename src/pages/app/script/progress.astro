@@ -1,15 +1,16 @@
 ---
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
+import AppPageHeader from '../../../components/AppPageHeader.astro';
 import EmptyState from '../../../components/EmptyState.astro';
 import '../../../styles/progress.css';
 ---
 
 <AppLayout pageTitle="Progress">
-  <AppSection class="app-page-header">
-    <h1>Progress</h1>
-    <p>Track how much of your active script you have mastered.</p>
-  </AppSection>
+  <AppPageHeader
+    title="Progress"
+    description="Track how much of your active script you have mastered."
+  />
 
   <AppSection class="progress-empty-section" ariaLabel="Progress empty state">
     <AppSection variant="card">

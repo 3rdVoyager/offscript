@@ -1,6 +1,7 @@
 ---
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
+import AppPageHeader from '../../../components/AppPageHeader.astro';
 import TabBar from '../../../components/TabBar.astro';
 import EmptyState from '../../../components/EmptyState.astro';
 import '../../../styles/scripts.css';
@@ -12,10 +13,10 @@ const tabs = [
 ---
 
 <AppLayout pageTitle="Scripts">
-  <AppSection class="app-page-header">
-    <h1>Scripts</h1>
-    <p>Keep your scripts in one place and choose what you want to practice.</p>
-  </AppSection>
+  <AppPageHeader
+    title="Scripts"
+    description="Keep your scripts in one place and choose what you want to practice."
+  />
 
   <AppSection>
     <TabBar tabs={tabs} />

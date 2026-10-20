@@ -2,6 +2,7 @@
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
 import TabBar from '../../../components/TabBar.astro';
+import '../../../styles/scripts.css';
 
 const tabs = [
   { label: 'View scripts', href: '/app/manage/scripts/' },
@@ -19,12 +20,71 @@ const tabs = [
     <TabBar tabs={tabs} />
   </AppSection>
 
-  <AppSection ariaLabelledby="scripts-heading">
-    <h2 id="scripts-heading">Your scripts</h2>
-    <AppSection variant="card" class="scripts-empty">
-      <h3>No scripts yet</h3>
-      <p>Add your first script in Settings to begin practicing.</p>
-      <a href="/app/manage/settings/" class="button">Add a script</a>
-    </AppSection>
+  <AppSection variant="card" ariaLabel="Saved scripts">
+    <div class="scripts-empty" data-scripts-empty>
+      <h2>No scripts yet</h2>
+      <p>Add your first script to begin practicing.</p>
+      <a href="/app/manage/scripts/add/" class="button">Add a script</a>
+    </div>
+    <div class="scripts-grid" data-scripts-grid hidden></div>
   </AppSection>
 </AppLayout>
+
+<script>
+  const emptyState = document.querySelector('[data-scripts-empty]');
+  const scriptsGrid = document.querySelector('[data-scripts-grid]');
+
+  if (emptyState instanceof HTMLElement && scriptsGrid instanceof HTMLElement) {
+    const scripts = readScripts();
+
+    if (scripts.length > 0) {
+      emptyState.hidden = true;
+      scriptsGrid.hidden = false;
+
+      for (const script of scripts) {
+        scriptsGrid.appendChild(createScriptCard(script));
+      }
+    }
+  }
+
+  function readScripts(): any[] {
+    try {
+      const data = JSON.parse(localStorage.getItem('offscript-scripts') || '{}');
+      return Array.isArray(data.scripts) ? data.scripts : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function createScriptCard(script: any): HTMLElement {
+    const card = document.createElement('article');
+    card.className = 'script-card';
+
+    const title = document.createElement('h2');
+    title.textContent = script.title || 'Untitled script';
+
+    const details = document.createElement('p');
+    details.className = 'script-card-details';
+    details.textContent = `${script.acts?.length || 0} acts · ${countScenes(script)} scenes`;
+
+    const link = document.createElement('a');
+    link.className = 'button-secondary';
+    link.href = '/app/script/overview/';
+    link.textContent = 'Open overview';
+
+    card.append(title, details, link);
+    return card;
+  }
+
+  function countScenes(script: any): number {
+    if (!Array.isArray(script.acts)) {
+      return 0;
+    }
+
+    return script.acts.reduce(
+      (total: number, act: any) =>
+        total + (Array.isArray(act.scenes) ? act.scenes.length : 0),
+      0,
+    );
+  }
+</script>

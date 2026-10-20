@@ -1,7 +1,43 @@
-.scripts-empty h3 {
-  margin-bottom: var(--space-2);
+.scripts-empty {
+  display: grid;
+  min-height: 15rem;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
 }
 
-.scripts-empty .button {
-  margin-top: var(--space-3);
+.scripts-empty p {
+  margin-bottom: var(--space-4);
+}
+
+.scripts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--space-4);
+}
+
+.script-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 12rem;
+  padding: var(--space-4);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-card);
+  background: var(--app-surface);
+}
+
+.script-card h2 {
+  margin-bottom: var(--space-2);
+  color: var(--app-text);
+  font-size: 1.4rem;
+}
+
+.script-card-details {
+  margin-bottom: var(--space-4);
+  color: var(--app-muted);
+}
+
+.script-card .button-secondary {
+  margin-top: auto;
 }

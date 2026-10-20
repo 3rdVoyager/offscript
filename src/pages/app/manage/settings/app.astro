@@ -2,6 +2,7 @@
 import AppLayout from '../../../../layouts/AppLayout.astro';
 import AppSection from '../../../../components/AppSection.astro';
 import TabBar from '../../../../components/TabBar.astro';
+import EmptyState from '../../../../components/EmptyState.astro';
 
 const tabs = [
   { label: 'Practice settings', href: '/app/manage/settings/' },
@@ -22,7 +23,10 @@ const tabs = [
   <AppSection ariaLabelledby="app-settings-heading">
     <h2 id="app-settings-heading">App settings</h2>
     <AppSection variant="card">
-      <p class="settings-note">More app preferences will be added here.</p>
+      <EmptyState
+        title="No app settings yet"
+        description="More app preferences will be added here."
+      />
     </AppSection>
   </AppSection>
 </AppLayout>

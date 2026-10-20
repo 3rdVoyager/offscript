@@ -1,0 +1,35 @@
+---
+import '../styles/empty-state.css';
+
+interface Props {
+  title: string;
+  description: string;
+  actionLabel?: string;
+  actionHref?: string;
+  class?: string;
+  hidden?: boolean;
+}
+
+const {
+  title,
+  description,
+  actionLabel,
+  actionHref,
+  class: className,
+  hidden = false,
+} = Astro.props;
+
+const classes = ['empty-state', className].filter(Boolean).join(' ');
+---
+
+<div class={classes} data-empty-state hidden={hidden}>
+  <h2>{title}</h2>
+  <p>{description}</p>
+  {
+    actionLabel && actionHref && (
+      <a href={actionHref} class="button">
+        {actionLabel}
+      </a>
+    )
+  }
+</div>

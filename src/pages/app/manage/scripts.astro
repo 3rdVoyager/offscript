@@ -2,6 +2,7 @@
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
 import TabBar from '../../../components/TabBar.astro';
+import EmptyState from '../../../components/EmptyState.astro';
 import '../../../styles/scripts.css';
 
 const tabs = [
@@ -21,17 +22,18 @@ const tabs = [
   </AppSection>
 
   <AppSection variant="card" ariaLabel="Saved scripts">
-    <div class="scripts-empty" data-scripts-empty>
-      <h2>No scripts yet</h2>
-      <p>Add your first script to begin practicing.</p>
-      <a href="/app/manage/scripts/add/" class="button">Add a script</a>
-    </div>
+    <EmptyState
+      title="No scripts yet"
+      description="Add your first script to begin practicing."
+      actionLabel="Add a script"
+      actionHref="/app/manage/scripts/add/"
+    />
     <div class="scripts-grid" data-scripts-grid hidden></div>
   </AppSection>
 </AppLayout>
 
 <script>
-  const emptyState = document.querySelector('[data-scripts-empty]');
+  const emptyState = document.querySelector('[data-empty-state]');
   const scriptsGrid = document.querySelector('[data-scripts-grid]');
 
   if (emptyState instanceof HTMLElement && scriptsGrid instanceof HTMLElement) {

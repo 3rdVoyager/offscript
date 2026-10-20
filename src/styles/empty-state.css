@@ -1,0 +1,18 @@
+.empty-state {
+  display: grid;
+  min-height: 15rem;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.empty-state h2 {
+  margin-bottom: var(--space-2);
+  color: var(--app-text);
+}
+
+.empty-state p {
+  max-width: 38rem;
+  margin-bottom: var(--space-4);
+  color: var(--app-muted);
+}

@@ -1,6 +1,7 @@
 ---
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
+import EmptyState from '../../../components/EmptyState.astro';
 ---
 
 <AppLayout pageTitle="Progress">
@@ -11,8 +12,10 @@ import AppSection from '../../../components/AppSection.astro';
 
   <AppSection>
     <AppSection variant="card">
-      <h2>Progress coming soon</h2>
-      <p>Your practice history and mastery breakdown will appear here.</p>
+      <EmptyState
+        title="Progress coming soon"
+        description="Your practice history and mastery breakdown will appear here."
+      />
     </AppSection>
   </AppSection>
 </AppLayout>

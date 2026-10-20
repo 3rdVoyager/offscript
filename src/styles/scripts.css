@@ -1,15 +1,3 @@
-.scripts-empty {
-  display: grid;
-  min-height: 15rem;
-  align-content: center;
-  justify-items: center;
-  text-align: center;
-}
-
-.scripts-empty p {
-  margin-bottom: var(--space-4);
-}
-
 .scripts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));

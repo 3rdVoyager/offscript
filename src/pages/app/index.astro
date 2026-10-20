@@ -1,7 +1,7 @@
 ---
 import AppLayout from "../../layouts/AppLayout.astro";
 import AppSection from "../../components/AppSection.astro";
-import "../../styles/dashboard.css";
+import EmptyState from "../../components/EmptyState.astro";
 
 const hasScripts = false;
 ---
@@ -14,18 +14,14 @@ const hasScripts = false;
 
   {
     hasScripts ? null : (
-      <AppSection variant="card" class="new-user-welcome">
-        <h2>Welcome to OffScript</h2>
-        <p>Add a script to start practicing lines, tracking progress, and building confidence.</p>
-        <a href="/app/manage/settings/" class="button">Add your first script</a>
+      <AppSection variant="card">
+        <EmptyState
+          title="Welcome to OffScript"
+          description="Add a script to start practicing lines, tracking progress, and building confidence. Practice tools will appear here once you're ready."
+          actionLabel="Add your first script"
+          actionHref="/app/manage/scripts/add/"
+        />
       </AppSection>
     )
   }
-
-  <AppSection>
-    <h2>Practice tools</h2>
-    <p>
-      Coming soon!
-    </p>
-  </AppSection>
 </AppLayout>

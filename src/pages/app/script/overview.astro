@@ -1,6 +1,7 @@
 ---
 import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
+import EmptyState from '../../../components/EmptyState.astro';
 ---
 
 <AppLayout pageTitle="Overview">
@@ -11,8 +12,10 @@ import AppSection from '../../../components/AppSection.astro';
 
   <AppSection>
     <AppSection variant="card">
-      <h2>Overview coming soon</h2>
-      <p>This page will show the structure of your selected script.</p>
+      <EmptyState
+        title="Overview coming soon"
+        description="This page will show the structure of your selected script."
+      />
     </AppSection>
   </AppSection>
 </AppLayout>

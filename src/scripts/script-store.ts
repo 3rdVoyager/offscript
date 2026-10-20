@@ -107,6 +107,22 @@ export function setActiveScript(scriptId: string): boolean {
   return true;
 }
 
+export function deleteScript(scriptId: string): boolean {
+  const store = getScriptStore();
+  const scriptIndex = store.scripts.findIndex((script) => script.id === scriptId);
+  if (scriptIndex === -1) {
+    return false;
+  }
+
+  store.scripts.splice(scriptIndex, 1);
+  if (store.activeScriptId === scriptId) {
+    store.activeScriptId = store.scripts[0]?.id || null;
+  }
+
+  saveStore(store);
+  return true;
+}
+
 function saveStore(store: ScriptStore): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
   window.dispatchEvent(new CustomEvent('offscript:scripts-changed'));

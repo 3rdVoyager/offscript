@@ -51,6 +51,11 @@
   font-size: 0.85rem;
 }
 
+.script-card-delete {
+  min-width: 2.75rem;
+  padding: 0.7rem;
+}
+
 .script-card.is-active .script-card-selection {
   color: var(--gold-light);
 }

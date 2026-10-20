@@ -41,7 +41,7 @@ const tabs = [
 </AppLayout>
 
 <script>
-  import { getScriptStore, setActiveScript } from '../../../scripts/script-store';
+  import { deleteScript, getScriptStore, setActiveScript } from '../../../scripts/script-store';
   import { showToast } from '../../../scripts/toasts';
 
   const emptyState = document.querySelector('[data-empty-state]');
@@ -73,6 +73,15 @@ const tabs = [
     }
 
     if (event.target.closest('a')) {
+      return;
+    }
+
+    const deleteButton = event.target.closest('[data-delete-script]');
+    if (deleteButton instanceof HTMLButtonElement) {
+      const scriptId = deleteButton.dataset.deleteScript;
+      if (scriptId) {
+        deleteSelectedScript(scriptId);
+      }
       return;
     }
 
@@ -129,9 +138,37 @@ const tabs = [
     link.href = '/app/script/overview/';
     link.textContent = 'Open overview';
 
-    actions.append(selection, link);
+    const deleteButton = document.createElement('button');
+    deleteButton.type = 'button';
+    deleteButton.className = 'button-danger script-card-delete';
+    deleteButton.dataset.deleteScript = script.id;
+    deleteButton.setAttribute('aria-label', `Delete ${script.title || 'script'}`);
+    deleteButton.innerHTML = '<span class="material-icons" aria-hidden="true">delete</span>';
+
+    actions.append(selection, link, deleteButton);
     card.append(title, details, actions);
     return card;
+  }
+
+  function deleteSelectedScript(scriptId: string): void {
+    const store = getScriptStore();
+    const script = store.scripts.find((item) => item.id === scriptId);
+    if (!script || !window.confirm(`Delete "${script.title || 'Untitled script'}"?`)) {
+      return;
+    }
+
+    if (!deleteScript(scriptId)) {
+      return;
+    }
+
+    sessionStorage.setItem(
+      'offscript-pending-toast',
+      JSON.stringify({
+        message: `"${script.title || 'Untitled script'}" was deleted.`,
+        variant: 'success',
+      }),
+    );
+    window.location.reload();
   }
 
   function selectScript(scriptId: string): void {

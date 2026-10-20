@@ -1,5 +1,51 @@
 export type ToastVariant = 'success' | 'error';
 
+export interface PendingToast {
+  message: string;
+  variant: ToastVariant;
+}
+
+const PENDING_TOAST_KEY = 'offscript-pending-toast';
+
+export function setPendingToast(
+  message: string,
+  variant: ToastVariant = 'success',
+): void {
+  try {
+    sessionStorage.setItem(PENDING_TOAST_KEY, JSON.stringify({ message, variant }));
+  } catch {
+    // Ignore unavailable session storage.
+  }
+}
+
+export function consumePendingToast(): PendingToast | null {
+  try {
+    const pendingToast = sessionStorage.getItem(PENDING_TOAST_KEY);
+    if (!pendingToast) {
+      return null;
+    }
+
+    sessionStorage.removeItem(PENDING_TOAST_KEY);
+    const parsed: unknown = JSON.parse(pendingToast);
+    if (
+      !parsed ||
+      typeof parsed !== 'object' ||
+      !('message' in parsed) ||
+      typeof parsed.message !== 'string'
+    ) {
+      return null;
+    }
+
+    return {
+      message: parsed.message,
+      variant:
+        'variant' in parsed && parsed.variant === 'error' ? 'error' : 'success',
+    };
+  } catch {
+    return null;
+  }
+}
+
 export function showToast(
   message: string,
   variant: ToastVariant = 'success',

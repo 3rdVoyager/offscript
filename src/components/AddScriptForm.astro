@@ -31,7 +31,7 @@ import Form from './Form.astro';
 <script>
   import { addScript } from '../scripts/script-store';
   import { getScriptValidationError, isValidScript } from '../scripts/script-schema';
-  import { showToast, type ToastVariant } from '../scripts/toasts';
+  import { setPendingToast, showToast, type ToastVariant } from '../scripts/toasts';
 
   const form = document.querySelector('#add-script-form');
 
@@ -109,13 +109,7 @@ import Form from './Form.astro';
         if (fileName) {
           fileName.textContent = 'Click to upload a JSON file.';
         }
-        sessionStorage.setItem(
-          'offscript-pending-toast',
-          JSON.stringify({
-            message: `"${script.title?.trim() || 'Untitled script'}" was added.`,
-            variant: 'success',
-          }),
-        );
+        setPendingToast(`"${script.title?.trim() || 'Untitled script'}" was added.`);
         window.location.assign('/app/manage/scripts/');
       } catch {
         setStatus('Choose a valid JSON file or paste valid script JSON.', 'error');

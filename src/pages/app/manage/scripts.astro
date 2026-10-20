@@ -44,7 +44,7 @@ const tabs = [
 <script>
   import { deleteScript, getScriptStore, setActiveScript } from '../../../scripts/script-store';
   import type { ScriptAct, StoredScript } from '../../../scripts/script-schema';
-  import { showToast } from '../../../scripts/toasts';
+  import { setPendingToast, showToast } from '../../../scripts/toasts';
 
   const emptyState = document.querySelector('[data-empty-state]');
   const emptySection = document.querySelector('.scripts-empty-section');
@@ -163,13 +163,7 @@ const tabs = [
       return;
     }
 
-    sessionStorage.setItem(
-      'offscript-pending-toast',
-      JSON.stringify({
-        message: `"${script.title || 'Untitled script'}" was deleted.`,
-        variant: 'success',
-      }),
-    );
+    setPendingToast(`"${script.title || 'Untitled script'}" was deleted.`);
     window.location.reload();
   }
 

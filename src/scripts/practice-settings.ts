@@ -4,6 +4,7 @@ import { readStorageJson, writeStorageJson } from './storage';
 export interface PracticeSettings {
   characters: string[];
   scenes: string[];
+  randomizeLineOrder: boolean;
 }
 
 export interface PracticeCharacter {
@@ -68,6 +69,7 @@ export function getPracticeSettings(script: StoredScript): PracticeSettings {
           options.scenes.some((scene) => scene.key === key),
         )
       : options.scenes.map((scene) => scene.key),
+    randomizeLineOrder: stored?.randomizeLineOrder === true,
   };
 }
 

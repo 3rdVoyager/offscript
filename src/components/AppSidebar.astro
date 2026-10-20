@@ -1,6 +1,7 @@
 ---
 import '../styles/app-sidebar.css';
 import '../styles/icons.css';
+import { appVersion } from '../app-version';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (path: string, includeChildren = false): boolean => {
@@ -51,7 +52,10 @@ const sections = [
       width="40"
       height="40"
     />
-    <span>OffScript!</span>
+    <span class="app-sidebar-brand-lockup">
+      <span>OffScript!</span>
+      <span class="app-sidebar-version" title={`Version ${appVersion}`}>v{appVersion}</span>
+    </span>
   </a>
 
   <nav class="app-sidebar-nav">

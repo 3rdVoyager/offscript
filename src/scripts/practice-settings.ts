@@ -82,6 +82,18 @@ export function savePracticeSettings(
   }
 }
 
+export function deletePracticeSettings(scriptId: string): void {
+  const allSettings = readSettings();
+  if (!(scriptId in allSettings)) {
+    return;
+  }
+
+  delete allSettings[scriptId];
+  if (writeStorageJson(STORAGE_KEY, allSettings)) {
+    window.dispatchEvent(new CustomEvent('offscript:practice-settings-changed'));
+  }
+}
+
 export function getSceneKey(actIndex: number, sceneIndex: number): string {
   return `${actIndex}-${sceneIndex}`;
 }

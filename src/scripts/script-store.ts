@@ -4,6 +4,7 @@ import {
   type Script,
   type StoredScript,
 } from './script-schema';
+import { deletePracticeSettings } from './practice-settings';
 import { readStorageJson, writeStorageJson } from './storage';
 
 export type {
@@ -122,6 +123,7 @@ export function deleteScript(scriptId: string): boolean {
     store.activeScriptId = store.scripts[0]?.id || null;
   }
 
+  deletePracticeSettings(scriptId);
   saveStore(store);
   return true;
 }

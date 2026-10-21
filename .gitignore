@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # legacy vanilla migration files
 legacy-vanilla/
+
+# personal working files
+local/

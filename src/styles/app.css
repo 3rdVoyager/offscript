@@ -29,6 +29,10 @@
 }
 
 @media (max-width: 800px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
   .app-main {
     padding: var(--space-5) var(--page-gutter);
   }

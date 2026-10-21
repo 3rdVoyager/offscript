@@ -1,11 +1,11 @@
 ---
-import '../styles/app-sidebar.css';
-import '../styles/icons.css';
-import { appVersion } from '../app-version';
+import "../styles/app-sidebar.css";
+import "../styles/icons.css";
+import { appVersion } from "../app-version";
 
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const isCurrent = (path: string, includeChildren = false): boolean => {
-  const normalizedPath = path.replace(/\/$/, '') || '/';
+  const normalizedPath = path.replace(/\/$/, "") || "/";
   return (
     currentPath === normalizedPath ||
     (includeChildren && currentPath.startsWith(`${normalizedPath}/`))
@@ -13,56 +13,67 @@ const isCurrent = (path: string, includeChildren = false): boolean => {
 };
 
 const dashboard = {
-  label: 'Dashboard',
-  href: '/app/',
-  icon: 'home',
+  label: "Dashboard",
+  href: "/app/",
+  icon: "home",
 };
 
 const sections = [
   {
-    label: 'Script',
+    label: "Script",
     links: [
-      { label: 'Overview', href: '/app/script/overview/', icon: 'book' },
-      { label: 'View', href: '/app/script/view/', icon: 'description' },
-      { label: 'Progress', href: '/app/script/progress/', icon: 'trending_up' },
+      { label: "Overview", href: "/app/script/overview/", icon: "book" },
+      { label: "View", href: "/app/script/view/", icon: "description" },
+      { label: "Progress", href: "/app/script/progress/", icon: "trending_up" },
     ],
   },
   {
-    label: 'Practice',
-    links: [
-      { label: 'Type', href: '/app/practice/type/', icon: 'keyboard' },
-    ],
+    label: "Practice",
+    links: [{ label: "Type", href: "/app/practice/type/", icon: "keyboard" }],
   },
   {
-    label: 'Manage',
-    className: 'app-sidebar-bottom',
+    label: "Manage",
+    className: "app-sidebar-bottom",
     links: [
-      { label: 'Scripts', href: '/app/manage/scripts/', icon: 'library_books' },
-      { label: 'Settings', href: '/app/manage/settings/', icon: 'settings' },
+      { label: "Scripts", href: "/app/manage/scripts/", icon: "library_books" },
+      { label: "Settings", href: "/app/manage/settings/", icon: "settings" },
     ],
   },
 ];
 ---
 
-<aside class="app-sidebar">
-  <a href="/app/" class="app-sidebar-brand">
-    <img
-      src="/assets/brand/favicon/web-app-manifest-512x512.png"
-      alt=""
-      width="40"
-      height="40"
-    />
-    <span class="app-sidebar-brand-lockup">
-      <span>OffScript!</span>
-      <span class="app-sidebar-version" title={`Version ${appVersion}`}>v{appVersion}</span>
-    </span>
-  </a>
-
+<aside class="app-sidebar" data-state="open">
+  <div class="app-sidebar-header">
+    <a href="/app/" class="app-sidebar-brand">
+      <img
+        src="/assets/brand/favicon/web-app-manifest-512x512.png"
+        alt=""
+        width="40"
+        height="40"
+      />
+      <span class="app-sidebar-brand-lockup">
+        <span>OffScript!</span>
+        <span class="app-sidebar-version" title={`Version ${appVersion}`}
+          >v{appVersion}</span
+        >
+      </span>
+    </a>
+    <button
+      class="app-sidebar-hamburger material-icons"
+      aria-label="Toggle navigation"
+      aria-expanded="true">menu</button
+    >
+  </div>
   <nav class="app-sidebar-nav">
     <ul>
       <li>
-        <a href={dashboard.href} aria-current={isCurrent('/app') ? 'page' : undefined}>
-          <span class="material-icons nav-link-icon" aria-hidden="true">{dashboard.icon}</span>
+        <a
+          href={dashboard.href}
+          aria-current={isCurrent("/app") ? "page" : undefined}
+        >
+          <span class="material-icons nav-link-icon" aria-hidden="true"
+            >{dashboard.icon}</span
+          >
           <span class="nav-link-label">{dashboard.label}</span>
         </a>
       </li>
@@ -72,7 +83,7 @@ const sections = [
   {
     sections.map((section) => (
       <nav
-        class:list={['app-sidebar-nav', section.className]}
+        class:list={["app-sidebar-nav", section.className]}
         aria-label={section.label}
       >
         <p class="app-sidebar-section-label">{section.label}</p>
@@ -81,9 +92,11 @@ const sections = [
             <li>
               <a
                 href={link.href}
-                aria-current={isCurrent(link.href, true) ? 'page' : undefined}
+                aria-current={isCurrent(link.href, true) ? "page" : undefined}
               >
-                <span class="material-icons nav-link-icon" aria-hidden="true">{link.icon}</span>
+                <span class="material-icons nav-link-icon" aria-hidden="true">
+                  {link.icon}
+                </span>
                 <span class="nav-link-label">{link.label}</span>
               </a>
             </li>
@@ -93,3 +106,20 @@ const sections = [
     ))
   }
 </aside>
+
+<script>
+  const sidebar = document.querySelector(".app-sidebar");
+  const button = document.querySelector(".app-sidebar-hamburger");
+
+  if (sidebar instanceof HTMLElement && button instanceof HTMLButtonElement) {
+    button.addEventListener("click", () => {
+      const nextState = sidebar.dataset.state === "open" ? "closed" : "open";
+
+      sidebar.dataset.state = nextState;
+      button.setAttribute(
+        "aria-expanded",
+        String(sidebar.dataset.state === "open"),
+      );
+    });
+  }
+</script>

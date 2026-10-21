@@ -34,6 +34,8 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
       </div>
 
       <div class="type-prompt">
+        <p class="type-cue-label" data-type-cue-label hidden>Cue</p>
+        <p class="type-cue" data-type-cue hidden></p>
         <p class="type-character" data-type-character></p>
         <p class="type-answer" data-type-answer hidden></p>
       </div>
@@ -126,6 +128,14 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
       practiceLine.line.characters?.join(' / ') || 'Unknown character',
     );
     setText('[data-type-answer]', practiceLine.line.text || '');
+    const cueLabel = document.querySelector('[data-type-cue-label]');
+    const cue = document.querySelector('[data-type-cue]');
+    if (cueLabel instanceof HTMLElement && cue instanceof HTMLElement) {
+      const hasCue = Boolean(practiceLine.cueLine);
+      cueLabel.hidden = !hasCue;
+      cue.hidden = !hasCue;
+      cue.textContent = practiceLine.cueLine || '';
+    }
     const progressBar = document.querySelector('[data-progress-meter-bar]');
     if (progressBar instanceof HTMLElement) {
       progressBar.style.width = `${getLineProgress(practiceLine.line.progress)}%`;
@@ -388,6 +398,20 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+  }
+
+  .type-cue-label {
+    margin-bottom: var(--space-1);
+    color: var(--app-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .type-cue {
+    max-width: 52rem;
+    margin-bottom: var(--space-3);
+    color: var(--app-text);
   }
 
   .type-answer {

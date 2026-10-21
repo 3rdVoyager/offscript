@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.2](https://github.com/3rdVoyager/offscript/compare/v0.2.1...v0.2.2) (2026-10-21)
+
+
+### Bug Fixes
+
+* add cue lines to type interface ([784dcd8](https://github.com/3rdVoyager/offscript/commit/784dcd8b7ae70bca3756ff8cf78741a6174c93ec))
+* prevent empty-state flash during app initialization ([725ad81](https://github.com/3rdVoyager/offscript/commit/725ad81add941abce1341f18a11648497fdb3730))
+* update empty section spacing visibility during script initialization ([b3891a0](https://github.com/3rdVoyager/offscript/commit/b3891a02f05d5a5c49aeff540eb87b34f8a60da2))
+* wire Open Overview buttons to set the active script on click before opening overview page. ([c614ae1](https://github.com/3rdVoyager/offscript/commit/c614ae1e8f07b663a77a38c1c2dd6d42daa11469))
+
 ## [0.2.1](https://github.com/3rdVoyager/offscript/compare/v0.2.0...v0.2.1) (2026-10-21)
 
 

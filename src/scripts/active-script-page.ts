@@ -24,9 +24,11 @@ export function initializeActiveScriptPage(
 
   if (!script) {
     emptySection.classList.remove("is-loading");
+    emptySection.hidden = false;
     return null;
   } else {
     emptySection.classList.add("is-loading");
+    emptySection.hidden = true;
   }
 
   if (options.isReady && !options.isReady(script)) {

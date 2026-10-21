@@ -1,14 +1,14 @@
 ---
-import AppLayout from '../../../layouts/AppLayout.astro';
-import AppSection from '../../../components/AppSection.astro';
-import AppPageHeader from '../../../components/AppPageHeader.astro';
-import TabBar from '../../../components/TabBar.astro';
-import EmptyState from '../../../components/EmptyState.astro';
-import '../../../styles/scripts.css';
+import AppLayout from "../../../layouts/AppLayout.astro";
+import AppSection from "../../../components/AppSection.astro";
+import AppPageHeader from "../../../components/AppPageHeader.astro";
+import TabBar from "../../../components/TabBar.astro";
+import EmptyState from "../../../components/EmptyState.astro";
+import "../../../styles/scripts.css";
 
 const tabs = [
-  { label: 'View scripts', href: '/app/manage/scripts/' },
-  { label: 'Add script', href: '/app/manage/scripts/add/' },
+  { label: "View scripts", href: "/app/manage/scripts/" },
+  { label: "Add script", href: "/app/manage/scripts/add/" },
 ];
 ---
 
@@ -42,19 +42,25 @@ const tabs = [
 </AppLayout>
 
 <script>
-  import { deleteScript, getScriptStore, setActiveScript } from '../../../scripts/script-store';
-  import type { ScriptAct, StoredScript } from '../../../scripts/script-schema';
-  import { setPendingToast, showToast } from '../../../scripts/toasts';
+  import {
+    deleteScript,
+    getScriptStore,
+    setActiveScript,
+  } from "../../../scripts/script-store";
+  import type { ScriptAct, StoredScript } from "../../../scripts/script-schema";
+  import { setPendingToast, showToast } from "../../../scripts/toasts";
 
-  const emptyState = document.querySelector('[data-empty-state]');
-  const emptySection = document.querySelector('.scripts-empty-section');
-  const scriptsGrid = document.querySelector('[data-scripts-grid]');
-  const scriptsSection = document.querySelector('.scripts-grid-section');
+  const emptyState = document.querySelector("[data-empty-state]");
+  const emptySection = document.querySelector(".scripts-empty-section");
+  const scriptsGrid = document.querySelector("[data-scripts-grid]");
+  const scriptsSection = document.querySelector(".scripts-grid-section");
 
-  if (emptyState instanceof HTMLElement &&
-      emptySection instanceof HTMLElement &&
-      scriptsGrid instanceof HTMLElement &&
-      scriptsSection instanceof HTMLElement) {
+  if (
+    emptyState instanceof HTMLElement &&
+    emptySection instanceof HTMLElement &&
+    scriptsGrid instanceof HTMLElement &&
+    scriptsSection instanceof HTMLElement
+  ) {
     const store = getScriptStore();
     const scripts = store.scripts;
 
@@ -69,16 +75,16 @@ const tabs = [
     }
   }
 
-  scriptsGrid?.addEventListener('click', (event) => {
+  scriptsGrid?.addEventListener("click", (event) => {
     if (!(event.target instanceof Element)) {
       return;
     }
 
-    if (event.target.closest('a')) {
+    if (event.target.closest("a")) {
       return;
     }
 
-    const deleteButton = event.target.closest('[data-delete-script]');
+    const deleteButton = event.target.closest("[data-delete-script]");
     if (deleteButton instanceof HTMLButtonElement) {
       const scriptId = deleteButton.dataset.deleteScript;
       if (scriptId) {
@@ -87,65 +93,77 @@ const tabs = [
       return;
     }
 
-    const card = event.target.closest('.script-card');
-    const scriptId = card?.getAttribute('data-script-id');
+    const card = event.target.closest(".script-card");
+    const scriptId = card?.getAttribute("data-script-id");
     if (scriptId) {
       selectScript(scriptId);
     }
   });
 
-  scriptsGrid?.addEventListener('keydown', (event) => {
-    if (!(event instanceof KeyboardEvent) ||
-        !(event.target instanceof HTMLElement) ||
-        !event.target.classList.contains('script-card') ||
-        (event.key !== 'Enter' && event.key !== ' ')) {
+  scriptsGrid?.addEventListener("keydown", (event) => {
+    if (
+      !(event instanceof KeyboardEvent) ||
+      !(event.target instanceof HTMLElement) ||
+      !event.target.classList.contains("script-card") ||
+      (event.key !== "Enter" && event.key !== " ")
+    ) {
       return;
     }
 
     event.preventDefault();
-    const scriptId = event.target.getAttribute('data-script-id');
+    const scriptId = event.target.getAttribute("data-script-id");
     if (scriptId) {
       selectScript(scriptId);
     }
   });
 
-  function createScriptCard(script: StoredScript, activeScriptId: string | null): HTMLElement {
-    const card = document.createElement('article');
-    card.className = 'script-card';
+  function createScriptCard(
+    script: StoredScript,
+    activeScriptId: string | null,
+  ): HTMLElement {
+    const card = document.createElement("article");
+    card.className = "script-card";
     card.dataset.scriptId = script.id;
-    card.setAttribute('role', 'button');
+    card.setAttribute("role", "button");
     card.tabIndex = 0;
     const isActive = script.id === activeScriptId;
     if (isActive) {
-      card.classList.add('is-active');
+      card.classList.add("is-active");
     }
-    card.setAttribute('aria-pressed', String(isActive));
+    card.setAttribute("aria-pressed", String(isActive));
 
-    const title = document.createElement('h2');
-    title.textContent = script.title || 'Untitled script';
+    const title = document.createElement("h2");
+    title.textContent = script.title || "Untitled script";
 
-    const details = document.createElement('p');
-    details.className = 'script-card-details';
+    const details = document.createElement("p");
+    details.className = "script-card-details";
     details.textContent = `${script.acts?.length || 0} acts · ${countScenes(script)} scenes`;
 
-    const actions = document.createElement('div');
-    actions.className = 'script-card-actions';
+    const actions = document.createElement("div");
+    actions.className = "script-card-actions";
 
-    const selection = document.createElement('span');
-    selection.className = 'script-card-selection';
-    selection.textContent = isActive ? 'Selected script' : 'Click to select';
+    const selection = document.createElement("span");
+    selection.className = "script-card-selection";
+    selection.textContent = isActive ? "Selected script" : "Click to select";
 
-    const link = document.createElement('a');
-    link.className = 'button-secondary';
-    link.href = '/app/script/overview/';
-    link.textContent = 'Open overview';
+    const link = document.createElement("a");
+    link.className = "button-secondary";
+    link.href = "/app/script/overview/";
+    link.textContent = "Open overview";
+    link.addEventListener("click", () => {
+      setActiveScript(script.id);
+    });
 
-    const deleteButton = document.createElement('button');
-    deleteButton.type = 'button';
-    deleteButton.className = 'button-danger script-card-delete';
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "button-danger script-card-delete";
     deleteButton.dataset.deleteScript = script.id;
-    deleteButton.setAttribute('aria-label', `Delete ${script.title || 'script'}`);
-    deleteButton.innerHTML = '<span class="material-icons" aria-hidden="true">delete</span>';
+    deleteButton.setAttribute(
+      "aria-label",
+      `Delete ${script.title || "script"}`,
+    );
+    deleteButton.innerHTML =
+      '<span class="material-icons" aria-hidden="true">delete</span>';
 
     actions.append(selection, link, deleteButton);
     card.append(title, details, actions);
@@ -155,7 +173,10 @@ const tabs = [
   function deleteSelectedScript(scriptId: string): void {
     const store = getScriptStore();
     const script = store.scripts.find((item) => item.id === scriptId);
-    if (!script || !window.confirm(`Delete "${script.title || 'Untitled script'}"?`)) {
+    if (
+      !script ||
+      !window.confirm(`Delete "${script.title || "Untitled script"}"?`)
+    ) {
       return;
     }
 
@@ -163,7 +184,7 @@ const tabs = [
       return;
     }
 
-    setPendingToast(`"${script.title || 'Untitled script'}" was deleted.`);
+    setPendingToast(`"${script.title || "Untitled script"}" was deleted.`);
     window.location.reload();
   }
 
@@ -174,18 +195,20 @@ const tabs = [
 
     const store = getScriptStore();
 
-    document.querySelectorAll('.script-card').forEach((card) => {
-      const isSelected = card.getAttribute('data-script-id') === scriptId;
-      card.classList.toggle('is-active', isSelected);
-      card.setAttribute('aria-pressed', String(isSelected));
-      const selection = card.querySelector('.script-card-selection');
+    document.querySelectorAll(".script-card").forEach((card) => {
+      const isSelected = card.getAttribute("data-script-id") === scriptId;
+      card.classList.toggle("is-active", isSelected);
+      card.setAttribute("aria-pressed", String(isSelected));
+      const selection = card.querySelector(".script-card-selection");
       if (selection) {
-        selection.textContent = isSelected ? 'Selected script' : 'Click to select';
+        selection.textContent = isSelected
+          ? "Selected script"
+          : "Click to select";
       }
     });
 
     const selected = store.scripts.find((script) => script.id === scriptId);
-    showToast(`"${selected?.title || 'Script'}" is now selected.`);
+    showToast(`"${selected?.title || "Script"}" is now selected.`);
   }
 
   function countScenes(script: StoredScript): number {

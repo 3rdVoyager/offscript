@@ -13,13 +13,15 @@ import "../../styles/dashboard.css";
     description="Your home base for scripts, practice, and progress."
   />
 
-  <AppSection class="dashboard-empty-section" ariaLabel="Dashboard empty state">
-    <EmptyState
-      title="Welcome to OffScript"
-      description="Add a script to start practicing lines, tracking progress, and building confidence."
-      actionLabel="Add your first script"
-      actionHref="/app/manage/scripts/add/"
-    />
+  <AppSection class="dashboard-empty-section is-loading" ariaLabel="Dashboard empty state">
+    <AppSection variant="card">
+      <EmptyState
+        title="Welcome to OffScript"
+        description="Add a script to start practicing lines, tracking progress, and building confidence."
+        actionLabel="Add your first script"
+        actionHref="/app/manage/scripts/add/"
+      />
+    </AppSection>
   </AppSection>
 
   <div class="dashboard-content" data-dashboard-content hidden>

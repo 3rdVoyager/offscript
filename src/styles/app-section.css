@@ -23,3 +23,7 @@
 .app-section--card p:last-child {
   margin-bottom: 0;
 }
+
+.is-loading {
+  visibility: hidden;
+}

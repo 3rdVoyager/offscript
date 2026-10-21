@@ -22,13 +22,18 @@ const tabs = [
     <TabBar tabs={tabs} />
   </AppSection>
 
-  <AppSection class="scripts-empty-section" ariaLabel="Saved scripts">
-    <EmptyState
-      title="No scripts yet"
-      description="Add your first script to begin practicing."
-      actionLabel="Add a script"
-      actionHref="/app/manage/scripts/add/"
-    />
+  <AppSection
+    class="scripts-empty-section is-loading"
+    ariaLabel="Saved scripts"
+  >
+    <AppSection variant="card">
+      <EmptyState
+        title="No scripts yet"
+        description="Add your first script to begin practicing."
+        actionLabel="Add a script"
+        actionHref="/app/manage/scripts/add/"
+      />
+    </AppSection>
   </AppSection>
 
   <AppSection
@@ -72,6 +77,8 @@ const tabs = [
       for (const script of scripts) {
         scriptsGrid.appendChild(createScriptCard(script, store.activeScriptId));
       }
+    } else {
+      emptySection.classList.remove("is-loading");
     }
   }
 

@@ -16,15 +16,23 @@ export function initializeActiveScriptPage(
   const content = document.querySelector(options.contentSelector);
 
   if (
-    !script ||
     !(emptySection instanceof HTMLElement) ||
-    !(content instanceof HTMLElement) ||
-    (options.isReady && !options.isReady(script))
+    !(content instanceof HTMLElement)
   ) {
     return null;
   }
 
-  emptySection.hidden = true;
+  if (!script) {
+    emptySection.classList.remove("is-loading");
+    return null;
+  } else {
+    emptySection.classList.add("is-loading");
+  }
+
+  if (options.isReady && !options.isReady(script)) {
+    return null;
+  } 
+
   content.hidden = false;
   options.render(script);
   return script;

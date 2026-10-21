@@ -33,6 +33,10 @@
   text-decoration: none;
 }
 
+.app-sidebar-hamburger {
+  display: none;
+}
+
 .app-sidebar-brand-lockup {
   display: inline-flex;
   align-items: center;
@@ -141,7 +145,6 @@
       opacity 180ms ease,
       visibility 180ms ease;
   }
-
 
   .app-sidebar[data-state='closed'] .app-sidebar-nav {
     opacity: 0;

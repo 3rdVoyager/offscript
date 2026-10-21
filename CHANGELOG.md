@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/3rdVoyager/offscript/compare/v0.2.0...v0.2.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* reorder app-sidebar CSS import for proper styling application ([7313400](https://github.com/3rdVoyager/offscript/commit/7313400f17727e6095db0310a6dc6edeeaddbb8a))
+
 ## [0.2.0](https://github.com/3rdVoyager/offscript/compare/v0.1.0...v0.2.0) (2026-10-21)
 
 

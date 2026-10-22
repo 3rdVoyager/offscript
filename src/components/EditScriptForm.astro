@@ -1,0 +1,20 @@
+---
+import "../styles/form.css";
+---
+
+<form class="app-form edit-script-form" data-edit-script-form>
+  <div>
+    <label for="edit-script-title">Title</label>
+    <input id="edit-script-title" name="title" type="text" required />
+  </div>
+
+  <div>
+    <label for="edit-script-notes">Notes</label>
+    <textarea id="edit-script-notes" name="notes" rows="6"></textarea>
+  </div>
+
+  <div class="app-actions">
+    <button type="submit" class="button">Save changes</button>
+    <a class="button-secondary" href="/app/manage/scripts/">Cancel</a>
+  </div>
+</form>

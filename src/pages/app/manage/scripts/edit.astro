@@ -1,0 +1,80 @@
+---
+import AppLayout from "../../../../layouts/AppLayout.astro";
+import AppSection from "../../../../components/AppSection.astro";
+import AppPageHeader from "../../../../components/AppPageHeader.astro";
+import TabBar from "../../../../components/TabBar.astro";
+import EmptyState from "../../../../components/EmptyState.astro";
+import EditScriptForm from "../../../../components/EditScriptForm.astro";
+
+const tabs = [
+  { label: "View scripts", href: "/app/manage/scripts/" },
+  { label: "Add script", href: "/app/manage/scripts/add/" },
+  { label: "Edit script", href: "/app/manage/scripts/edit/" },
+];
+
+---
+
+<AppLayout pageTitle="Edit Script">
+  <AppPageHeader
+    title="Edit script"
+    description="Fix typos, parsing errors, and other issues with your script."
+  />
+
+  <AppSection>
+    <TabBar tabs={tabs} />
+  </AppSection>
+
+  <AppSection class="edit-script-empty" hidden>
+    <EmptyState
+      title="No script selected"
+      description="Choose a script before opening the editor."
+      actionLabel="Choose a script"
+      actionHref="/app/manage/scripts/"
+    />
+  </AppSection>
+
+  <AppSection variant="card" class="edit-script-content" hidden>
+    <EditScriptForm />
+  </AppSection>
+
+</AppLayout>
+
+<script>
+  import { initializeActiveScriptPage } from "../../../../scripts/active-script-page";
+  import { updateScript } from "../../../../scripts/script-store";
+  import { showToast } from "../../../../scripts/toasts";
+
+  const form = document.querySelector("[data-edit-script-form]");
+  const titleInput = document.querySelector("#edit-script-title");
+  const notesInput = document.querySelector("#edit-script-notes");
+
+  if (
+    form instanceof HTMLFormElement &&
+    titleInput instanceof HTMLInputElement &&
+    notesInput instanceof HTMLTextAreaElement
+  ) {
+    initializeActiveScriptPage({
+      emptySelector: ".edit-script-empty",
+      contentSelector: ".edit-script-content",
+      render: (script) => {
+        titleInput.value = script.title || "";
+        notesInput.value = script.notes || "";
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const saved = updateScript(script.id, (storedScript) => {
+            storedScript.title = titleInput.value.trim();
+            storedScript.notes = notesInput.value.trim();
+          });
+
+          if (saved) {
+            showToast("Script details saved.");
+          } else {
+            showToast("Could not save script details.", "error");
+          }
+        });
+      },
+    });
+  }
+</script>

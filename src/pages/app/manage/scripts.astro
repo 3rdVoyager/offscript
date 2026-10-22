@@ -9,6 +9,7 @@ import "../../../styles/scripts.css";
 const tabs = [
   { label: "View scripts", href: "/app/manage/scripts/" },
   { label: "Add script", href: "/app/manage/scripts/add/" },
+  { label: "Edit script", href: "/app/manage/scripts/edit/" },
 ];
 ---
 
@@ -161,6 +162,17 @@ const tabs = [
       setActiveScript(script.id);
     });
 
+    const editButton = document.createElement("a");
+    editButton.href = `/app/manage/scripts/edit`;
+    editButton.className = "button-secondary script-card-edit";
+    editButton.dataset.editScript = script.id;
+    editButton.setAttribute("aria-label", `Edit ${script.title || "script"}`);
+    editButton.innerHTML =
+      '<span class="material-icons" aria-hidden="true">edit</span>';
+    editButton.addEventListener("click", () => {
+      setActiveScript(script.id);
+    });
+
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
     deleteButton.className = "button-danger script-card-delete";
@@ -172,7 +184,7 @@ const tabs = [
     deleteButton.innerHTML =
       '<span class="material-icons" aria-hidden="true">delete</span>';
 
-    actions.append(selection, link, deleteButton);
+    actions.append(selection, link, editButton, deleteButton);
     card.append(title, details, actions);
     return card;
   }

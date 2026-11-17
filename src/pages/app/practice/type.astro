@@ -25,6 +25,25 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
 
   <div class="type-content" data-type-content hidden>
     <AppSection variant="card" class="type-tool" ariaLabel="Type practice">
+      <div class="type-navigation" aria-label="Line navigation">
+        <button
+          type="button"
+          class="button-secondary type-navigation-button"
+          data-previous-line
+          aria-label="Previous line"
+        >
+          &lt;
+        </button>
+        <button
+          type="button"
+          class="button-secondary type-navigation-button"
+          data-next-line
+          aria-label="Next line"
+        >
+          &gt;
+        </button>
+      </div>
+
       <div class="type-toolbar">
         <div>
           <p class="type-label">Type practice</p>
@@ -55,9 +74,6 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
         <button type="button" class="button-secondary" data-reveal-answer>
           Reveal answer
         </button>
-        <button type="button" class="button-secondary" data-next-line hidden>
-          Next line
-        </button>
       </div>
     </AppSection>
 
@@ -77,6 +93,7 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
 
   let practiceLines: ReturnType<typeof getPracticeLines> = [];
   let currentIndex = -1;
+  let isCurrentLineComplete = false;
   const script = initializeActiveScriptPage({
     emptySelector: '.type-empty-section',
     contentSelector: '[data-type-content]',
@@ -88,14 +105,15 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
     showCurrentLine();
   }
 
-  document.querySelector('[data-check-answer]')?.addEventListener('click', checkAnswer);
+  document.querySelector('[data-check-answer]')?.addEventListener('click', handlePrimaryAction);
   document.querySelector('[data-reveal-answer]')?.addEventListener('click', revealAnswer);
+  document.querySelector('[data-previous-line]')?.addEventListener('click', previousLine);
   document.querySelector('[data-next-line]')?.addEventListener('click', nextLine);
 
   document.querySelector('[data-type-input]')?.addEventListener('keydown', (event) => {
-    if (event instanceof KeyboardEvent && event.key === 'Enter' && event.ctrlKey) {
+    if (event instanceof KeyboardEvent && event.key === 'Enter') {
       event.preventDefault();
-      checkAnswer();
+      handlePrimaryAction();
     }
   });
 
@@ -118,7 +136,6 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
     const practiceLine = practiceLines[currentIndex];
     const input = document.querySelector('[data-type-input]');
     const answer = document.querySelector('[data-type-answer]');
-    const nextButton = document.querySelector('[data-next-line]');
     const checkButton = document.querySelector('[data-check-answer]');
     const revealButton = document.querySelector('[data-reveal-answer]');
 
@@ -144,15 +161,15 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
     if (input instanceof HTMLTextAreaElement) {
       input.value = '';
       input.disabled = false;
+      input.readOnly = false;
       input.focus();
     }
+    isCurrentLineComplete = false;
     if (answer instanceof HTMLElement) {
       answer.hidden = true;
     }
-    if (nextButton instanceof HTMLElement) {
-      nextButton.hidden = true;
-    }
     if (checkButton instanceof HTMLButtonElement) {
+      checkButton.textContent = 'Check answer';
       checkButton.disabled = false;
     }
     if (revealButton instanceof HTMLButtonElement) {
@@ -179,8 +196,9 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
     const progress = Math.min(100, getLineProgress(practiceLine.line.progress) + 25);
     setLineProgress(script!.id, practiceLine, progress);
     practiceLine.line.progress = progress;
+    isCurrentLineComplete = true;
     showToast('Correct. Line progress updated.');
-    finishCurrentLine();
+    finishCurrentLine(true);
   }
 
   function revealAnswer(): void {
@@ -188,23 +206,30 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
     if (answer instanceof HTMLElement) {
       answer.hidden = false;
     }
-    finishCurrentLine();
+    finishCurrentLine(false);
   }
 
-  function finishCurrentLine(): void {
+  function handlePrimaryAction(): void {
+    if (isCurrentLineComplete) {
+      nextLine();
+      return;
+    }
+
+    checkAnswer();
+  }
+
+  function finishCurrentLine(showNextButton: boolean): void {
     const input = document.querySelector('[data-type-input]');
-    const nextButton = document.querySelector('[data-next-line]');
     const checkButton = document.querySelector('[data-check-answer]');
     const revealButton = document.querySelector('[data-reveal-answer]');
 
     if (input instanceof HTMLTextAreaElement) {
-      input.disabled = true;
-    }
-    if (nextButton instanceof HTMLElement) {
-      nextButton.hidden = false;
+      input.readOnly = showNextButton;
+      input.disabled = !showNextButton;
     }
     if (checkButton instanceof HTMLButtonElement) {
-      checkButton.disabled = true;
+      checkButton.textContent = showNextButton ? 'Next line' : 'Check answer';
+      checkButton.disabled = !showNextButton;
     }
     if (revealButton instanceof HTMLButtonElement) {
       revealButton.disabled = true;
@@ -212,10 +237,21 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
   }
 
   function nextLine(): void {
-    currentIndex = findNextLine(currentIndex + 1);
-    if (currentIndex === -1) {
-      currentIndex = findNextLine(0);
+    if (practiceLines.length === 0) {
+      return;
     }
+
+    currentIndex = (currentIndex + 1) % practiceLines.length;
+    showCurrentLine();
+  }
+
+  function previousLine(): void {
+    if (practiceLines.length === 0) {
+      return;
+    }
+
+    currentIndex =
+      (currentIndex - 1 + practiceLines.length) % practiceLines.length;
     showCurrentLine();
   }
 
@@ -359,6 +395,20 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
   .type-tool[hidden],
   .type-complete[hidden] {
     display: none;
+  }
+
+  .type-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+  }
+
+  .type-navigation-button {
+    min-width: 2.75rem;
+    padding: 0.55rem 0.8rem;
+    font-size: 1.25rem;
+    line-height: 1;
   }
 
   .type-toolbar {

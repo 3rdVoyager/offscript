@@ -4,8 +4,6 @@ import type { StoredScript } from './script-schema';
 interface ActiveScriptPageOptions {
   emptySelector: string;
   contentSelector: string;
-  isReady?: (script: StoredScript) => boolean;
-  render: (script: StoredScript) => void;
 }
 
 export function initializeActiveScriptPage(
@@ -26,16 +24,9 @@ export function initializeActiveScriptPage(
     emptySection.classList.remove("is-loading");
     emptySection.hidden = false;
     return null;
-  } else {
-    emptySection.classList.add("is-loading");
-    emptySection.hidden = true;
   }
 
-  if (options.isReady && !options.isReady(script)) {
-    return null;
-  } 
-
+  emptySection.hidden = true;
   content.hidden = false;
-  options.render(script);
   return script;
 }

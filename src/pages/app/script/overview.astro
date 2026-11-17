@@ -65,11 +65,14 @@ import '../../../styles/overview.css';
   import { initializeActiveScriptPage } from '../../../scripts/active-script-page';
   import type { Script } from '../../../scripts/script-schema';
 
-  initializeActiveScriptPage({
+  const script = initializeActiveScriptPage({
     emptySelector: '.overview-empty-section',
     contentSelector: '[data-overview-content]',
-    render: renderOverview,
   });
+
+  if (script) {
+    renderOverview(script);
+  }
 
   function renderOverview(script: Script): void {
     const stats = getStats(script);

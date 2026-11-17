@@ -150,10 +150,6 @@ const tabs = [
     const actions = document.createElement("div");
     actions.className = "script-card-actions";
 
-    const selection = document.createElement("span");
-    selection.className = "script-card-selection";
-    selection.textContent = isActive ? "Selected script" : "Click to select";
-
     const link = document.createElement("a");
     link.className = "button-secondary";
     link.href = "/app/script/overview/";
@@ -184,7 +180,7 @@ const tabs = [
     deleteButton.innerHTML =
       '<span class="material-icons" aria-hidden="true">delete</span>';
 
-    actions.append(selection, link, editButton, deleteButton);
+    actions.append(link, editButton, deleteButton);
     card.append(title, details, actions);
     return card;
   }
@@ -218,12 +214,6 @@ const tabs = [
       const isSelected = card.getAttribute("data-script-id") === scriptId;
       card.classList.toggle("is-active", isSelected);
       card.setAttribute("aria-pressed", String(isSelected));
-      const selection = card.querySelector(".script-card-selection");
-      if (selection) {
-        selection.textContent = isSelected
-          ? "Selected script"
-          : "Click to select";
-      }
     });
 
     const selected = store.scripts.find((script) => script.id === scriptId);

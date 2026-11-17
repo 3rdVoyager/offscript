@@ -107,19 +107,24 @@ const tabs = [
 
   function renderStructure(draft: StoredScript, container: HTMLElement): void {
     const acts = Array.isArray(draft.acts) ? draft.acts : [];
-    container.replaceChildren(
-      ...acts.map((act, actIndex) =>
-        createActEditor(draft, act, actIndex, container),
-      ),
-      createAddButton("Add act", () => {
-        draft.acts ||= [];
-        draft.acts.push({
-          title: `Act ${draft.acts.length + 1}`,
-          scenes: [{ title: "Scene 1", lines: [] }],
-        });
-        renderStructure(draft, container);
-      }),
+    const children = acts.map((act, actIndex) =>
+      createActEditor(draft, act, actIndex, container),
     );
+
+    if (acts.length === 0) {
+      children.push(
+        createAddButton("Add act", () => {
+          draft.acts ||= [];
+          draft.acts.push({
+            title: `Act ${draft.acts.length + 1}`,
+            scenes: [{ title: "Scene 1", lines: [] }],
+          });
+          renderStructure(draft, container);
+        }),
+      );
+    }
+
+    container.replaceChildren(...children);
   }
 
   function createActEditor(
@@ -135,7 +140,17 @@ const tabs = [
     title.input.addEventListener("input", () => {
       act.title = title.input.value;
     });
-    fieldset.append(title.wrapper);
+
+    const titleRow = document.createElement("div");
+    titleRow.className = "edit-script-scene-title-row";
+    titleRow.append(
+      title.wrapper,
+      createAddButton("Delete act", () => {
+        draft.acts?.splice(actIndex, 1);
+        renderStructure(draft, container);
+      }),
+    );
+    fieldset.append(titleRow);
 
     const scenes = document.createElement("div");
     scenes.className = "edit-script-scenes";
@@ -149,17 +164,14 @@ const tabs = [
 
     const actions = document.createElement("div");
     actions.className = "edit-script-add-actions";
-    actions.append(
-      createAddButton("Add scene", () => {
-        act.scenes ||= [];
-        act.scenes.push({ title: `Scene ${act.scenes.length + 1}`, lines: [] });
-        renderStructure(draft, container);
-      }),
-      createAddButton("Delete act", () => {
-        draft.acts?.splice(actIndex, 1);
-        renderStructure(draft, container);
-      }),
-    );
+    actions.append(createAddButton("Add act", () => {
+      draft.acts ||= [];
+      draft.acts.splice(actIndex + 1, 0, {
+        title: `Act ${actIndex + 2}`,
+        scenes: [{ title: "Scene 1", lines: [] }],
+      });
+      renderStructure(draft, container);
+    }));
     fieldset.append(actions);
 
     return fieldset;
@@ -179,7 +191,17 @@ const tabs = [
     title.input.addEventListener("input", () => {
       scene.title = title.input.value;
     });
-    fieldset.append(title.wrapper);
+
+    const titleRow = document.createElement("div");
+    titleRow.className = "edit-script-scene-title-row";
+    titleRow.append(
+      title.wrapper,
+      createAddButton("Delete scene", () => {
+        act.scenes?.splice(sceneIndex, 1);
+        renderStructure(draft, container);
+      }),
+    );
+    fieldset.append(titleRow);
 
     const lines = document.createElement("div");
     lines.className = "edit-script-lines";
@@ -194,18 +216,12 @@ const tabs = [
     const actions = document.createElement("div");
     actions.className = "edit-script-add-actions";
     actions.append(
-      createAddButton("Add line", () => {
-        scene.lines ||= [];
-        scene.lines.push({
-          type: "line",
-          text: "",
-          characters: [""],
-          progress: 0,
+      createAddButton("Add scene", () => {
+        act.scenes ||= [];
+        act.scenes.splice(sceneIndex + 1, 0, {
+          title: `Scene ${sceneIndex + 2}`,
+          lines: [],
         });
-        renderStructure(draft, container);
-      }),
-      createAddButton("Delete scene", () => {
-        act.scenes?.splice(sceneIndex, 1);
         renderStructure(draft, container);
       }),
     );

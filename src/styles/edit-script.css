@@ -36,6 +36,21 @@
   margin-inline: var(--space-3);
 }
 
+.edit-script-scene-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.edit-script-scene-title-row > div {
+  flex: 0 1 16rem;
+}
+
+.edit-script-scene-title-row input {
+  width: 100%;
+}
+
 .edit-script-scene {
   background: var(--app-surface);
 }

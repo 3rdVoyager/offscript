@@ -53,28 +53,29 @@ const tabs = [
     titleInput instanceof HTMLInputElement &&
     notesInput instanceof HTMLTextAreaElement
   ) {
-    initializeActiveScriptPage({
+    const script = initializeActiveScriptPage({
       emptySelector: ".edit-script-empty",
       contentSelector: ".edit-script-content",
-      render: (script) => {
-        titleInput.value = script.title || "";
-        notesInput.value = script.notes || "";
-
-        form.addEventListener("submit", (event) => {
-          event.preventDefault();
-
-          const saved = updateScript(script.id, (storedScript) => {
-            storedScript.title = titleInput.value.trim();
-            storedScript.notes = notesInput.value.trim();
-          });
-
-          if (saved) {
-            showToast("Script details saved.");
-          } else {
-            showToast("Could not save script details.", "error");
-          }
-        });
-      },
     });
+
+    if (script) {
+      titleInput.value = script.title || "";
+      notesInput.value = script.notes || "";
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const saved = updateScript(script.id, (storedScript) => {
+          storedScript.title = titleInput.value.trim();
+          storedScript.notes = notesInput.value.trim();
+        });
+
+        if (saved) {
+          showToast("Script details saved.");
+        } else {
+          showToast("Could not save script details.", "error");
+        }
+      });
+    }
   }
 </script>

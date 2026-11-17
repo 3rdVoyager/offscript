@@ -80,13 +80,13 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
   const script = initializeActiveScriptPage({
     emptySelector: '.type-empty-section',
     contentSelector: '[data-type-content]',
-    isReady: (activeScript) => {
-      practiceLines = getPracticeLines(activeScript);
-      currentIndex = findNextLine(0);
-      return practiceLines.length > 0;
-    },
-    render: showCurrentLine,
   });
+
+  if (script) {
+    practiceLines = getPracticeLines(script);
+    currentIndex = findNextLine(0);
+    showCurrentLine();
+  }
 
   document.querySelector('[data-check-answer]')?.addEventListener('click', checkAnswer);
   document.querySelector('[data-reveal-answer]')?.addEventListener('click', revealAnswer);

@@ -57,11 +57,14 @@ import '../../../styles/progress.css';
   import { initializeActiveScriptPage } from '../../../scripts/active-script-page';
   import { getProgressSummary } from '../../../scripts/progress';
 
-  initializeActiveScriptPage({
+  const script = initializeActiveScriptPage({
     emptySelector: '.progress-empty-section',
     contentSelector: '[data-progress-content]',
-    render: renderProgress,
   });
+
+  if (script) {
+    renderProgress(script);
+  }
 
   function renderProgress(script: Parameters<typeof getProgressSummary>[0]): void {
     const summary = getProgressSummary(script);

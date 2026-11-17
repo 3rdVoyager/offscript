@@ -45,11 +45,14 @@ import '../../../styles/script-view.css';
     ScriptScene,
   } from '../../../scripts/script-schema';
 
-  initializeActiveScriptPage({
+  const script = initializeActiveScriptPage({
     emptySelector: '.script-view-empty-section',
     contentSelector: '[data-script-view]',
-    render: renderScript,
   });
+
+  if (script) {
+    renderScript(script);
+  }
 
   function renderScript(script: Script): void {
     setText('[data-script-title]', script.title || 'Untitled script');

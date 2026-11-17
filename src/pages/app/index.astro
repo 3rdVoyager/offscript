@@ -53,10 +53,12 @@ import "../../styles/dashboard.css";
   import { initializeActiveScriptPage } from '../../scripts/active-script-page';
   import { getProgressSummary } from '../../scripts/progress';
 
-  initializeActiveScriptPage({
+  const script = initializeActiveScriptPage({
     emptySelector: '.dashboard-empty-section',
     contentSelector: '[data-dashboard-content]',
-    render: (script) => {
+  });
+
+  if (script) {
     const summary = getProgressSummary(script);
     setText('[data-dashboard-title]', script.title || 'Untitled script');
     setText('[data-dashboard-notes]', script.notes || 'No notes added for this script.');
@@ -66,8 +68,7 @@ import "../../styles/dashboard.css";
     if (progressBar instanceof HTMLElement) {
       progressBar.style.width = `${summary.progress}%`;
     }
-    },
-  });
+  }
 
   function setText(selector: string, value: string): void {
     const element = document.querySelector(selector);

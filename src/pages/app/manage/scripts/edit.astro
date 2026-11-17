@@ -41,17 +41,29 @@ const tabs = [
 
 <script>
   import { initializeActiveScriptPage } from "../../../../scripts/active-script-page";
-  import { updateScript } from "../../../../scripts/script-store";
+  import {
+    updateScript,
+    type ScriptAct,
+    type ScriptLine,
+    type ScriptScene,
+    type StoredScript,
+  } from "../../../../scripts/script-store";
+  import {
+    getScriptValidationError,
+    normalizeScript,
+  } from "../../../../scripts/script-schema";
   import { showToast } from "../../../../scripts/toasts";
 
   const form = document.querySelector("[data-edit-script-form]");
   const titleInput = document.querySelector("#edit-script-title");
   const notesInput = document.querySelector("#edit-script-notes");
+  const structure = document.querySelector("[data-edit-structure]");
 
   if (
     form instanceof HTMLFormElement &&
     titleInput instanceof HTMLInputElement &&
-    notesInput instanceof HTMLTextAreaElement
+    notesInput instanceof HTMLTextAreaElement &&
+    structure instanceof HTMLElement
   ) {
     const script = initializeActiveScriptPage({
       emptySelector: ".edit-script-empty",
@@ -59,23 +71,233 @@ const tabs = [
     });
 
     if (script) {
-      titleInput.value = script.title || "";
-      notesInput.value = script.notes || "";
+      const draft = cloneScript(script);
+      titleInput.value = draft.title || "";
+      notesInput.value = draft.notes || "";
+      renderStructure(draft, structure);
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
+        draft.title = titleInput.value.trim();
+        draft.notes = notesInput.value.trim();
+
+        const validationError = getScriptValidationError(draft);
+        if (validationError) {
+          showToast(validationError, "error");
+          return;
+        }
 
         const saved = updateScript(script.id, (storedScript) => {
-          storedScript.title = titleInput.value.trim();
-          storedScript.notes = notesInput.value.trim();
+          Object.assign(storedScript, normalizeScript(draft));
+          storedScript.id = script.id;
         });
 
         if (saved) {
-          showToast("Script details saved.");
+          showToast("Script saved.");
         } else {
-          showToast("Could not save script details.", "error");
+          showToast("Could not save script.", "error");
         }
       });
     }
+  }
+
+  function cloneScript(script: StoredScript): StoredScript {
+    return JSON.parse(JSON.stringify(script)) as StoredScript;
+  }
+
+  function renderStructure(draft: StoredScript, container: HTMLElement): void {
+    const acts = Array.isArray(draft.acts) ? draft.acts : [];
+    container.replaceChildren(
+      ...acts.map((act, actIndex) =>
+        createActEditor(draft, act, actIndex, container),
+      ),
+      createAddButton("Add act", () => {
+        draft.acts ||= [];
+        draft.acts.push({
+          title: `Act ${draft.acts.length + 1}`,
+          scenes: [{ title: "Scene 1", lines: [] }],
+        });
+        renderStructure(draft, container);
+      }),
+    );
+  }
+
+  function createActEditor(
+    draft: StoredScript,
+    act: ScriptAct,
+    actIndex: number,
+    container: HTMLElement,
+  ): HTMLElement {
+    const fieldset = document.createElement("fieldset");
+    fieldset.className = "edit-script-act";
+
+    const title = createTextInput("Act title", act.title || "");
+    title.input.addEventListener("input", () => {
+      act.title = title.input.value;
+    });
+    fieldset.append(title.wrapper);
+
+    const scenes = document.createElement("div");
+    scenes.className = "edit-script-scenes";
+    const sceneList = Array.isArray(act.scenes) ? act.scenes : [];
+    scenes.append(
+      ...sceneList.map((scene, sceneIndex) =>
+        createSceneEditor(draft, act, scene, sceneIndex, container),
+      ),
+    );
+    fieldset.append(scenes);
+
+    const actions = document.createElement("div");
+    actions.className = "edit-script-add-actions";
+    actions.append(
+      createAddButton("Add scene", () => {
+        act.scenes ||= [];
+        act.scenes.push({ title: `Scene ${act.scenes.length + 1}`, lines: [] });
+        renderStructure(draft, container);
+      }),
+      createAddButton("Delete act", () => {
+        draft.acts?.splice(actIndex, 1);
+        renderStructure(draft, container);
+      }),
+    );
+    fieldset.append(actions);
+
+    return fieldset;
+  }
+
+  function createSceneEditor(
+    draft: StoredScript,
+    act: ScriptAct,
+    scene: ScriptScene,
+    sceneIndex: number,
+    container: HTMLElement,
+  ): HTMLElement {
+    const fieldset = document.createElement("fieldset");
+    fieldset.className = "edit-script-scene";
+
+    const title = createTextInput("Scene title", scene.title || "");
+    title.input.addEventListener("input", () => {
+      scene.title = title.input.value;
+    });
+    fieldset.append(title.wrapper);
+
+    const lines = document.createElement("div");
+    lines.className = "edit-script-lines";
+    const lineList = Array.isArray(scene.lines) ? scene.lines : [];
+    lines.append(
+      ...lineList.map((line, lineIndex) =>
+        createLineEditor(draft, scene, line, lineIndex, container),
+      ),
+    );
+    fieldset.append(lines);
+
+    const actions = document.createElement("div");
+    actions.className = "edit-script-add-actions";
+    actions.append(
+      createAddButton("Add line", () => {
+        scene.lines ||= [];
+        scene.lines.push({
+          type: "line",
+          text: "",
+          characters: [""],
+          progress: 0,
+        });
+        renderStructure(draft, container);
+      }),
+      createAddButton("Delete scene", () => {
+        act.scenes?.splice(sceneIndex, 1);
+        renderStructure(draft, container);
+      }),
+    );
+    fieldset.append(actions);
+
+    return fieldset;
+  }
+
+  function createLineEditor(
+    draft: StoredScript,
+    scene: ScriptScene,
+    line: ScriptLine,
+    lineIndex: number,
+    container: HTMLElement,
+  ): HTMLElement {
+    const wrapper = document.createElement("div");
+    wrapper.className = "edit-script-line";
+
+    const type = document.createElement("select");
+    type.setAttribute("aria-label", `Line ${lineIndex + 1} type`);
+    type.innerHTML = '<option value="line">Dialogue</option><option value="direction">Stage direction</option>';
+    type.value = line.type === "direction" ? "direction" : "line";
+
+    const characters = document.createElement("input");
+    characters.type = "text";
+    characters.placeholder = "Character names";
+    characters.setAttribute("aria-label", `Line ${lineIndex + 1} characters`);
+    characters.value = (line.characters || []).join(", ");
+    characters.hidden = type.value === "direction";
+    wrapper.classList.toggle(
+      "edit-script-line-direction",
+      type.value === "direction",
+    );
+    characters.addEventListener("input", () => {
+      line.characters = characters.value
+        .split(",")
+        .map((character) => character.trim())
+        .filter(Boolean);
+    });
+    type.addEventListener("change", () => {
+      line.type = type.value;
+      characters.hidden = type.value === "direction";
+      wrapper.classList.toggle(
+        "edit-script-line-direction",
+        type.value === "direction",
+      );
+    });
+
+    const text = document.createElement("textarea");
+    text.rows = 3;
+    text.placeholder = "Line or stage direction";
+    text.setAttribute("aria-label", `Line ${lineIndex + 1} text`);
+    text.value = line.text || "";
+    text.addEventListener("input", () => {
+      line.text = text.value;
+    });
+
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "button-danger edit-script-line-delete";
+    deleteButton.textContent = "×";
+    deleteButton.setAttribute("aria-label", `Delete line ${lineIndex + 1}`);
+    deleteButton.addEventListener("click", () => {
+      scene.lines?.splice(lineIndex, 1);
+      renderStructure(draft, container);
+    });
+
+    wrapper.append(type, characters, text, deleteButton);
+    return wrapper;
+  }
+
+  function createTextInput(
+    labelText: string,
+    value: string,
+  ): { wrapper: HTMLDivElement; input: HTMLInputElement } {
+    const wrapper = document.createElement("div");
+    const label = document.createElement("label");
+    label.textContent = labelText;
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = value;
+    label.append(input);
+    wrapper.append(label);
+    return { wrapper, input };
+  }
+
+  function createAddButton(label: string, onClick: () => void): HTMLButtonElement {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "button-secondary";
+    button.textContent = label;
+    button.addEventListener("click", onClick);
+    return button;
   }
 </script>

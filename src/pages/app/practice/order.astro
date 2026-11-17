@@ -1,0 +1,352 @@
+---
+import AppLayout from "../../../layouts/AppLayout.astro";
+import AppSection from "../../../components/AppSection.astro";
+import AppPageHeader from "../../../components/AppPageHeader.astro";
+import EmptyState from "../../../components/EmptyState.astro";
+---
+
+<AppLayout pageTitle="Order">
+  <AppPageHeader
+    title="Order"
+    description="Put a conversation window back in the correct order."
+  />
+
+  <AppSection class="order-empty-section is-loading" ariaLabel="Order practice empty state">
+    <AppSection variant="card">
+      <EmptyState
+        title="No script selected"
+        description="Select a script to begin ordering lines."
+        actionLabel="Choose a script"
+        actionHref="/app/manage/scripts/"
+      />
+    </AppSection>
+  </AppSection>
+
+  <div class="order-content" data-order-content hidden>
+    <AppSection variant="card" class="order-tool" ariaLabel="Order practice">
+      <div class="order-toolbar">
+        <div>
+          <p class="order-label">Order practice</p>
+          <strong data-order-position></strong>
+        </div>
+        <button type="button" class="button-secondary" data-new-round>
+          New round
+        </button>
+      </div>
+
+      <p class="order-instructions">
+        Use the arrows to put these lines back in their original order. Each set includes
+        dialogue from your selected practice characters.
+      </p>
+      <div class="order-lines" data-order-lines></div>
+      <p class="order-status" data-order-status role="status"></p>
+      <button type="button" class="button" data-check-order>Check order</button>
+    </AppSection>
+  </div>
+</AppLayout>
+
+<script>
+  import { initializeActiveScriptPage } from "../../../scripts/active-script-page";
+  import {
+    getOrderLines,
+    getPracticeLines,
+    type PracticeLine,
+  } from "../../../scripts/practice";
+
+  const script = initializeActiveScriptPage({
+    emptySelector: ".order-empty-section",
+    contentSelector: "[data-order-content]",
+  });
+
+  let sourceLines: PracticeLine[] = [];
+  let roundLines: PracticeLine[] = [];
+  let currentOrder: PracticeLine[] = [];
+  let roundNumber = 0;
+  let roundComplete = false;
+
+  const linesContainer = document.querySelector("[data-order-lines]");
+  const position = document.querySelector("[data-order-position]");
+  const status = document.querySelector("[data-order-status]");
+  const checkButton = document.querySelector("[data-check-order]");
+  const newRoundButton = document.querySelector("[data-new-round]");
+
+  if (
+    script &&
+    linesContainer instanceof HTMLElement &&
+    position instanceof HTMLElement &&
+    status instanceof HTMLElement &&
+    checkButton instanceof HTMLButtonElement &&
+    newRoundButton instanceof HTMLButtonElement
+  ) {
+    sourceLines = getPracticeLines(script);
+    checkButton.addEventListener("click", checkOrder);
+    newRoundButton.addEventListener("click", startRound);
+
+    startRound();
+  }
+
+  function startRound(): void {
+    if (sourceLines.length === 0 || !script) {
+      setText(position, "No eligible lines");
+      setText(
+        status,
+        "Select at least one practice character with dialogue in the selected scenes.",
+      );
+      if (checkButton instanceof HTMLButtonElement) {
+        checkButton.disabled = true;
+      }
+      if (newRoundButton instanceof HTMLButtonElement) {
+        newRoundButton.disabled = true;
+      }
+      return;
+    }
+
+    roundLines = getOrderLines(script);
+    if (roundLines.length < 2) {
+      setText(position, "Not enough lines");
+      setText(
+        status,
+        "This script needs at least two dialogue lines in a valid window.",
+      );
+      return;
+    }
+
+    const roundSize = roundLines.length;
+    currentOrder = shuffle(roundLines);
+    roundNumber += 1;
+    roundComplete = false;
+
+    setText(position, `Round ${roundNumber} · ${roundSize} lines`);
+    setText(status, "Arrange the lines, then check your order.");
+    if (checkButton instanceof HTMLButtonElement) {
+      checkButton.disabled = false;
+      checkButton.textContent = "Check order";
+    }
+    renderLines();
+  }
+
+  function renderLines(): void {
+    if (!(linesContainer instanceof HTMLElement)) {
+      return;
+    }
+
+    linesContainer.replaceChildren(
+      ...currentOrder.map((practiceLine, index) => {
+        const item = document.createElement("div");
+        item.className = "order-line";
+
+        const text = document.createElement("p");
+        text.className = "order-line-text";
+        text.textContent = practiceLine.line.text || "";
+
+        const character = document.createElement("span");
+        character.className = "order-line-character";
+        character.textContent =
+          practiceLine.line.characters?.join(" / ") || "Unknown character";
+
+        const controls = document.createElement("div");
+        controls.className = "order-line-controls";
+        controls.append(
+          createMoveButton("↑", `Move line ${index + 1} up`, () =>
+            moveLine(index, -1),
+          ),
+          createMoveButton("↓", `Move line ${index + 1} down`, () =>
+            moveLine(index, 1),
+          ),
+        );
+
+        item.append(character, text, controls);
+        return item;
+      }),
+    );
+  }
+
+  function moveLine(index: number, offset: number): void {
+    const targetIndex = index + offset;
+    if (
+      roundComplete ||
+      targetIndex < 0 ||
+      targetIndex >= currentOrder.length
+    ) {
+      return;
+    }
+
+    [currentOrder[index], currentOrder[targetIndex]] = [
+      currentOrder[targetIndex],
+      currentOrder[index],
+    ];
+    renderLines();
+  }
+
+  function checkOrder(): void {
+    const isCorrect = currentOrder.every((line, index) =>
+      sameLine(line, roundLines[index]),
+    );
+
+    if (!(status instanceof HTMLElement)) {
+      return;
+    }
+
+    if (!isCorrect) {
+      status.textContent = "Not quite. Keep adjusting the lines and try again.";
+      status.dataset.result = "incorrect";
+      return;
+    }
+
+    roundComplete = true;
+    status.textContent = "Correct! Start a new round when you are ready.";
+    status.dataset.result = "correct";
+    if (checkButton instanceof HTMLButtonElement) {
+      checkButton.disabled = true;
+    }
+    renderLines();
+  }
+
+  function createMoveButton(
+    label: string,
+    accessibleLabel: string,
+    onClick: () => void,
+  ): HTMLButtonElement {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "button-secondary order-line-button";
+    button.textContent = label;
+    button.setAttribute("aria-label", accessibleLabel);
+    button.addEventListener("click", onClick);
+    return button;
+  }
+
+  function sameLine(first: PracticeLine, second: PracticeLine): boolean {
+    return (
+      first.actIndex === second.actIndex &&
+      first.sceneIndex === second.sceneIndex &&
+      first.lineIndex === second.lineIndex
+    );
+  }
+
+  function shuffle(lines: PracticeLine[]): PracticeLine[] {
+    const shuffled = [...lines];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [
+        shuffled[randomIndex],
+        shuffled[index],
+      ];
+    }
+    return shuffled;
+  }
+
+  function setText(element: Element | null, value: string): void {
+    if (element) {
+      element.textContent = value;
+    }
+  }
+</script>
+
+<style is:global>
+  .order-content[hidden],
+  .order-empty-section[hidden] {
+    display: none;
+  }
+
+  .order-content {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .order-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--app-border);
+  }
+
+  .order-label {
+    margin-bottom: 0.2rem;
+    color: var(--app-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .order-instructions {
+    margin: var(--space-4) 0;
+    color: var(--app-muted);
+  }
+
+  .order-lines {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .order-line {
+    display: grid;
+    grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border: 1px solid var(--app-border);
+    border-radius: var(--radius-small);
+    background: var(--app-surface-raised);
+  }
+
+  .order-line-character {
+    color: var(--gold-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .order-line-text {
+    margin: 0;
+  }
+
+  .order-line-controls {
+    display: flex;
+    gap: var(--space-1);
+  }
+
+  .order-line-button {
+    min-width: 2.5rem;
+    padding: 0.55rem 0.7rem;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .order-status {
+    min-height: 1.5em;
+    margin: var(--space-4) 0 var(--space-2);
+    color: var(--app-muted);
+  }
+
+  .order-status[data-result="correct"] {
+    color: var(--success);
+  }
+
+  .order-status[data-result="incorrect"] {
+    color: var(--red);
+  }
+
+  @media (max-width: 700px) {
+    .order-toolbar {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .order-line {
+      grid-template-columns: 1fr auto;
+    }
+
+    .order-line-character,
+    .order-line-text {
+      grid-column: 1;
+    }
+
+    .order-line-controls {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
+  }
+</style>

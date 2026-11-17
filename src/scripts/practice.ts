@@ -45,16 +45,62 @@ export function getPracticeLines(activeScript: StoredScript): PracticeLine[] {
     }
   }
 
-  return settings.randomizeLineOrder ? shuffleLines(lines) : lines;
+  return lines;
 }
 
-function shuffleLines(lines: PracticeLine[]): PracticeLine[] {
-  const shuffled = [...lines];
+export function getOrderLines(
+  activeScript: StoredScript,
+  windowSize = 10,
+): PracticeLine[] {
+  const settings = getPracticeSettings(activeScript);
+  const candidateWindows: PracticeLine[][] = [];
 
-  for (let index = shuffled.length - 1; index > 0; index -= 1) {
-    const randomIndex = Math.floor(Math.random() * (index + 1));
-    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+  for (const [actIndex, act] of (activeScript.acts || []).entries()) {
+    for (const [sceneIndex, scene] of (act.scenes || []).entries()) {
+      if (!settings.scenes.includes(getSceneKey(actIndex, sceneIndex))) {
+        continue;
+      }
+
+      const sceneLines: Array<{
+        practiceLine: PracticeLine;
+        isSelectedCharacter: boolean;
+      }> = [];
+
+      for (const [lineIndex, line] of (scene.lines || []).entries()) {
+        if (line.type !== 'line' || !line.text?.trim()) {
+          continue;
+        }
+
+        sceneLines.push({
+          practiceLine: {
+            line,
+            actIndex,
+            sceneIndex,
+            lineIndex,
+          },
+          isSelectedCharacter: (line.characters || []).some((character) =>
+            settings.characters.includes(character),
+          ),
+        });
+      }
+
+      const size = Math.min(windowSize, sceneLines.length);
+      for (let start = 0; start <= sceneLines.length - size; start += 1) {
+        const window = sceneLines.slice(start, start + size);
+        if (window.some((entry) => entry.isSelectedCharacter)) {
+          candidateWindows.push(
+            window.map((entry) => entry.practiceLine),
+          );
+        }
+      }
+    }
   }
 
-  return shuffled;
+  if (candidateWindows.length === 0) {
+    return [];
+  }
+
+  return candidateWindows[
+    Math.floor(Math.random() * candidateWindows.length)
+  ];
 }

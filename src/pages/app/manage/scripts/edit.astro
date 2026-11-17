@@ -302,13 +302,12 @@ const tabs = [
     value: string,
   ): { wrapper: HTMLDivElement; input: HTMLInputElement } {
     const wrapper = document.createElement("div");
-    const label = document.createElement("label");
-    label.textContent = labelText;
     const input = document.createElement("input");
     input.type = "text";
     input.value = value;
-    label.append(input);
-    wrapper.append(label);
+    input.placeholder = labelText;
+    input.setAttribute("aria-label", labelText);
+    wrapper.append(input);
     return { wrapper, input };
   }
 

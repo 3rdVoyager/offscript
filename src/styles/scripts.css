@@ -1,6 +1,6 @@
 .scripts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   gap: var(--space-4);
 }
 
@@ -41,21 +41,12 @@
 .script-card-actions {
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: var(--space-2);
   margin-top: auto;
-}
-
-.script-card-selection {
-  color: var(--app-muted);
-  font-size: 0.85rem;
 }
 
 .script-card-delete {
   min-width: 2.75rem;
   padding: 0.7rem;
-}
-
-.script-card.is-active .script-card-selection {
-  color: var(--gold-light);
 }

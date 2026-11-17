@@ -8,7 +8,7 @@ import EmptyState from "../../../components/EmptyState.astro";
 <AppLayout pageTitle="Order">
   <AppPageHeader
     title="Order"
-    description="Put a conversation window back in the correct order."
+    description="Use the arrows to put these lines back in their original order. Each set includes dialogue from your selected practice characters."
   />
 
   <AppSection class="order-empty-section is-loading" ariaLabel="Order practice empty state">
@@ -24,105 +24,122 @@ import EmptyState from "../../../components/EmptyState.astro";
 
   <div class="order-content" data-order-content hidden>
     <AppSection variant="card" class="order-tool" ariaLabel="Order practice">
-      <div class="order-toolbar">
-        <div>
-          <p class="order-label">Order practice</p>
-          <strong data-order-position></strong>
-        </div>
-        <button type="button" class="button-secondary" data-new-round>
-          New round
-        </button>
-      </div>
-
-      <p class="order-instructions">
-        Use the arrows to put these lines back in their original order. Each set includes
-        dialogue from your selected practice characters.
-      </p>
       <div class="order-lines" data-order-lines></div>
-      <p class="order-status" data-order-status role="status"></p>
-      <button type="button" class="button" data-check-order>Check order</button>
+      <div class="order-actions">
+        <button type="button" class="button" data-check-order>Check</button>
+      </div>
     </AppSection>
   </div>
 </AppLayout>
 
 <script>
   import { initializeActiveScriptPage } from "../../../scripts/active-script-page";
+  import { getAllLines, type PracticeLine } from "../../../scripts/practice";
   import {
-    getOrderLines,
-    getPracticeLines,
-    type PracticeLine,
-  } from "../../../scripts/practice";
+    getPracticeSettings,
+    getSceneKey,
+  } from "../../../scripts/practice-settings";
+  import { showToast } from "../../../scripts/toasts";
 
   const script = initializeActiveScriptPage({
     emptySelector: ".order-empty-section",
     contentSelector: "[data-order-content]",
   });
 
-  let sourceLines: PracticeLine[] = [];
+  let allLines: PracticeLine[] = [];
   let roundLines: PracticeLine[] = [];
   let currentOrder: PracticeLine[] = [];
-  let roundNumber = 0;
   let roundComplete = false;
 
   const linesContainer = document.querySelector("[data-order-lines]");
-  const position = document.querySelector("[data-order-position]");
-  const status = document.querySelector("[data-order-status]");
   const checkButton = document.querySelector("[data-check-order]");
-  const newRoundButton = document.querySelector("[data-new-round]");
 
   if (
     script &&
     linesContainer instanceof HTMLElement &&
-    position instanceof HTMLElement &&
-    status instanceof HTMLElement &&
-    checkButton instanceof HTMLButtonElement &&
-    newRoundButton instanceof HTMLButtonElement
+    checkButton instanceof HTMLButtonElement
   ) {
-    sourceLines = getPracticeLines(script);
-    checkButton.addEventListener("click", checkOrder);
-    newRoundButton.addEventListener("click", startRound);
+    allLines = getAllLines(script);
+    checkButton.addEventListener("click", handlePrimaryAction);
 
     startRound();
   }
 
   function startRound(): void {
-    if (sourceLines.length === 0 || !script) {
-      setText(position, "No eligible lines");
-      setText(
-        status,
+    if (!script) {
+      showToast(
         "Select at least one practice character with dialogue in the selected scenes.",
+        "error",
       );
       if (checkButton instanceof HTMLButtonElement) {
         checkButton.disabled = true;
       }
-      if (newRoundButton instanceof HTMLButtonElement) {
-        newRoundButton.disabled = true;
-      }
       return;
     }
 
-    roundLines = getOrderLines(script);
+    roundLines = getOrderWindow(script);
     if (roundLines.length < 2) {
-      setText(position, "Not enough lines");
-      setText(
-        status,
+      showToast(
         "This script needs at least two dialogue lines in a valid window.",
+        "error",
       );
       return;
     }
 
-    const roundSize = roundLines.length;
     currentOrder = shuffle(roundLines);
-    roundNumber += 1;
     roundComplete = false;
 
-    setText(position, `Round ${roundNumber} · ${roundSize} lines`);
-    setText(status, "Arrange the lines, then check your order.");
     if (checkButton instanceof HTMLButtonElement) {
       checkButton.disabled = false;
-      checkButton.textContent = "Check order";
+      checkButton.textContent = "Check";
     }
     renderLines();
+  }
+
+  function getOrderWindow(activeScript: NonNullable<typeof script>): PracticeLine[] {
+    const settings = getPracticeSettings(activeScript);
+    const sceneLines = new Map<string, PracticeLine[]>();
+
+    for (const practiceLine of allLines) {
+      const sceneKey = getSceneKey(
+        practiceLine.actIndex,
+        practiceLine.sceneIndex,
+      );
+      if (
+        settings.scenes.includes(sceneKey) &&
+        practiceLine.line.type === "line" &&
+        practiceLine.line.text?.trim()
+      ) {
+        const lines = sceneLines.get(sceneKey) || [];
+        lines.push(practiceLine);
+        sceneLines.set(sceneKey, lines);
+      }
+    }
+
+    const candidateWindows: PracticeLine[][] = [];
+    for (const lines of sceneLines.values()) {
+      const size = Math.min(5, lines.length);
+      for (let start = 0; start <= lines.length - size; start += 1) {
+        const window = lines.slice(start, start + size);
+        if (
+          window.some((practiceLine) =>
+            practiceLine.line.characters?.some((character) =>
+              settings.characters.includes(character),
+            ),
+          )
+        ) {
+          candidateWindows.push(window);
+        }
+      }
+    }
+
+    if (candidateWindows.length === 0) {
+      return [];
+    }
+
+    return candidateWindows[
+      Math.floor(Math.random() * candidateWindows.length)
+    ];
   }
 
   function renderLines(): void {
@@ -183,23 +200,26 @@ import EmptyState from "../../../components/EmptyState.astro";
       sameLine(line, roundLines[index]),
     );
 
-    if (!(status instanceof HTMLElement)) {
-      return;
-    }
-
     if (!isCorrect) {
-      status.textContent = "Not quite. Keep adjusting the lines and try again.";
-      status.dataset.result = "incorrect";
+      showToast("Not quite. Keep adjusting the lines and try again.", "error");
       return;
     }
 
     roundComplete = true;
-    status.textContent = "Correct! Start a new round when you are ready.";
-    status.dataset.result = "correct";
+    showToast("Correct order!");
     if (checkButton instanceof HTMLButtonElement) {
-      checkButton.disabled = true;
+      checkButton.textContent = "Next";
     }
     renderLines();
+  }
+
+  function handlePrimaryAction(): void {
+    if (roundComplete) {
+      startRound();
+      return;
+    }
+
+    checkOrder();
   }
 
   function createMoveButton(
@@ -236,11 +256,6 @@ import EmptyState from "../../../components/EmptyState.astro";
     return shuffled;
   }
 
-  function setText(element: Element | null, value: string): void {
-    if (element) {
-      element.textContent = value;
-    }
-  }
 </script>
 
 <style is:global>
@@ -252,28 +267,6 @@ import EmptyState from "../../../components/EmptyState.astro";
   .order-content {
     display: grid;
     gap: var(--space-4);
-  }
-
-  .order-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding-bottom: var(--space-4);
-    border-bottom: 1px solid var(--app-border);
-  }
-
-  .order-label {
-    margin-bottom: 0.2rem;
-    color: var(--app-muted);
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .order-instructions {
-    margin: var(--space-4) 0;
-    color: var(--app-muted);
   }
 
   .order-lines {
@@ -315,26 +308,14 @@ import EmptyState from "../../../components/EmptyState.astro";
     line-height: 1;
   }
 
-  .order-status {
-    min-height: 1.5em;
-    margin: var(--space-4) 0 var(--space-2);
-    color: var(--app-muted);
-  }
-
-  .order-status[data-result="correct"] {
-    color: var(--success);
-  }
-
-  .order-status[data-result="incorrect"] {
-    color: var(--red);
+  .order-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
   }
 
   @media (max-width: 700px) {
-    .order-toolbar {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-
     .order-line {
       grid-template-columns: 1fr auto;
     }

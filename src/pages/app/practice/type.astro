@@ -3,7 +3,6 @@ import AppLayout from '../../../layouts/AppLayout.astro';
 import AppSection from '../../../components/AppSection.astro';
 import AppPageHeader from '../../../components/AppPageHeader.astro';
 import EmptyState from '../../../components/EmptyState.astro';
-import ProgressMeter from '../../../components/ProgressMeter.astro';
 ---
 
 <AppLayout pageTitle="Type">
@@ -34,6 +33,7 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
         >
           &lt;
         </button>
+        <strong data-type-position></strong>
         <button
           type="button"
           class="button-secondary type-navigation-button"
@@ -42,14 +42,6 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
         >
           &gt;
         </button>
-      </div>
-
-      <div class="type-toolbar">
-        <div>
-          <p class="type-label">Type practice</p>
-          <strong data-type-position></strong>
-        </div>
-        <ProgressMeter class="type-progress" ariaLabel="Line progress" />
       </div>
 
       <div class="type-prompt">
@@ -70,7 +62,7 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
       ></textarea>
 
       <div class="type-actions">
-        <button type="button" class="button" data-check-answer>Check answer</button>
+        <button type="button" class="button" data-check-answer>Check</button>
         <button type="button" class="button-secondary" data-reveal-answer>
           Reveal answer
         </button>
@@ -153,11 +145,6 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
       cue.hidden = !hasCue;
       cue.textContent = practiceLine.cueLine || '';
     }
-    const progressBar = document.querySelector('[data-progress-meter-bar]');
-    if (progressBar instanceof HTMLElement) {
-      progressBar.style.width = `${getLineProgress(practiceLine.line.progress)}%`;
-    }
-
     if (input instanceof HTMLTextAreaElement) {
       input.value = '';
       input.disabled = false;
@@ -169,7 +156,7 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
       answer.hidden = true;
     }
     if (checkButton instanceof HTMLButtonElement) {
-      checkButton.textContent = 'Check answer';
+      checkButton.textContent = 'Check';
       checkButton.disabled = false;
     }
     if (revealButton instanceof HTMLButtonElement) {
@@ -228,7 +215,7 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
       input.disabled = !showNextButton;
     }
     if (checkButton instanceof HTMLButtonElement) {
-      checkButton.textContent = showNextButton ? 'Next line' : 'Check answer';
+      checkButton.textContent = showNextButton ? 'Next' : 'Check';
       checkButton.disabled = !showNextButton;
     }
     if (revealButton instanceof HTMLButtonElement) {
@@ -398,10 +385,15 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
   }
 
   .type-navigation {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: var(--space-3);
+  }
+
+  .type-navigation strong {
+    color: var(--app-text);
+    text-align: center;
   }
 
   .type-navigation-button {
@@ -409,32 +401,6 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
     padding: 0.55rem 0.8rem;
     font-size: 1.25rem;
     line-height: 1;
-  }
-
-  .type-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding-bottom: var(--space-4);
-    border-bottom: 1px solid var(--app-border);
-  }
-
-  .type-label {
-    margin-bottom: 0.2rem;
-    color: var(--app-muted);
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .type-toolbar strong {
-    color: var(--app-text);
-  }
-
-  .type-progress {
-    width: min(14rem, 40%);
-    height: 0.45rem;
   }
 
   .type-prompt {
@@ -531,14 +497,4 @@ import ProgressMeter from '../../../components/ProgressMeter.astro';
     margin-bottom: var(--space-4);
   }
 
-  @media (max-width: 700px) {
-    .type-toolbar {
-      display: block;
-    }
-
-    .type-progress {
-      width: 100%;
-      margin-top: var(--space-3);
-    }
-  }
 </style>

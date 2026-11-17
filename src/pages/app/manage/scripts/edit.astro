@@ -263,6 +263,9 @@ const tabs = [
       line.text = text.value;
     });
 
+    const lineActions = document.createElement("div");
+    lineActions.className = "edit-script-line-actions";
+
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
     deleteButton.className = "button-danger edit-script-line-delete";
@@ -273,7 +276,24 @@ const tabs = [
       renderStructure(draft, container);
     });
 
-    wrapper.append(type, characters, text, deleteButton);
+    const addButton = document.createElement("button");
+    addButton.type = "button";
+    addButton.className = "button-secondary edit-script-line-add";
+    addButton.textContent = "+";
+    addButton.setAttribute("aria-label", `Add line below line ${lineIndex + 1}`);
+    addButton.addEventListener("click", () => {
+      scene.lines ||= [];
+      scene.lines.splice(lineIndex + 1, 0, {
+        type: "line",
+        text: "",
+        characters: [""],
+        progress: 0,
+      });
+      renderStructure(draft, container);
+    });
+
+    lineActions.append(deleteButton, addButton);
+    wrapper.append(type, characters, text, lineActions);
     return wrapper;
   }
 

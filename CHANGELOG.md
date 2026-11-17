@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/3rdVoyager/offscript/compare/v0.2.2...v0.3.0) (2026-11-17)
+
+
+### Features
+
+* add 'Edit script' page and basic functionality. ([0fa89c7](https://github.com/3rdVoyager/offscript/commit/0fa89c7ae1d34e9bbeb543e99ce61ba5cbe926ca))
+* add 'Order' practice option and update settings to remove randomization feature ([07f41cd](https://github.com/3rdVoyager/offscript/commit/07f41cddeccb621dd6a897ebdde847d34df49d43))
+* build out 'Edit script' functionality with structured editing for acts and scenes ([e0418ea](https://github.com/3rdVoyager/offscript/commit/e0418ead1fd93bb505ae9921c042ec171095a818))
+* enhance 'Edit script' functionality by adding a line action for inserting new lines ([13a95d7](https://github.com/3rdVoyager/offscript/commit/13a95d7ddfd105d9406fcc5419a06f862dc1ad1f))
+* enhance 'Edit script' functionality by implementing add and delete functionality for acts and scenes ([f94c114](https://github.com/3rdVoyager/offscript/commit/f94c114a67062d407e3cfbea06b64c13102fe6dc))
+* implement line navigation buttons for type practice and enhance submission input handling ([c9714d6](https://github.com/3rdVoyager/offscript/commit/c9714d6e2c6f884d10f63a87c77a6bd38c6251fe))
+
 ## [0.2.2](https://github.com/3rdVoyager/offscript/compare/v0.2.1...v0.2.2) (2026-10-21)
 
 
